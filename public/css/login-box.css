@@ -1,0 +1,48 @@
+#login-box {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  margin: 0; /* 마진을 제거하고 */
+  width: fit-content;
+  /* 추가: 왼쪽 정렬을 위한 스타일 */
+  position: fixed;
+  left: 0;
+  top: 120px;
+}
+
+#login-box .form-group {
+  margin-bottom: 10px;
+}
+
+#login-box label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#login-box input[type="text"],
+#login-box input[type="password"] {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+#login-box button {
+  display: block; /* 버튼을 블록 요소로 만듬 */
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px; /* 폼 요소와 버튼 사이의 간격 */
+}
+
+#login-box button:hover {
+  background-color: #333;
+}
+
+#login-box #join {
+  margin-top: 10px;
+  text-align: center;
+}

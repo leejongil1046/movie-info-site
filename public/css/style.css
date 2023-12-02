@@ -1,0 +1,24 @@
+/* 기존 스타일 */
+@import "./footer.css";
+@import "./header.css";
+@import "./login-box.css";
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 1000vh; /* 전체 뷰포트 높이와 일치하도록 설정 */
+}
+
+main {
+  padding: 20px;
+  margin-top: 60px; /* 헤더 높이에 맞춰 메인 콘텐츠의 상단 여백 조절 */
+}
+
+#featured-movie,
+#movie-list {
+  margin-bottom: 20px;
+}

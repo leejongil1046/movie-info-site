@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>영화 정보 사이트</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>영화 정보 사이트</h1>
+      <nav>
+        <ul>
+          <li><a href="/">홈</a></li>
+          <li><a href="/movies">영화 목록</a></li>
+          <li><a href="/about">회사 소개</a></li>
+          <li><a href="/contact">연락처</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="login-box">
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="username">사용자 이름</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="아이디 입력"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호 입력"
+            required
+          />
+        </div>
+        <button type="submit">로그인</button>
+        <div id="join">회원 가입</div>
+      </form>
+    </div>
+    <main>
+      <section id="featured-movie">
+        <!-- 주요 영화 정보 -->
+      </section>
+      <section id="movie-list">
+        <!-- 영화 목록 -->
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 영화 정보 사이트</p>
+    </footer>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

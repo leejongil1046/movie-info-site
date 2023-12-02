@@ -1,28 +1,34 @@
+/* 헤더 스타일 설정 */
 header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #444; /* 헤더 배경색 */
+  color: white; /* 헤더 내 텍스트 색상 */
+  padding: 0.5rem 1rem; /* 상하 패딩 0.5rem, 좌우 패딩 1rem 설정 */
+  display: flex; /* Flexbox 레이아웃 적용 */
+  justify-content: space-between; /* 내부 요소들을 양 끝에 배치 */
+  align-items: center; /* 요소들을 수직 중앙에 배치 */
   position: fixed; /* 헤더를 상단에 고정 */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  top: 0; /* 상단에서 0의 위치 */
+  left: 0; /* 왼쪽에서 0의 위치 */
+  right: 0; /* 오른쪽에서 0의 위치 */
+  z-index: 1000; /* 다른 요소들 위에 위치하도록 z-index 설정 */
+  height: 60px; /* 헤더 높이 설정 */
 }
 
+/* 네비게이션 바 스타일 설정 */
 nav ul {
-  list-style-type: none;
-  display: flex;
-  padding: 0;
+  list-style-type: none; /* 리스트 스타일 제거 */
+  display: flex; /* Flexbox 레이아웃 적용 */
+  padding: 0; /* 패딩 제거 */
+  align-items: center; /* 내부 요소 수직 중앙 정렬 */
 }
 
+/* 네비게이션 바 내 각 항목에 대한 스타일 */
 nav ul li {
-  margin-right: 20px;
+  margin-right: 20px; /* 오른쪽 여백 설정 */
 }
 
+/* 네비게이션 링크 스타일 */
 nav ul li a {
-  color: white;
-  text-decoration: none;
+  color: white; /* 링크 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
 }

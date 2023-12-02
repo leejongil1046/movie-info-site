@@ -1,24 +1,29 @@
-/* 기존 스타일 */
+/* 외부 CSS 파일 불러오기 */
 @import "./footer.css";
 @import "./header.css";
 @import "./login-box.css";
+@import "./movies-container.css";
 
+/* 전체 페이지의 기본 스타일 설정 */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 1000vh; /* 전체 뷰포트 높이와 일치하도록 설정 */
+  font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+  margin: 0; /* 바디의 마진 제거 */
+  padding: 0; /* 바디의 패딩 제거 */
+  height: 100%; /* 바디 높이를 전체 창 높이로 설정 */
+  display: flex; /* Flexbox 레이아웃 적용 */
+  flex-direction: column; /* 요소를 세로 방향으로 정렬 */
+  /* min-height: 1000vh; 삭제됨: 뷰포트 높이에 맞춘 최소 높이 설정이었음 */
 }
 
+/* 메인 콘텐츠 영역에 대한 스타일 */
 main {
-  padding: 20px;
-  margin-top: 60px; /* 헤더 높이에 맞춰 메인 콘텐츠의 상단 여백 조절 */
+  padding: 20px; /* 내부 여백 설정 */
+  margin-top: 70px; /* 헤더 아래 공간 확보를 위한 상단 마진 */
+  margin-left: 220px; /* 로그인 박스와 겹치지 않도록 왼쪽 여백 설정 */
 }
 
+/* 각 특징 영화 및 영화 목록 섹션의 스타일 */
 #featured-movie,
 #movie-list {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* 각 섹션 하단 여백 설정 */
 }

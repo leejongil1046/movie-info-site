@@ -19,6 +19,12 @@
   height: auto; /* 이미지 높이를 자동으로 조정 */
   margin-bottom: 15px; /* 이미지 아래 여백 설정 */
   border-radius: 10px; /* 이미지 모서리 둥글게 처리 */
+  cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
+}
+
+/* 이미지에 마우스를 올렸을 때 */
+#movies-container img:hover {
+  transform: scale(1.05); /* 이미지를 5% 더 크게 확대 */
 }
 
 /* 영화 제목 스타일 */
@@ -35,5 +41,5 @@
 /* 로딩 메시지 스타일 */
 #movies-container #loading-message {
   font-size: 25px; /* 폰트 크기 설정 */
-  margin-top: 200px; /* 상단 여백 설정 */
+  margin-top: 250px; /* 상단 여백 설정 */
 }

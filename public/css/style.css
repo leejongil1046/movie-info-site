@@ -1,6 +1,7 @@
 /* 외부 CSS 파일 불러오기 */
 @import "./footer.css";
 @import "./header.css";
+@import "./join.css";
 @import "./login-box.css";
 @import "./movies-container.css";
 

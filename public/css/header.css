@@ -28,6 +28,7 @@ nav ul li {
 }
 
 /* 네비게이션 링크 스타일 */
+#website-title,
 nav ul li a {
   color: white; /* 링크 텍스트 색상 */
   text-decoration: none; /* 밑줄 제거 */

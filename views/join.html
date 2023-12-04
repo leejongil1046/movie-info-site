@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>영화 정보 사이트</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" id="website-title">
+        <h1>영화 정보 사이트</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="/">홈</a></li>
+          <li><a href="/movies">영화 목록</a></li>
+          <li><a href="/about">회사 소개</a></li>
+          <li><a href="/contact">연락처</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="/register" method="post" class="info">
+        <h1>회원가입</h1>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="아이디 입력"
+          required
+        /><br />
+        <div id="id-msg"></div>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="이메일 입력"
+          required
+        /><br />
+        <div id="email-msg"></div>
+
+        <input
+          type="password"
+          id="info__pw"
+          name="password"
+          placeholder="비밀번호 입력"
+          required
+        /><br />
+        <div id="pw-msg"></div>
+
+        <input
+          type="password"
+          id="info__pwRe"
+          name="password"
+          placeholder="비밀번호 확인"
+          required
+        /><br />
+        <div id="pwRe-msg"></div>
+
+        <div class="info-birth">
+          <select class="box" id="birth-year">
+            <option disabled selected>출생 연도</option>
+          </select>
+          <select class="box" id="birth-month">
+            <option disabled selected>월</option>
+          </select>
+          <select class="box" id="birth-day">
+            <option disabled selected>일</option>
+          </select>
+        </div>
+
+        <button type="submit">가입하기</button>
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2023 영화 정보 사이트</p>
+    </footer>
+    <script src="/js/join.js"></script>
+  </body>
+</html>

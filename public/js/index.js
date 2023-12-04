@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // 각 영화에 대한 HTML 요소 생성 및 추가
         const movieElement = document.createElement("div");
         movieElement.innerHTML = `
-                <img src="${movie.medium_cover_image}" alt="${movie.title}">
-                <h3>${movie.title}</h3>
-                `;
+                  <img src="${movie.medium_cover_image}" alt="${movie.title}">
+                  <h3>${movie.title}</h3>
+                  `;
         moviesContainer.appendChild(movieElement);
       });
     })

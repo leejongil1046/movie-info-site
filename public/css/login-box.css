@@ -3,7 +3,8 @@
   background-color: #f2f2f2; /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
-  width: fit-content; /* 내용에 맞게 너비 조절 */
+  width: 180px;
+  height: 210px;
   position: fixed; /* 고정 위치 */
   left: 12px; /* 왼쪽에서 12px 떨어진 위치 */
   top: 90px; /* 상단에서 90px 떨어진 위치 */
@@ -26,7 +27,7 @@
   width: 90%; /* 너비 설정 */
   padding: 8px; /* 내부 여백 설정 */
   border: 1px solid #ddd; /* 테두리 스타일 설정 */
-  border-radius: 3px; /* 테두리 둥글게 설정 */
+  border-radius: 5px; /* 테두리 둥글게 설정 */
 }
 
 /* 로그인 버튼 스타일 */
@@ -49,7 +50,12 @@
 }
 
 /* 회원가입 링크 스타일 */
-#login-box #join {
-  margin-top: 10px; /* 상단 여백 설정 */
+#login-box #join-string {
   text-align: center; /* 텍스트 중앙 정렬 */
+  display: inline-block; /* 인라인 블록 요소로 설정 */
+  padding-left: 55px; /* 왼쪽 패딩 추가 */
+  margin: 10px 0; /* 상하 마진 추가 */
+  color: #444; /* 글자 색상 설정 */
+  text-decoration: none; /* 밑줄 제거 */
+  cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
 }

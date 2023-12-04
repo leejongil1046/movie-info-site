@@ -3,8 +3,8 @@
   background-color: #f2f2f2; /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
-  width: 180px;
-  height: 210px;
+  width: 180px; /* 로그인 박스의 너비 설정 */
+  height: 210px; /* 로그인 박스의 높이 설정 */
   position: fixed; /* 고정 위치 */
   left: 12px; /* 왼쪽에서 12px 떨어진 위치 */
   top: 90px; /* 상단에서 90px 떨어진 위치 */

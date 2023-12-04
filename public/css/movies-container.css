@@ -3,6 +3,9 @@
   display: flex; /* Flexbox 레이아웃 적용 */
   flex-wrap: wrap; /* 요소들이 컨테이너 너비를 초과할 경우 다음 줄로 이동 */
   justify-content: space-around; /* 요소들 사이에 균등한 간격 배치 */
+  display: flex; /* Flexbox 레이아웃 적용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
 }
 
 /* 각 영화를 나타내는 컨테이너에 대한 스타일 정의 */
@@ -36,10 +39,4 @@
   font-size: 1rem; /* 폰트 크기 설정 */
   line-height: 1.2; /* 줄 간격 설정 */
   margin-bottom: 20px; /* 제목 아래 여백 설정 */
-}
-
-/* 로딩 메시지 스타일 */
-#movies-container #loading-message {
-  font-size: 25px; /* 폰트 크기 설정 */
-  margin-top: 250px; /* 상단 여백 설정 */
 }

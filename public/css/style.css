@@ -1,19 +1,21 @@
 /* 외부 CSS 파일 불러오기 */
-@import "./footer.css";
-@import "./header.css";
-@import "./join.css";
-@import "./login-box.css";
-@import "./movies-container.css";
+@import "./footer.css"; /* 푸터 관련 스타일 */
+@import "./header.css"; /* 헤더 관련 스타일 */
+@import "./join.css"; /* 회원가입 관련 스타일 */
+@import "./login-box.css"; /* 로그인 박스 관련 스타일 */
+@import "./movies-container.css"; /* 영화 컨테이너 관련 스타일 */
 
 /* 전체 페이지의 기본 스타일 설정 */
 body {
   font-family: Arial, sans-serif; /* 기본 폰트 설정 */
-  margin: 0; /* 바디의 마진 제거 */
-  padding: 0; /* 바디의 패딩 제거 */
+  margin: 0; /* 바디의 모든 마진 제거 */
+  padding: 0; /* 바디의 모든 패딩 제거 */
   height: 100%; /* 바디 높이를 전체 창 높이로 설정 */
   display: flex; /* Flexbox 레이아웃 적용 */
   flex-direction: column; /* 요소를 세로 방향으로 정렬 */
-  /* min-height: 1000vh; 삭제됨: 뷰포트 높이에 맞춘 최소 높이 설정이었음 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
 }
 
 /* 메인 콘텐츠 영역에 대한 스타일 */
@@ -27,4 +29,9 @@ main {
 #featured-movie,
 #movie-list {
   margin-bottom: 20px; /* 각 섹션 하단 여백 설정 */
+}
+
+/* 로딩 메시지 스타일 */
+#loading-message {
+  font-size: 25px; /* 폰트 크기 설정 */
 }

@@ -1,7 +1,7 @@
 // 페이지 로딩 시 이미지와 설명을 숨김
 document.querySelector("#movie-image").style.display = "none";
 document.querySelector(".movie-story").style.display = "none";
-document.querySelector(".movie-comments").style.display = "none";
+document.querySelector(".movie-reviews").style.display = "none";
 
 // 로딩 메시지 추가
 const loadingMessage = document.createElement("p");
@@ -26,7 +26,7 @@ function fetchMovieDetails(movieId) {
       if (data.status === "ok") {
         document.querySelector("#movie-image").style.display = "block";
         document.querySelector(".movie-story").style.display = "block";
-        document.querySelector(".movie-comments").style.display = "block";
+        document.querySelector(".movie-reviews").style.display = "block";
         document.querySelector("#movie-title").textContent =
           data.data.movie.title_long;
         document.querySelector("#movie-image").src =
@@ -51,7 +51,7 @@ function fetchMovieDetails(movieId) {
           '<span id="like-label"><i class="fa-solid fa-heart"></i></span> ' +
           data.data.movie.like_count;
         document.querySelector("#movie-description").innerHTML =
-          '<h2 id="description-label">description</h2> &nbsp;&nbsp;' +
+          '<h2 id="description-label">Description</h2> &nbsp;&nbsp;' +
           data.data.movie.description_full.substring(
             0,
             data.data.movie.description_full.indexOf("—")
@@ -86,22 +86,22 @@ document.getElementById("refresh-icon").addEventListener("click", function () {
 });
 
 document
-  .getElementById("comment-form")
+  .getElementById("review-form")
   .addEventListener("submit", function (event) {
     event.preventDefault(); // 폼 기본 제출 동작 방지
 
     // 입력된 점수와 댓글 텍스트를 가져옵니다
-    const score = document.getElementById("comment-score").value;
-    const text = document.getElementById("comment-text").value;
+    const score = document.getElementById("review-score").value;
+    const text = document.getElementById("review-text").value;
 
     // 댓글을 표시할 요소 생성
-    const newComment = document.createElement("p");
-    newComment.textContent = `점수: ${score}, 댓글: ${text}`;
+    const newReview = document.createElement("p");
+    newReview.textContent = `점수: ${score}, 댓글: ${text}`;
 
     // 댓글 목록에 새 댓글 추가
-    document.getElementById("comments-list").appendChild(newComment);
+    document.getElementById("reviews-list").appendChild(newReview);
 
     // 입력 필드 초기화
-    document.getElementById("comment-score").value = "";
-    document.getElementById("comment-text").value = "";
+    document.getElementById("review-score").value = "";
+    document.getElementById("review-text").value = "";
   });

@@ -62,7 +62,7 @@
 }
 
 /* 댓글 섹션 스타일 */
-.movie-comments {
+.movie-reviews {
   max-width: 60%;
   padding: 20px 30px;
   background-color: #333;
@@ -72,11 +72,11 @@
   margin-bottom: 40px;
 }
 
-#comment-form {
+#review-form {
   margin-bottom: 20px;
 }
 
-#comment-form textarea {
+#review-form textarea {
   width: 500px;
   height: 150px;
   margin-top: 10px;
@@ -86,7 +86,7 @@
   border: none;
 }
 
-#comment-form button,
+#review-form button,
 #more-button {
   width: 120px;
   padding: 10px;
@@ -101,21 +101,21 @@
   width: 80px;
 }
 
-#comment-form button:hover,
+#review-form button:hover,
 #more-button:hover {
   background-color: Crimson;
 }
 
-#comments-list {
+#reviews-list {
   margin-top: 20px;
 }
 
-#comment-star {
+#review-star {
   color: yellow;
   font-size: 20px;
 }
 
-#comment-from select,
+#review-fm select,
 textarea {
   display: block;
 }

@@ -56,6 +56,9 @@ function fetchMovieDetails(movieId) {
             0,
             data.data.movie.description_full.indexOf("—")
           );
+        document.querySelector(
+          "#movie-more"
+        ).innerHTML = `<a href=${data.data.movie.url}><button id="more-button">More...</button></a> `;
       } else {
         document.querySelector("#movie-title").textContent = "Movie not found";
       }

@@ -86,18 +86,24 @@
   border: none;
 }
 
-#comment-form button {
+#comment-form button,
+#more-button {
   width: 120px;
   padding: 10px;
-  background-color: #444;
+  background-color: red;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-#comment-form button:hover {
-  background-color: #555;
+#more-button {
+  width: 80px;
+}
+
+#comment-form button:hover,
+#more-button:hover {
+  background-color: Crimson;
 }
 
 #comments-list {

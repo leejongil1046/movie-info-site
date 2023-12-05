@@ -36,7 +36,7 @@ nav ul li a {
 
 .nav-icon {
   font-size: 25px;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 #back-icon,
@@ -47,6 +47,9 @@ nav ul li a {
 #web-title {
   margin-top: 40px;
   margin-left: 10px;
+  color: red;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 60px;
 }
 
 #back-icon,

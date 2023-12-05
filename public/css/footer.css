@@ -13,3 +13,7 @@ footer {
   align-items: center; /* 내부 요소를 수직 중앙에 배치 */
   justify-content: center; /* 내부 요소를 수평 중앙에 배치 */
 }
+
+#footer-text {
+  color: red;
+}

@@ -39,5 +39,5 @@ main {
 #loading-message {
   position: fixed;
   top: 40%;
-  font-size: 25px; /* 폰트 크기 설정 */
+  font-size: 30px; /* 폰트 크기 설정 */
 }

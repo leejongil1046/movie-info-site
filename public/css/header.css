@@ -1,6 +1,6 @@
 /* 헤더 스타일 설정 */
 header {
-  background-color: #222; /* 헤더 배경색 */
+  background-color: #000; /* 헤더 배경색 */
   color: white; /* 헤더 내 텍스트 색상 */
   padding: 0.5rem 1rem; /* 상하 패딩 0.5rem, 좌우 패딩 1rem 설정 */
   display: flex; /* Flexbox 레이아웃 적용 */

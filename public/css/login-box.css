@@ -1,6 +1,6 @@
 /* 로그인 박스 스타일 */
 #login-box {
-  background-color: #222; /* 배경색 설정 */
+  background-color: #000; /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
   width: 180px; /* 로그인 박스의 너비 설정 */

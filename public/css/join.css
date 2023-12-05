@@ -1,6 +1,6 @@
 /* 회원가입 폼 스타일 */
 form[action="/register"] {
-  background-color: #222; /* 폼의 배경색 설정 */
+  background-color: #000; /* 폼의 배경색 설정 */
   padding: 1rem; /* 폼 내부의 패딩 설정 */
   width: 400px; /* 폼의 너비 설정 */
   height: 500px; /* 폼의 높이 설정 */

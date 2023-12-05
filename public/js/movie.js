@@ -61,12 +61,25 @@ function fetchMovieDetails(movieId) {
         document.querySelector("#movie-like").innerHTML =
           '<span id="like-label"><i class="fa-solid fa-heart"></i></span> &nbsp;' +
           data.data.movie.like_count;
+        const descriptionFull = data.data.movie.description_full;
+        let descriptionText;
+
+        // "—" 문자가 있는지 확인
+        if (descriptionFull.indexOf("—") !== -1) {
+          // "—" 문자가 있으면, 그 위치까지의 문자열을 추출
+          descriptionText = descriptionFull.substring(
+            0,
+            descriptionFull.indexOf("—")
+          );
+        } else {
+          // "—" 문자가 없으면, 전체 문자열을 사용
+          descriptionText = descriptionFull;
+        }
+
+        // 결과를 HTML 요소에 적용
         document.querySelector("#movie-description").innerHTML =
           '<h2 id="description-label">Description</h2> &nbsp;&nbsp;' +
-          data.data.movie.description_full.substring(
-            0,
-            data.data.movie.description_full.indexOf("—")
-          );
+          descriptionText;
         document.querySelector(
           "#movie-more"
         ).innerHTML = `<a href=${data.data.movie.url}><button id="more-button">More...</button></a> `;

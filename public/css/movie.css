@@ -1,0 +1,68 @@
+/* Movie info section */
+.movie-info {
+  display: flex; /* Flexbox 레이아웃 적용 */
+  gap: 20px; /* 이미지와 상세 정보 사이 간격 설정 */
+}
+
+/* Movie image */
+#movie-image {
+  display: none;
+  max-width: 40%; /* 이미지의 최대 너비 설정 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* Movie detail */
+.movie-detail {
+  max-width: 50%; /* 상세 정보의 최대 너비 설정 */
+}
+
+/* Movie title */
+#movie-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Movie description */
+#movie-description {
+  text-align: justify;
+  margin-top: 15px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.movie-detail {
+  font-size: 20px;
+}
+
+#rating-label i {
+  color: yellow;
+}
+
+#like-label i {
+  color: red;
+}
+
+/* Movie story section */
+.movie-story {
+  display: none;
+  max-width: 60%; /* 가로 크기를 main의 60%로 설정 */
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px; /* 패딩 추가 */
+  background-color: #333; /* 배경색 설정 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+  border-radius: 10px; /* 둥근 모서리 */
+}
+
+/* Movie description */
+#movie-description {
+  text-align: justify;
+  color: #fff;
+  font-size: 1rem;
+}
+
+#description-label {
+  font-size: 20px;
+}

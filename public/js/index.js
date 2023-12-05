@@ -27,10 +27,8 @@ function fetchMoviesData() {
       }
       // 파싱된 데이터 처리
       const moviesContainer = document.querySelector("#movies-container");
-      // 로딩 문구 제거
       data.data.movies.forEach((movie) => {
         // 각 영화에 대한 HTML 요소 생성 및 추가
-
         const movieElement = document.createElement("div");
         movieElement.innerHTML = `
                   <a href="/movie">
@@ -51,3 +49,15 @@ function fetchMoviesData() {
       console.error("Fetch error:", error);
     });
 }
+
+// "뒤로 가기" 이모티콘에 클릭 이벤트 리스너 추가
+document
+  .getElementById("back-icon")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // 기본 동작 방지
+    window.history.back(); // 브라우저 히스토리에서 뒤로 가기
+  });
+
+document.getElementById("refresh-icon").addEventListener("click", function () {
+  location.reload(); // 현재 페이지 새로고침
+});

@@ -1,6 +1,6 @@
 /* 푸터 스타일 설정 */
 footer {
-  background-color: #444; /* 푸터 배경색 */
+  background-color: #000; /* 푸터 배경색 */
   color: white; /* 푸터 내 텍스트 색상 */
   text-align: center; /* 텍스트 중앙 정렬 */
   padding: 0.5rem 1rem; /* 상하 패딩 0.5rem, 좌우 패딩 1rem 설정 */

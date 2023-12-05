@@ -8,21 +8,25 @@
   <body>
     <header>
       <a href="/" id="website-title">
-        <h1>영화 정보 사이트</h1>
+        <h1 id="web-title">영화 정보 사이트</h1>
       </a>
-      <nav>
+      <nav class="nav-icon">
         <ul>
-          <li><a href="/">홈</a></li>
-          <li><a href="/movies">영화 목록</a></li>
-          <li><a href="/about">회사 소개</a></li>
-          <li><a href="/contact">연락처</a></li>
+          <li>
+            <a href="/" id="home-icon"><i class="fa-solid fa-house"></i></a>
+          </li>
+          <li>
+            <p id="back-icon"><i class="fa-solid fa-arrow-left"></i></p>
+          </li>
+          <li>
+            <p id="refresh-icon"><i class="fa-solid fa-rotate-right"></i></p>
+          </li>
         </ul>
       </nav>
     </header>
     <div id="login-box">
       <form action="/login" method="post">
         <div class="form-group">
-          <label for="username">사용자 이름</label>
           <input
             type="text"
             id="username"
@@ -32,7 +36,6 @@
           />
         </div>
         <div class="form-group">
-          <label for="password">비밀번호</label>
           <input
             type="password"
             id="password"
@@ -54,5 +57,9 @@
       <p>&copy; 2023 영화 정보 사이트</p>
     </footer>
     <script src="/js/index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/45a3fcb962.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

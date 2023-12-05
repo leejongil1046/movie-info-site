@@ -1,6 +1,6 @@
 /* 회원가입 폼 스타일 */
 form[action="/register"] {
-  background-color: #f2f2f2; /* 폼의 배경색 설정 */
+  background-color: #222; /* 폼의 배경색 설정 */
   padding: 1rem; /* 폼 내부의 패딩 설정 */
   width: 400px; /* 폼의 너비 설정 */
   height: 500px; /* 폼의 높이 설정 */
@@ -43,7 +43,7 @@ form[action="/register"] button {
 }
 
 form[action="/register"] button:hover {
-  background-color: #222; /* 버튼 위에 마우스를 올렸을 때 배경색 변경 */
+  background-color: #555; /* 버튼 위에 마우스를 올렸을 때 배경색 변경 */
 }
 
 /* 드롭다운 선택 상자 스타일 */

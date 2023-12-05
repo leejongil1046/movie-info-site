@@ -3,6 +3,7 @@
 @import "./header.css"; /* 헤더 관련 스타일 */
 @import "./join.css"; /* 회원가입 관련 스타일 */
 @import "./login-box.css"; /* 로그인 박스 관련 스타일 */
+@import "./movie.css";
 @import "./movies-container.css"; /* 영화 컨테이너 관련 스타일 */
 
 /* 전체 페이지의 기본 스타일 설정 */
@@ -16,12 +17,15 @@ body {
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
   flex-grow: 1; /* 남은 공간을 채우도록 설정 */
+  background-color: #222; /* 배경색을 검은색으로 설정 */
+  color: #fff; /* 모든 텍스트 색상을 흰색으로 설정 */
+  overflow-y: scroll; /* 항상 세로 스크롤바 표시 */
 }
 
 /* 메인 콘텐츠 영역에 대한 스타일 */
 main {
   padding: 20px; /* 내부 여백 설정 */
-  margin-top: 70px; /* 헤더 아래 공간 확보를 위한 상단 마진 */
+  margin-top: 85px; /* 헤더 아래 공간 확보를 위한 상단 마진 */
   margin-left: 220px; /* 로그인 박스와 겹치지 않도록 왼쪽 여백 설정 */
 }
 
@@ -33,5 +37,7 @@ main {
 
 /* 로딩 메시지 스타일 */
 #loading-message {
+  position: fixed;
+  top: 40%;
   font-size: 25px; /* 폰트 크기 설정 */
 }

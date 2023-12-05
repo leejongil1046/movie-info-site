@@ -109,3 +109,15 @@ birthDayEl.addEventListener("focus", function () {
     }
   }
 });
+
+// "뒤로 가기" 이모티콘에 클릭 이벤트 리스너 추가
+document
+  .getElementById("back-icon")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // 기본 동작 방지
+    window.history.back(); // 브라우저 히스토리에서 뒤로 가기
+  });
+
+document.getElementById("refresh-icon").addEventListener("click", function () {
+  location.reload(); // 현재 페이지 새로고침
+});

@@ -6,7 +6,6 @@
 
 /* Movie image */
 #movie-image {
-  display: none;
   max-width: 40%; /* 이미지의 최대 너비 설정 */
   border-radius: 10px; /* 둥근 모서리 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
@@ -46,10 +45,9 @@
 
 /* Movie story section */
 .movie-story {
-  display: none;
   max-width: 60%; /* 가로 크기를 main의 60%로 설정 */
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 20px; /* 패딩 추가 */
   background-color: #333; /* 배경색 설정 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
@@ -63,6 +61,60 @@
   font-size: 1rem;
 }
 
-#description-label {
+/* 댓글 섹션 스타일 */
+.movie-comments {
+  max-width: 60%;
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+#comment-form {
+  margin-bottom: 20px;
+}
+
+#comment-form textarea {
+  width: 500px;
+  height: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+#comment-form button {
+  width: 120px;
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#comment-form button:hover {
+  background-color: #555;
+}
+
+#comments-list {
+  margin-top: 20px;
+}
+
+#comment-star {
+  color: yellow;
   font-size: 20px;
+}
+
+#comment-from select,
+textarea {
+  display: block;
+}
+
+#star-rating {
+  width: 40px;
+  height: 30px;
 }

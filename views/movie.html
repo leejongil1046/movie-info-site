@@ -65,6 +65,35 @@
           <p id="movie-description"></p>
         </div>
       </div>
+      <div class="movie-comments">
+        <h2>Comments</h2>
+        <form id="comment-form">
+          <span id="comment-star">
+            <i class="fa-solid fa-star"></i>
+          </span>
+          <select name="star-rating" id="star-rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <textarea
+            id="comment-text"
+            placeholder="댓글을 입력하세요"
+            required
+          ></textarea>
+          <button type="submit">댓글 추가</button>
+        </form>
+        <div id="comments-list">
+          <!-- 댓글들이 여기에 추가됩니다 -->
+        </div>
+      </div>
     </main>
     <footer>
       <p>&copy; 2023 영화 정보 사이트</p>

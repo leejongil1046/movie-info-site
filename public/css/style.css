@@ -1,7 +1,7 @@
 /* 외부 CSS 파일 불러오기 */
 @import "./footer.css"; /* 푸터 관련 스타일 */
 @import "./header.css"; /* 헤더 관련 스타일 */
-@import "./join.css"; /* 회원가입 관련 스타일 */
+@import "./signup.css"; /* 회원가입 관련 스타일 */
 @import "./login-box.css"; /* 로그인 박스 관련 스타일 */
 @import "./movie.css";
 @import "./movies-container.css"; /* 영화 컨테이너 관련 스타일 */

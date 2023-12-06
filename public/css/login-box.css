@@ -56,7 +56,7 @@
 }
 
 /* 회원가입 링크 스타일 */
-#login-box #join-string {
+#login-box #signup-string {
   text-align: center; /* 텍스트 중앙 정렬 */
   display: inline-block; /* 인라인 블록 요소로 설정 */
   padding-left: 65px; /* 왼쪽 패딩 추가 */

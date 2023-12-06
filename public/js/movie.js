@@ -5,7 +5,7 @@ document.querySelector(".movie-reviews").style.display = "none";
 
 // 로딩 메시지 추가
 const loadingMessage = document.createElement("p");
-loadingMessage.textContent = "Loading...";
+loadingMessage.textContent = "Loading";
 loadingMessage.id = "loading-message";
 document.body.appendChild(loadingMessage);
 

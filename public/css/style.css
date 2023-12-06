@@ -39,5 +39,30 @@ main {
 #loading-message {
   position: fixed;
   top: 40%;
-  font-size: 30px; /* 폰트 크기 설정 */
+  font-size: 35px; /* 폰트 크기 설정 */
+  content: "Loading";
+}
+
+#loading-message::after {
+  display: inline-block;
+  width: 60px; /* 충분한 공간 확보 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  content: "";
+  animation: loadingAnimation 1s infinite;
+}
+
+@keyframes loadingAnimation {
+  0%,
+  100% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
 }

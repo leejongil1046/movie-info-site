@@ -11,7 +11,7 @@ form[action="/register"] {
 }
 
 /* 라벨 스타일 */
-
+  
 /* 입력 필드 스타일 */
 form[action="/register"] input[type="email"],
 form[action="/register"] input[type="text"],

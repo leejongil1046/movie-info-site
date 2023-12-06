@@ -1,7 +1,7 @@
 /* 헤더 스타일 설정 */
 header {
   background-color: #000; /* 헤더 배경색 */
-  color: white; /* 헤더 내 텍스트 색상 */
+  color: ddd; /* 헤더 내 텍스트 색상 */
   padding: 0.5rem 1rem; /* 상하 패딩 0.5rem, 좌우 패딩 1rem 설정 */
   display: flex; /* Flexbox 레이아웃 적용 */
   justify-content: space-between; /* 내부 요소들을 양 끝에 배치 */
@@ -25,12 +25,13 @@ nav ul {
 /* 네비게이션 바 내 각 항목에 대한 스타일 */
 nav ul li {
   margin-right: 20px; /* 오른쪽 여백 설정 */
+  margin-bottom: 8px;
 }
 
 /* 네비게이션 링크 스타일 */
 #website-title,
 nav ul li a {
-  color: white; /* 링크 텍스트 색상 */
+  color: #eee; /* 링크 텍스트 색상 */
   text-decoration: none; /* 밑줄 제거 */
 }
 
@@ -45,7 +46,7 @@ nav ul li a {
 }
 
 #web-title {
-  margin-top: 40px;
+  margin-top: 32px;
   margin-left: 10px;
   color: red;
   font-family: "Bebas Neue", sans-serif;

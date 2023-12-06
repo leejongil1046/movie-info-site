@@ -24,14 +24,10 @@ function fetchMovieDetails(movieId) {
         document.body.removeChild(loadingMessage);
       }
       if (data.status === "ok") {
-        const backgroundLogin = document.querySelector(".login-box-movie");
-        if (backgroundLogin) {
-          backgroundLogin.style.backgroundColor = "rgba(255, 255, 255, 0)";
-        }
         // API 응답에서 이미지 URL 추출
         const imageUrl = data.data.movie.background_image;
         // body 태그의 배경 이미지로 설정
-        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${imageUrl}')`;
+        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url('${imageUrl}')`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundPosition = "center center";
@@ -46,7 +42,7 @@ function fetchMovieDetails(movieId) {
         document.querySelector("#movie-genres").innerHTML =
           data.data.movie.genres.join(" / ");
         document.querySelector("#movie-runtime").innerHTML =
-          '<span id="runtime-label"><i class="fa-regular fa-clock"></i></span> &nbsp;' +
+          '<span id="runtime-label"><i class="fa-regular fa-clock"></i></span> &nbsp;&nbsp;' +
           data.data.movie.runtime +
           " min";
         let language;
@@ -55,11 +51,11 @@ function fetchMovieDetails(movieId) {
           '<span id="language-label"><i class="fa-solid fa-volume-high"></i></span> &nbsp;' +
           language;
         document.querySelector("#movie-rating").innerHTML =
-          '<span id="rating-label"><i class="fa-solid fa-star"></i></span> &nbsp;' +
+          '<span id="rating-label"><i class="fa-solid fa-star"></i></span> &nbsp;&nbsp;' +
           data.data.movie.rating +
           "/10";
         document.querySelector("#movie-like").innerHTML =
-          '<span id="like-label"><i class="fa-solid fa-heart"></i></span> &nbsp;' +
+          '<span id="like-label"><i class="fa-solid fa-heart"></i></span> &nbsp;&nbsp;' +
           data.data.movie.like_count;
         const descriptionFull = data.data.movie.description_full;
         let descriptionText;

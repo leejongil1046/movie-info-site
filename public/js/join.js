@@ -11,14 +11,14 @@ pwInputEl.addEventListener("change", () => {
   if (pwRegExp.test(pwVal)) {
     // 정규식 조건 만족 O
     isPwValid = true;
-    pwErrorMsgEl.style.color = "green";
-    pwErrorMsgEl.textContent = "사용가능한 비밀번호입니다.";
+    pwErrorMsgEl.style.color = "limegreen";
+    pwErrorMsgEl.textContent = "Your password is valid.";
   } else {
     // 정규식 조건 만족 X
     isPwValid = false;
     pwErrorMsgEl.style.color = "red";
     pwErrorMsgEl.textContent =
-      "8~20자의 영문, 숫자, 특수문자를 모두 포함한 비밀번호를 입력해주세요.";
+      "Enter a password with 8-20 characters, including letters, numbers, and symbols.";
   }
   checkPwValid();
   console.log(pwVal, pwReVal, isPwValid, account);
@@ -44,12 +44,12 @@ function checkPwValid() {
     // 비밀번호 재입력 일치
     //if (isPwValid)
     //account.pw = pwVal;
-    pwReErrorMsgEl.style.color = "green";
-    pwReErrorMsgEl.textContent = "비밀번호가 일치합니다.";
+    pwReErrorMsgEl.style.color = "limegreen";
+    pwReErrorMsgEl.textContent = "The passwords match.";
   } else {
     // 비밀번호 재입력 불일치
     pwReErrorMsgEl.style.color = "red";
-    pwReErrorMsgEl.textContent = "비밀번호가 일치하지 않습니다.";
+    pwReErrorMsgEl.textContent = "The passwords do not match";
   }
 }
 

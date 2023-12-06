@@ -1,6 +1,6 @@
 /* 로그인 박스 스타일 */
 #login-box {
-  background-color: #000; /* 배경색 설정 */
+  background-color: rgba(0, 0, 0, 0); /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
   width: 180px; /* 로그인 박스의 너비 설정 */
@@ -26,8 +26,14 @@
 #login-box input[type="password"] {
   width: 90%; /* 너비 설정 */
   padding: 8px; /* 내부 여백 설정 */
-  border: 1px solid #ddd; /* 테두리 스타일 설정 */
+  color: #eee;
+  border: 1px solid #eee; /* 테두리 스타일 설정 */
   border-radius: 5px; /* 테두리 둥글게 설정 */
+}
+
+#login-box input[type="text"]::placeholder,
+#login-box input[type="password"]::placeholder {
+  color: #777;
 }
 
 /* 로그인 버튼 스타일 */
@@ -36,7 +42,7 @@
   width: 100%; /* 너비를 부모 요소에 맞춤 */
   padding: 10px; /* 내부 여백 설정 */
   background-color: red; /* 배경색 설정 */
-  color: white; /* 글자색 설정 */
+  color: #fff; /* 글자색 설정 */
   border: none; /* 테두리 제거 */
   border-radius: 5px; /* 테두리 둥글게 설정 */
   cursor: pointer; /* 마우스 커서를 포인터로 설정 */
@@ -53,9 +59,9 @@
 #login-box #join-string {
   text-align: center; /* 텍스트 중앙 정렬 */
   display: inline-block; /* 인라인 블록 요소로 설정 */
-  padding-left: 59px; /* 왼쪽 패딩 추가 */
+  padding-left: 65px; /* 왼쪽 패딩 추가 */
   margin: 10px 0; /* 상하 마진 추가 */
-  color: #fff; /* 글자 색상 설정 */
+  color: #eee; /* 글자 색상 설정 */
   text-decoration: none; /* 밑줄 제거 */
   cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
   font-size: 14px;

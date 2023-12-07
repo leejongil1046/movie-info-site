@@ -22,10 +22,7 @@ function checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl) {
   let pwVal = pwInputEl.value;
   let pwReVal = pwReInputEl.value;
 
-  if (pwReVal === "") {
-    pwReErrorMsgEl.textContent = "";
-    isPwReValid = false;
-  } else if (pwVal === pwReVal) {
+  if (pwVal === pwReVal) {
     pwReErrorMsgEl.style.color = "limegreen";
     pwReErrorMsgEl.textContent = "The passwords match.";
     isPwReValid = true;
@@ -42,12 +39,12 @@ function checkPasswordValidation() {
   const pwReInputEl = document.querySelector("#info__pwRe");
   const pwReErrorMsgEl = document.querySelector("#pwRe-error-msg");
 
-  pwInputEl.addEventListener("change", () => {
+  pwInputEl.addEventListener("blur", () => {
     validatePassword(pwInputEl, pwErrorMsgEl);
   });
 
-  pwReInputEl.addEventListener("change", () => {
-    checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl);
+  pwReInputEl.addEventListener("blur", () => {
+    if (isPwValid) checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl);
   });
 
   return { isPwValid, isPwReValid };

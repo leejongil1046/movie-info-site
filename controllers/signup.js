@@ -1,16 +1,16 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const db = require("../models/database.js"); // Assuming you have a dbConfig.js file as explained earlier
-const router = express.Router();
 
 exports.checkUsername = async (req, res) => {
-  console.log(req);
   const username = req.body.username;
   try {
-    const query = "SELECT COUNT(*) FROM users WHERE username = ?";
-    const result = await db.query(query, [username]);
+    const [rows] = await db.execute(
+      "SELECT COUNT(*) as count FROM users WHERE username = ?",
+      [username]
+    );
 
-    const isTaken = result[0]["COUNT(*)"] > 0;
+    const isTaken = rows[0].count > 0;
     res.json({ isTaken });
   } catch (error) {
     console.error("Database error:", error);
@@ -21,10 +21,12 @@ exports.checkUsername = async (req, res) => {
 exports.checkEmail = async (req, res) => {
   const email = req.body.email;
   try {
-    const query = "SELECT COUNT(*) FROM users WHERE email = ?";
-    const result = await db.query(query, [email]);
+    const [rows] = await db.execute(
+      "SELECT COUNT(*) as count FROM users WHERE email = ?",
+      [email]
+    );
 
-    const isTaken = result[0]["COUNT(*)"] > 0;
+    const isTaken = rows[0].count > 0;
     res.json({ isTaken });
   } catch (error) {
     console.error("Database error:", error);

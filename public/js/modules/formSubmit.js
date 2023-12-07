@@ -18,26 +18,40 @@ function formSubmit(isSubmitValidFunc) {
         day: document.querySelector("#birth-day").value,
       };
 
-      // 서버로 데이터 전송
-      fetch("/signup/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.text();
-          }
-          throw new Error("Network response was not ok.");
+      // formData 객체의 값을 검증
+      const hasEmptyValue = Object.values(formData).some(
+        (value) => value === ""
+      );
+
+      if (hasEmptyValue) {
+        // 빈 값이 하나라도 있으면 오류 처리
+        alert("Please ensure all fields are valid before submitting."); // 또는 원하는 오류 처리 방법을 선택하세요.
+      } else if (formData.password !== formData.confirmPassword) {
+        alert("The passwords do not match.");
+      } else {
+        // 모든 필드가 채워져 있을 때 다음 동작 수행
+        // 여기에 원하는 로직을 추가하세요.
+        // 서버로 데이터 전송
+        fetch("/signup/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         })
-        .then(() => {
-          window.location.href = "/success"; // 성공 페이지 또는 메인 페이지로 리다이렉트
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            }
+            throw new Error("Network response was not ok.");
+          })
+          .then(() => {
+            window.location.href = "/success"; // 성공 페이지 또는 메인 페이지로 리다이렉트
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
     } else {
       alert("Please ensure all fields are valid before submitting.");
     }

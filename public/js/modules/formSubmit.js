@@ -26,8 +26,6 @@ function formSubmit(isSubmitValidFunc) {
       if (hasEmptyValue) {
         // 빈 값이 하나라도 있으면 오류 처리
         alert("Please ensure all fields are valid before submitting."); // 또는 원하는 오류 처리 방법을 선택하세요.
-      } else if (formData.password !== formData.confirmPassword) {
-        alert("The passwords do not match.");
       } else {
         // 모든 필드가 채워져 있을 때 다음 동작 수행
         // 여기에 원하는 로직을 추가하세요.

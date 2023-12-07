@@ -1,8 +1,14 @@
 let isPwValid = false;
 let isPwReValid = false;
 
-function validatePassword(pwInputEl, pwErrorMsgEl) {
+function validatePassword(
+  pwInputEl,
+  pwErrorMsgEl,
+  pwReInputEl,
+  pwReErrorMsgEl
+) {
   let pwVal = pwInputEl.value;
+  let pwReVal = pwReInputEl.value;
   const pwRegExp =
     /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
 
@@ -16,19 +22,19 @@ function validatePassword(pwInputEl, pwErrorMsgEl) {
       "Please enter a password with 8-20 characters, including letters, numbers, and symbols.";
     isPwValid = false;
   }
-}
 
-function checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl) {
-  let pwVal = pwInputEl.value;
-  let pwReVal = pwReInputEl.value;
-
-  if (pwVal === pwReVal) {
-    pwReErrorMsgEl.style.color = "limegreen";
-    pwReErrorMsgEl.textContent = "The passwords match.";
-    isPwReValid = true;
+  if (isPwValid) {
+    if (pwVal === pwReVal) {
+      pwReErrorMsgEl.style.color = "limegreen";
+      pwReErrorMsgEl.textContent = "The passwords match.";
+      isPwReValid = true;
+    } else {
+      pwReErrorMsgEl.style.color = "red";
+      pwReErrorMsgEl.textContent = "The passwords do not match.";
+      isPwReValid = false;
+    }
   } else {
-    pwReErrorMsgEl.style.color = "red";
-    pwReErrorMsgEl.textContent = "The passwords do not match.";
+    pwReErrorMsgEl.textContent = "";
     isPwReValid = false;
   }
 }
@@ -39,12 +45,12 @@ function checkPasswordValidation() {
   const pwReInputEl = document.querySelector("#info__pwRe");
   const pwReErrorMsgEl = document.querySelector("#pwRe-error-msg");
 
-  pwInputEl.addEventListener("blur", () => {
-    validatePassword(pwInputEl, pwErrorMsgEl);
+  pwInputEl.addEventListener("input", () => {
+    validatePassword(pwInputEl, pwErrorMsgEl, pwReInputEl, pwReErrorMsgEl);
   });
 
-  pwReInputEl.addEventListener("blur", () => {
-    if (isPwValid) checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl);
+  pwReInputEl.addEventListener("input", () => {
+    validatePassword(pwInputEl, pwErrorMsgEl, pwReInputEl, pwReErrorMsgEl);
   });
 
   return { isPwValid, isPwReValid };

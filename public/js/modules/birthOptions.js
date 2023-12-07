@@ -43,4 +43,14 @@ function generateDayOptions(birthDayEl) {
   });
 }
 
-export { generateYearOptions, generateMonthOptions, generateDayOptions };
+function generateBirthOptions() {
+  const birthYearEl = document.querySelector("#birth-year");
+  const birthMonthEl = document.querySelector("#birth-month");
+  const birthDayEl = document.querySelector("#birth-day");
+
+  generateYearOptions(birthYearEl, 1940, 2022);
+  generateMonthOptions(birthMonthEl);
+  generateDayOptions(birthDayEl);
+}
+
+export { generateBirthOptions };

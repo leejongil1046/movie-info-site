@@ -81,18 +81,25 @@ select.box {
 }
 
 /* 비밀번호 메시지 스타일 */
-#pw-msg {
+#pw-error-msg {
   position: absolute; /* 절대 위치 설정 */
   font-size: 12px; /* 폰트 크기 설정 */
   padding-left: 5px; /* 왼쪽 패딩 설정 */
-  top: 278px; /* 상단으로부터의 위치 설정 */
+  top: 280px; /* 상단으로부터의 위치 설정 */
   white-space: nowrap;
 }
 
 /* 비밀번호 확인 메시지 스타일 */
-#pwRe-msg {
+#pwRe-error-msg {
   position: absolute; /* 절대 위치 설정 */
   font-size: 12px; /* 폰트 크기 설정 */
   padding-left: 5px; /* 왼쪽 패딩 설정 */
-  top: 346px; /* 상단으로부터의 위치 설정 */
+  top: 348px; /* 상단으로부터의 위치 설정 */
+}
+
+#birth-error-msg {
+  position: absolute; /* 절대 위치 설정 */
+  font-size: 12px; /* 폰트 크기 설정 */
+  padding-left: 5px; /* 왼쪽 패딩 설정 */
+  top: 415px; /* 상단으로부터의 위치 설정 */
 }

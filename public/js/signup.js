@@ -1,123 +1,158 @@
-// pwVal: 패스워드, pwReVal: 패스워드 재입력, isPwValid: 패스워드 유효 여부
-let pwVal = "",
-  pwReVal = "",
-  isPwValid = false;
-const pwInputEl = document.querySelector("#info__pw");
-const pwErrorMsgEl = document.querySelector("#pw-msg");
-pwInputEl.addEventListener("change", () => {
-  const pwRegExp =
-    /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-  pwVal = pwInputEl.value;
-  if (pwRegExp.test(pwVal)) {
-    // 정규식 조건 만족 O
-    isPwValid = true;
-    pwErrorMsgEl.style.color = "limegreen";
-    pwErrorMsgEl.textContent = "Your password is valid.";
-  } else {
-    // 정규식 조건 만족 X
-    isPwValid = false;
-    pwErrorMsgEl.style.color = "red";
-    pwErrorMsgEl.textContent =
-      "Enter a password with 8-20 characters, including letters, numbers, and symbols.";
-  }
-  checkPwValid();
-  console.log(pwVal, pwReVal, isPwValid, account);
+import {
+  generateYearOptions,
+  generateMonthOptions,
+  generateDayOptions,
+} from "/js/modules/birthOptions.js";
+
+import {
+  validatePassword,
+  checkPasswordMatch,
+} from "/js/modules/passwordValidation.js";
+
+import {
+  setupBackButton,
+  setupRefreshButton,
+} from "/js/modules/navigationControl.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+  generateBirthOptions();
+
+  let isPwValid = false;
+  checkPasswordValidation(isPwValid);
+
+  setupBackButton("back-icon");
+  setupRefreshButton("refresh-icon");
 });
 
-/*** SECTION - PASSWORD RECHECK ***/
-const pwReInputEl = document.querySelector("#info__pwRe");
-const pwReErrorMsgEl = document.querySelector("#pwRe-msg");
-pwReInputEl.addEventListener("change", () => {
-  pwReVal = pwReInputEl.value;
-  if (isPwValid) checkPwValid();
-  // console.log(pwVal, pwReVal, isPwValid, account);
-  console.log(pwVal, pwReVal, isPwValid);
-});
+function generateBirthOptions() {
+  const birthYearEl = document.querySelector("#birth-year");
+  const birthMonthEl = document.querySelector("#birth-month");
+  const birthDayEl = document.querySelector("#birth-day");
 
-// 비밀번호와 재입력 값 일치 여부
-function checkPwValid() {
-  //account.pw = null; // default null 처리
-  if (pwReVal === "") {
-    // 미입력
-    pwReErrorMsgEl.textContent = "";
-  } else if (pwVal === pwReVal) {
-    // 비밀번호 재입력 일치
-    //if (isPwValid)
-    //account.pw = pwVal;
-    pwReErrorMsgEl.style.color = "limegreen";
-    pwReErrorMsgEl.textContent = "The passwords match.";
-  } else {
-    // 비밀번호 재입력 불일치
-    pwReErrorMsgEl.style.color = "red";
-    pwReErrorMsgEl.textContent = "The passwords do not match";
-  }
+  generateYearOptions(birthYearEl, 1940, 2022);
+  generateMonthOptions(birthMonthEl);
+  generateDayOptions(birthDayEl);
 }
 
-// '출생 연도' 셀렉트 박스 option 목록 동적 생성
-const birthYearEl = document.querySelector("#birth-year");
-// option 목록 생성 여부 확인
-isYearOptionExisted = false;
-birthYearEl.addEventListener("focus", function () {
-  // year 목록 생성되지 않았을 때 (최초 클릭 시)
-  if (!isYearOptionExisted) {
-    isYearOptionExisted = true;
-    for (var i = 1940; i <= 2022; i++) {
-      // option element 생성
-      const YearOption = document.createElement("option");
-      YearOption.setAttribute("value", i);
-      YearOption.innerText = i;
-      // birthYearEl의 자식 요소로 추가
-      this.appendChild(YearOption);
-    }
-  }
-});
+function checkPasswordValidation(isPwValid) {
+  const pwInputEl = document.querySelector("#info__pw");
+  const pwErrorMsgEl = document.querySelector("#pw-msg");
+  const pwReInputEl = document.querySelector("#info__pwRe");
+  const pwReErrorMsgEl = document.querySelector("#pwRe-msg");
 
-// '출생 연도' 셀렉트 박스 option 목록 동적 생성
-const birthMonthEl = document.querySelector("#birth-month");
-// option 목록 생성 여부 확인
-isMonthOptionExisted = false;
-birthMonthEl.addEventListener("focus", function () {
-  // year 목록 생성되지 않았을 때 (최초 클릭 시)
-  if (!isMonthOptionExisted) {
-    isMonthOptionExisted = true;
-    for (var i = 1; i <= 12; i++) {
-      // option element 생성
-      const MonthOption = document.createElement("option");
-      MonthOption.setAttribute("value", i);
-      MonthOption.innerText = i;
-      // birthMonthEl의 자식 요소로 추가
-      this.appendChild(MonthOption);
-    }
-  }
-});
-
-// '출생 연도' 셀렉트 박스 option 목록 동적 생성
-const birthDayEl = document.querySelector("#birth-day");
-// option 목록 생성 여부 확인
-isDayOptionExisted = false;
-birthDayEl.addEventListener("focus", function () {
-  // day 목록 생성되지 않았을 때 (최초 클릭 시)
-  if (!isDayOptionExisted) {
-    isDayOptionExisted = true;
-    for (var i = 1; i <= 31; i++) {
-      // option element 생성
-      const DayOption = document.createElement("option");
-      DayOption.setAttribute("value", i);
-      DayOption.innerText = i;
-      // birthDayEl의 자식 요소로 추가
-      this.appendChild(DayOption);
-    }
-  }
-});
-
-// "뒤로 가기" 이모티콘에 클릭 이벤트 리스너 추가
-document
-  .getElementById("back-icon")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // 기본 동작 방지
-    window.history.back(); // 브라우저 히스토리에서 뒤로 가기
+  pwInputEl.addEventListener("change", () => {
+    isPwValid = validatePassword(pwInputEl, pwErrorMsgEl); // 비밀번호 유효성 검사 결과 업데이트
+    if (isPwValid) checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl); // 비밀번호 일치 여부 검사
   });
 
-document.getElementById("refresh-icon").addEventListener("click", function () {
-  location.reload(); // 현재 페이지 새로고침
-});
+  pwReInputEl.addEventListener("change", () => {
+    if (isPwValid) checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl); // 비밀번호 일치 여부 검사
+  });
+}
+
+// // pwVal: 패스워드, pwReVal: 패스워드 재입력, isPwValid: 패스워드 유효 여부
+// let isUsernameValid = false;
+// let isEmailValid = false;
+// let isBirthdateFilled = false;
+
+// // 사용자 이름 중복 검사
+// const usernameInput = document.getElementById("username");
+// usernameInput.addEventListener("blur", function () {
+//   fetch("/check-username", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ username: this.value }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       isUsernameValid = !data.isTaken;
+//       updateSubmitButtonState();
+//     });
+// });
+
+// // 이메일 중복 검사
+// const emailInput = document.getElementById("email");
+// emailInput.addEventListener("blur", function () {
+//   fetch("/check-email", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ email: this.value }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       isEmailValid = !data.isTaken;
+//       updateSubmitButtonState();
+//     });
+// });
+
+// // 제출 버튼 상태 업데이트
+// const submitButton = document.getElementById("submit");
+// function updateSubmitButtonState() {
+//   submitButton.disabled = !(
+//     isUsernameValid &&
+//     isEmailValid &&
+//     isPwValid &&
+//     isBirthdateFilled
+//   );
+// }
+
+// // 생년월일 입력 여부 검사
+// const yearInput = document.getElementById("birth-year");
+// const monthInput = document.getElementById("birth-month");
+// const dayInput = document.getElementById("birth-day");
+// [yearInput, monthInput, dayInput].forEach((input) =>
+//   input.addEventListener("input", () => {
+//     isBirthdateFilled = yearInput.value && monthInput.value && dayInput.value;
+//     updateSubmitButtonState();
+//   })
+// );
+
+// // 폼 제출 처리
+// const form = document.getElementById("signup-form");
+// form.addEventListener("submit", async function (event) {
+//   event.preventDefault();
+
+//   // 폼 데이터를 가져와서 서버에 전송할 데이터를 만듭니다.
+//   const username = document.getElementById("username").value;
+//   const email = document.getElementById("email").value;
+//   const password = pwVal; // 앞서 검증한 패스워드 값을 사용합니다.
+//   const confirmPassword = pwReVal;
+//   const year = document.getElementById("birth-year").value;
+//   const month = document.getElementById("birth-month").value;
+//   const day = document.getElementById("birth-day").value;
+
+//   const formData = {
+//     username,
+//     email,
+//     password,
+//     confirmPassword,
+//     year,
+//     month,
+//     day,
+//   };
+
+//   try {
+//     // 서버에 POST 요청을 보냅니다.
+//     const response = await fetch("/register", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     });
+
+//     if (response.status === 200) {
+//       // 회원가입이 성공한 경우
+//       alert("회원가입이 성공적으로 완료되었습니다.");
+//       // 원하는 페이지로 리다이렉트하거나 다른 작업을 수행하세요.
+//     } else {
+//       // 서버에서 오류 응답을 받은 경우
+//       alert("회원가입 중 오류가 발생했습니다.");
+//       // 오류 메시지를 처리하거나 사용자에게 알림을 표시하세요.
+//     }
+//   } catch (error) {
+//     // 네트워크 오류 등 예외 상황을 처리합니다.
+//     console.error("회원가입 중 오류 발생:", error);
+//     alert("회원가입 중 오류가 발생했습니다.");
+//   }
+// });

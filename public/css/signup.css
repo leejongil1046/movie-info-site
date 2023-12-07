@@ -10,8 +10,6 @@ form[action="/register"] {
   margin-top: 100px; /* 폼의 상단 외부 여백 설정 */
 }
 
-/* 라벨 스타일 */
-  
 /* 입력 필드 스타일 */
 form[action="/register"] input[type="email"],
 form[action="/register"] input[type="text"],

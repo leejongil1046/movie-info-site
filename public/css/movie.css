@@ -6,6 +6,7 @@
 
 /* Movie image */
 #movie-image {
+  display: none;
   max-width: 40%; /* 이미지의 최대 너비 설정 */
   border-radius: 10px; /* 둥근 모서리 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
@@ -51,6 +52,7 @@
 
 /* Movie story section */
 .movie-story {
+  display: none;
   max-width: 60%; /* 가로 크기를 main의 60%로 설정 */
   margin-top: 20px;
   margin-bottom: 20px;
@@ -62,6 +64,7 @@
 
 /* 댓글 섹션 스타일 */
 .movie-reviews {
+  display: none;
   max-width: 60%;
   padding: 20px 30px;
   background-color: rgba(0, 0, 0, 0.4);

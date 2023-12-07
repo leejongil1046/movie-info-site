@@ -5,6 +5,7 @@ const app = express();
 const indexRouter = require("./routes/index");
 const signupRouter = require("./routes/signup");
 const movieRouter = require("./routes/movie");
+const successRouter = require("./routes/success");
 
 // static 파일 제공 미들웨어
 app.use(express.static("public"));
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/movie", movieRouter);
+app.use("/success", successRouter);
 
 const PORT = 3000;
 app.listen(PORT, () =>

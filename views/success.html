@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FAKEFLIX</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/" id="website-title">
+        <h1 id="web-title">FAKEFLIX</h1>
+      </a>
+      <nav class="nav-icon">
+        <ul>
+          <li>
+            <a href="/" id="home-icon"><i class="fa-solid fa-house"></i></a>
+          </li>
+          <li>
+            <p id="back-icon"><i class="fa-solid fa-arrow-left"></i></p>
+          </li>
+          <li>
+            <p id="refresh-icon"><i class="fa-solid fa-rotate-right"></i></p>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="login-box">
+      <form action="/login" method="post">
+        <div class="form-group">
+          <input
+            type="text"
+            id="email"
+            name="eamil"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit">Log in</button>
+        <a href="/signup" id="signup-string">Sign up</a>
+      </form>
+    </div>
+    <h1 id="success-msg">Congratulations on your registration!</h1>
+    <footer>
+      <p>&copy; 2023 &nbsp;<p id="footer-text">FAKEFLIX</p></p>
+    </footer>
+    <script type="module" src="/js/success.js"></script>
+    <script
+      src="https://kit.fontawesome.com/45a3fcb962.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

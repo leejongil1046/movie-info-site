@@ -1,3 +1,6 @@
+let isPwValid = false;
+let isPwReValid = false;
+
 function validatePassword(pwInputEl, pwErrorMsgEl) {
   let pwVal = pwInputEl.value;
   const pwRegExp =
@@ -6,12 +9,12 @@ function validatePassword(pwInputEl, pwErrorMsgEl) {
   if (pwRegExp.test(pwVal)) {
     pwErrorMsgEl.style.color = "limegreen";
     pwErrorMsgEl.textContent = "The password is valid.";
-    return true;
+    isPwValid = true;
   } else {
     pwErrorMsgEl.style.color = "red";
     pwErrorMsgEl.textContent =
       "Please enter a password with 8-20 characters, including letters, numbers, and symbols.";
-    return false;
+    isPwValid = false;
   }
 }
 
@@ -21,41 +24,33 @@ function checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl) {
 
   if (pwReVal === "") {
     pwReErrorMsgEl.textContent = "";
-    return false;
+    isPwReValid = false;
   } else if (pwVal === pwReVal) {
     pwReErrorMsgEl.style.color = "limegreen";
     pwReErrorMsgEl.textContent = "The passwords match.";
-    return true;
+    isPwReValid = true;
   } else {
     pwReErrorMsgEl.style.color = "red";
     pwReErrorMsgEl.textContent = "The passwords do not match.";
-    return false;
+    isPwReValid = false;
   }
 }
 
-function checkPasswordValidation(isPwValid, isPwReValid) {
+function checkPasswordValidation() {
   const pwInputEl = document.querySelector("#info__pw");
   const pwErrorMsgEl = document.querySelector("#pw-error-msg");
   const pwReInputEl = document.querySelector("#info__pwRe");
   const pwReErrorMsgEl = document.querySelector("#pwRe-error-msg");
 
-  pwInputEl.addEventListener("blur", () => {
-    if (pwInputEl.value === "") {
-      pwErrorMsgEl.style.color = "red";
-      pwErrorMsgEl.textContent = "Please enter a password.";
-    }
-  });
-
   pwInputEl.addEventListener("change", () => {
-    isPwValid = validatePassword(pwInputEl, pwErrorMsgEl); // 비밀번호 유효성 검사 결과 업데이트
-    console.log("isPwValid = ", isPwValid);
+    validatePassword(pwInputEl, pwErrorMsgEl);
   });
 
   pwReInputEl.addEventListener("change", () => {
-    if (isPwValid)
-      isPwReValid = checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl); // 비밀번호 일치 여부 검사
-    console.log("isPwReValid = ", isPwReValid);
+    checkPasswordMatch(pwInputEl, pwReInputEl, pwReErrorMsgEl);
   });
+
+  return { isPwValid, isPwReValid };
 }
 
-export { checkPasswordValidation };
+export { checkPasswordValidation, isPwValid, isPwReValid };

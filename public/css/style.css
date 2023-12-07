@@ -66,3 +66,14 @@ main {
     content: "...";
   }
 }
+
+/* 로딩 메시지 스타일 */
+#success-msg {
+  position: fixed;
+  top: 40%;
+  font-size: 35px; /* 폰트 크기 설정 */
+}
+
+#success-main a {
+  text-decoration: none;
+}

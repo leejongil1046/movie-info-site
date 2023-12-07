@@ -5,12 +5,12 @@ function validatePassword(pwInputEl, pwErrorMsgEl) {
 
   if (pwRegExp.test(pwVal)) {
     pwErrorMsgEl.style.color = "limegreen";
-    pwErrorMsgEl.textContent = "Your password is valid.";
+    pwErrorMsgEl.textContent = "The password is valid.";
     return true;
   } else {
     pwErrorMsgEl.style.color = "red";
     pwErrorMsgEl.textContent =
-      "Enter a password with 8-20 characters, including letters, numbers, and symbols.";
+      "Please enter a password with 8-20 characters, including letters, numbers, and symbols.";
     return false;
   }
 }
@@ -38,6 +38,13 @@ function checkPasswordValidation(isPwValid, isPwReValid) {
   const pwErrorMsgEl = document.querySelector("#pw-error-msg");
   const pwReInputEl = document.querySelector("#info__pwRe");
   const pwReErrorMsgEl = document.querySelector("#pwRe-error-msg");
+
+  pwInputEl.addEventListener("blur", () => {
+    if (pwInputEl.value === "") {
+      pwErrorMsgEl.style.color = "red";
+      pwErrorMsgEl.textContent = "Please enter a password.";
+    }
+  });
 
   pwInputEl.addEventListener("change", () => {
     isPwValid = validatePassword(pwInputEl, pwErrorMsgEl); // 비밀번호 유효성 검사 결과 업데이트

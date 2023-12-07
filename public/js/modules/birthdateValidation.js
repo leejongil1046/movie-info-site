@@ -30,10 +30,10 @@ function validateBirthdate(yearInput, monthInput, dayInput, birthErrorMsgEl) {
 
     if (isBirthdateValid) {
       birthErrorMsgEl.style.color = "limegreen";
-      birthErrorMsgEl.textContent = "It is a valid date.";
+      birthErrorMsgEl.textContent = "The date is valid.";
     } else {
       birthErrorMsgEl.style.color = "red";
-      birthErrorMsgEl.textContent = "It is an invalid date.";
+      birthErrorMsgEl.textContent = "The date is invalid";
     }
   }
 

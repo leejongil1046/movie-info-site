@@ -5,14 +5,18 @@ import {
 
 import { generateBirthOptions } from "/js/modules/birthOptions.js";
 
+import { usernameDuplicationCheck } from "/js/modules/usernameDuplicationCheck.js";
+
+import { emailDuplicationCheck } from "/js/modules/emailDuplicationCheck.js";
+
 import { checkPasswordValidation } from "/js/modules/passwordValidation.js";
 
 import { checkBirthdateValidation } from "/js/modules/birthdateValidation.js";
 
-let isPwValid = false;
-let isPwReValid = false;
 let isUsernameValid = false;
 let isEmailValid = false;
+let isPwValid = false;
+let isPwReValid = false;
 let isBirthdateValid = false;
 const submitButton = document.querySelector("#submit-btn");
 const form = document.querySelector("#signup-form");
@@ -23,47 +27,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
   generateBirthOptions();
 
+  usernameDuplicationCheck(isUsernameValid);
+  emailDuplicationCheck(isEmailValid);
   checkPasswordValidation(isPwValid, isPwReValid);
   checkBirthdateValidation(isBirthdateValid);
 });
 
-// 사용자 이름 중복 검사
-// const usernameInput = document.getElementById("username");
-// usernameInput.addEventListener("blur", function () {
-//   fetch("/check-username", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ username: this.value }),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       isUsernameValid = !data.isTaken;
-//       updateSubmitButtonState();
-//     });
-// });
-
-// 이메일 중복 검사
-// const emailInput = document.getElementById("email");
-// emailInput.addEventListener("blur", function () {
-//   fetch("/check-email", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ email: this.value }),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       isEmailValid = !data.isTaken;
-//       updateSubmitButtonState();
-//     });
-// });
-
 // 폼 제출 핸들러 추가
 form.addEventListener("submit", function (event) {
-  // 유효성 검사 조건 확인
-  submitButton.disabled = !(isPwValid && isPwReValid && isBirthdateFilled);
-  if (submitButton.disabled) {
-    event.preventDefault(); // 폼 제출 방지
+  event.preventDefault(); // 폼의 기본 제출 동작을 항상 방지
+
+  if (
+    isUsernameValid &&
+    isEmailValid &&
+    isPwValid &&
+    isPwReValid &&
+    isBirthdateValid
+  ) {
+    // 폼 데이터 수집
+    const formData = {
+      username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value, // 패스워드 입력 필드의 id를 확인하고 맞춰주세요.
+      confirmPassword: document.getElementById("confirmPassword").value, // 확인 패스워드 입력 필드의 id를 확인하고 맞춰주세요.
+      year: document.getElementById("birth-year").value,
+      month: document.getElementById("birth-month").value,
+      day: document.getElementById("birth-day").value,
+    };
+
+    // 서버로 데이터 전송
+    fetch("/signup/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(() => {
+        window.location.href = "/success"; // 성공 페이지 또는 메인 페이지로 리다이렉트
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   } else {
+    alert("Please ensure all fields are valid before submitting.");
   }
-  // 여기에 폼이 유효할 때의 처리 로직을 추가할 수 있습니다.
 });

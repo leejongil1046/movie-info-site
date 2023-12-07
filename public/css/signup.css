@@ -80,6 +80,20 @@ select.box {
   position: relative; /* 폼 내 요소들의 절대 위치 기준 설정 */
 }
 
+#username-error-msg {
+  position: absolute; /* 절대 위치 설정 */
+  font-size: 12px; /* 폰트 크기 설정 */
+  padding-left: 5px; /* 왼쪽 패딩 설정 */
+  top: 145px; /* 상단으로부터의 위치 설정 */
+}
+
+#email-error-msg {
+  position: absolute; /* 절대 위치 설정 */
+  font-size: 12px; /* 폰트 크기 설정 */
+  padding-left: 5px; /* 왼쪽 패딩 설정 */
+  top: 213px; /* 상단으로부터의 위치 설정 */
+}
+
 /* 비밀번호 메시지 스타일 */
 #pw-error-msg {
   position: absolute; /* 절대 위치 설정 */

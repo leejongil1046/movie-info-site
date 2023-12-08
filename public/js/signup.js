@@ -20,7 +20,7 @@ import {
   isBirthdateValid,
 } from "/js/modules/birthdateValidation.js";
 
-import { formSubmit } from "/js/modules/formSubmit.js";
+import { signupSubmit } from "/js/modules/signupControl.js";
 
 let isUsernameValid = false;
 let isEmailValid = false;

@@ -1,14 +1,14 @@
-function formSubmit(isSubmitValidFunc) {
-  const form = document.querySelector("#signup-form");
+function signupSubmit(isSubmitValidFunc) {
+  const signupForm = document.querySelector("#signup-form");
   // 폼 제출 핸들러 추가
-  form.addEventListener("submit", function (event) {
+  signupForm.addEventListener("submit", function (event) {
     event.preventDefault(); // 폼n의 기본 제출 동작을 항상 방지
 
     console.log(isSubmitValidFunc());
 
     if (isSubmitValidFunc()) {
       // 폼 데이터 수집
-      const formData = {
+      const signupFormData = {
         username: document.querySelector("#username").value,
         email: document.querySelector("#email").value,
         password: document.querySelector("#info__pw").value, // 패스워드 입력 필드의 id를 확인하고 맞춰주세요.
@@ -19,7 +19,7 @@ function formSubmit(isSubmitValidFunc) {
       };
 
       // formData 객체의 값을 검증
-      const hasEmptyValue = Object.values(formData).some(
+      const hasEmptyValue = Object.values(signupFormData).some(
         (value) => value === ""
       );
 
@@ -35,7 +35,7 @@ function formSubmit(isSubmitValidFunc) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(signupFormData),
         })
           .then((response) => {
             if (response.ok) {
@@ -56,4 +56,4 @@ function formSubmit(isSubmitValidFunc) {
   });
 }
 
-export { formSubmit };
+export { signupSubmit };

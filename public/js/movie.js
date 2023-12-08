@@ -10,6 +10,8 @@ import {
 
 import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js"; // Adjust the path as needed
 
+import { loginCheck } from "/js/modules/loginControl.js";
+
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
   // URL에서 ID를 추출
@@ -20,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupBackButton("back-icon");
   setupRefreshButton("refresh-icon");
+
+  loginCheck();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   fetchMovieDetails(movieId);

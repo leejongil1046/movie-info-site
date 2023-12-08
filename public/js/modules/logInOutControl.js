@@ -111,9 +111,7 @@ function getUsername() {
       }
     })
     .then((data) => {
-      loggedInUsername.innerHTML =
-        `<span id="user-icon"><i class="fa-solid fa-user"></i></span> &nbsp;` +
-        data.username;
+      loggedInUsername.innerHTML = data.username;
       console.log("로그인한 사용자:", data.username);
       // 여기에서 사용자 이름을 UI에 표시하거나 다른 처리를 할 수 있습니다.
     })

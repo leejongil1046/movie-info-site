@@ -16,8 +16,8 @@ function fetchMoviesData() {
         movieElement.innerHTML = `
           <a href="/movie">
             <img src="${movie.medium_cover_image}" alt="${movie.title}">
+            <h3 id="movie-api-title">${movie.title}</h3>
           </a>          
-          <h3>${movie.title}</h3>
         `;
         moviesContainer.appendChild(movieElement);
 

@@ -30,6 +30,10 @@
   transform: scale(1.05); /* 이미지를 5% 더 크게 확대 */
 }
 
+#movies-container img:hover + h3 {
+  color: red; /* h3 태그의 색상 변경 */
+}
+
 /* 영화 제목 스타일 */
 #movies-container h3 {
   word-wrap: break-word; /* 긴 단어가 있을 경우 자동으로 줄바꿈 처리 */
@@ -39,4 +43,8 @@
   font-size: 1rem; /* 폰트 크기 설정 */
   line-height: 1.2; /* 줄 간격 설정 */
   margin-bottom: 20px; /* 제목 아래 여백 설정 */
+}
+
+#movie-api-title {
+  color: #eee;
 }

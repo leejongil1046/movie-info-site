@@ -72,7 +72,7 @@
 
 #loggedin-box {
   display: none;
-  background-color: rgba(0, 0, 0, 0.5); /* 배경색 설정 */
+  background-color: rgba(0, 0, 0, 0.4); /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
   width: 180px; /* 로그인 박스의 너비 설정 */
@@ -88,6 +88,36 @@
   font-size: 25px;
 }
 
-#user-icon {
-  font-size: 20px;
+#logout-button {
+  margin-top: 20px;
+}
+
+#loggedin-icons {
+  position: relative;
+  margin-left: 5px;
+  margin-top: 20px;
+}
+
+#loggedin-icons i {
+  font-size: 22px;
+}
+
+#rating-icon {
+  position: absolute;
+  color: yellow;
+  left: 110px;
+  top: 2px;
+}
+
+#like-icon {
+  position: absolute;
+  color: red;
+  left: 150px;
+  top: 2px;
+}
+
+#rating-icon:hover,
+#like-icon:hover {
+  transform: scale(1.3);
+  cursor: pointer;
 }

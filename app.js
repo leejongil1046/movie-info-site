@@ -67,30 +67,36 @@ app.use("/movie", movieRouter);
 app.use("/success", successRouter);
 
 // Login Route
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true, // Optionally use flash messages
-  }),
-  (req, res) => {
-    console.log(req.user);
-    // 이 부분에서 템플릿 엔진을 사용하여 플래시 메시지를 렌더링하고 클라이언트에게 전달
-    res.render("login", { message: req.flash("error") }); // "error" 플래시 메시지 전달
-  }
-);
+// Login Route
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      // 로그인 실패 시 JSON 응답 반환
+      return res
+        .status(401)
+        .json({ message: "Login failed due to incorrect email or password." });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      // 로그인 성공 시 JSON 응답 반환
+      return res.json({ message: "Login successful", user: req.user });
+    });
+  })(req, res, next);
+});
 
 // 로그인 페이지를 보여주는 GET 라우트
 app.get("/login", (req, res) => {
   if (req.isAuthenticated()) {
     // 이미 로그인된 경우
     console.log("이미 로그인 중입니다.");
-    res.redirect("/"); // 홈페이지로 리디렉션
   } else {
     // 로그인되지 않은 경우
     console.log("로그인이 필요합니다.");
-    res.sendFile(path.join(__dirname, "views", "index.html"));
   }
 });
 
@@ -105,6 +111,16 @@ app.get("/api/userinfo", (req, res) => {
   } else {
     res.status(401).json({ error: "Not authenticated" });
   }
+});
+
+// 로그아웃 라우트
+app.get("/logout", function (req, res) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
 
 const PORT = 3000;

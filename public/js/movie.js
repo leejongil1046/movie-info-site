@@ -10,7 +10,11 @@ import {
 
 import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js"; // Adjust the path as needed
 
-import { loginCheck } from "/js/modules/loginControl.js";
+import {
+  loginProcess,
+  logoutProcess,
+  loginCheck,
+} from "/js/modules/logInOutControl.js";
 
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,19 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // 로딩 메시지 추가
   createLoadingMessage();
 
+  loginCheck();
+
   setupBackButton("back-icon");
   setupRefreshButton("refresh-icon");
 
-  loginCheck();
+  loginProcess();
+  logoutProcess();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   fetchMovieDetails(movieId);
-
-  window.addEventListener("unload", function () {
-    document.querySelector("#movie-image").style.display = "none";
-    document.querySelector(".movie-story").style.display = "none";
-    document.querySelector(".movie-reviews").style.display = "none";
-  });
 });
 
 document

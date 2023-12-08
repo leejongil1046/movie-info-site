@@ -36,7 +36,6 @@
             id="email"
             name="eamil"
             placeholder="Email"
-            required
           />
         </div>
         <div class="form-group">
@@ -45,14 +44,16 @@
             id="password"
             name="password"
             placeholder="Password"
-            required
           />
         </div>
         <button type="submit">Log in</button>
         <a href="/signup" id="signup-string">Sign up</a>
       </form>
     </div>
-    <div id="loggedin-box"></div>
+    <div id="loggedin-box">
+      <p id="loggedin-username"></p>
+      <button id="logout-button">Logout</button>
+    </div>
     <main>
       <div id="movies-container">
         <!-- 초기 로딩 문구 -->

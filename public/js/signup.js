@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   checkPasswordValidation();
   checkBirthdateValidation();
 
-  formSubmit(
+  signupSubmit(
     () =>
       isUsernameValid &&
       isEmailValid &&

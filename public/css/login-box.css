@@ -1,5 +1,6 @@
 /* 로그인 박스 스타일 */
 #login-box {
+  display: none;
   background-color: rgba(0, 0, 0, 0); /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
@@ -37,7 +38,8 @@
 }
 
 /* 로그인 버튼 스타일 */
-#login-box button {
+#login-box button,
+#logout-button {
   display: block; /* 블록 레벨 요소로 표시 */
   width: 100%; /* 너비를 부모 요소에 맞춤 */
   padding: 10px; /* 내부 여백 설정 */
@@ -51,7 +53,8 @@
 }
 
 /* 로그인 버튼 hover 효과 */
-#login-box button:hover {
+#login-box button:hover,
+#logout-button:hover {
   background-color: Crimson; /* 마우스 호버 시 배경색 변경 */
 }
 
@@ -65,4 +68,26 @@
   text-decoration: none; /* 밑줄 제거 */
   cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
   font-size: 14px;
+}
+
+#loggedin-box {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5); /* 배경색 설정 */
+  padding: 1rem; /* 내부 여백 설정 */
+  margin: 0; /* 외부 여백 제거 */
+  width: 180px; /* 로그인 박스의 너비 설정 */
+  height: 120px; /* 로그인 박스의 높이 설정 */
+  position: fixed; /* 고정 위치 */
+  left: 12px; /* 왼쪽에서 12px 떨어진 위치 */
+  top: 105px; /* 상단에서 90px 떨어진 위치 */
+  border-radius: 10px;
+}
+
+#loggedin-username {
+  margin-left: 5px;
+  font-size: 25px;
+}
+
+#user-icon {
+  font-size: 20px;
 }

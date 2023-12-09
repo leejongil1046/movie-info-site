@@ -31,7 +31,9 @@ function updatePaginationInfo() {
 }
 
 function setupPagination() {
-  const paginationContainer = document.querySelector("#pagination-container");
+  const paginationContainer = document.querySelector(
+    "#movies-pagination-container"
+  );
   paginationContainer.innerHTML = `
     <button id="prev-button"><i class="fa-solid fa-angle-left"></i></button>
     <span id="page-info"></span>

@@ -1,4 +1,5 @@
-#pagination-container button {
+#movies-pagination-container button,
+#reviews-pagination-container button {
   width: 60px;
   height: 30px;
   padding: 10px;
@@ -11,9 +12,17 @@
   cursor: pointer;
 }
 
-#pagination-container {
+#movies-pagination-container {
   position: fixed;
   left: 30px;
   bottom: 16px;
   font-size: 20px;
+}
+
+#reviews-pagination-container {
+  position: absolute;
+  font-size: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
 }

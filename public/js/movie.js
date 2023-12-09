@@ -16,7 +16,10 @@ import {
   loginCheck,
 } from "/js/modules/logInOutControl.js";
 
-import { starRating } from "/js/modules/starRating.js";
+import {
+  starRating,
+  reviewContainer,
+} from "/js/modules/starRatingAndReview.js";
 
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,28 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutProcess();
 
   starRating();
+  reviewContainer();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   fetchMovieDetails(movieId);
 });
-
-document
-  .getElementById("review-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // 폼 기본 제출 동작 방지
-
-    // 입력된 점수와 댓글 텍스트를 가져옵니다
-    const score = document.getElementById("review-score").value;
-    const text = document.getElementById("review-text").value;
-
-    // 댓글을 표시할 요소 생성
-    const newReview = document.createElement("p");
-    newReview.textContent = `점수: ${score}, 댓글: ${text}`;
-
-    // 댓글 목록에 새 댓글 추가
-    document.getElementById("reviews-list").appendChild(newReview);
-
-    // 입력 필드 초기화
-    document.getElementById("review-score").value = "";
-    document.getElementById("review-text").value = "";
-  });

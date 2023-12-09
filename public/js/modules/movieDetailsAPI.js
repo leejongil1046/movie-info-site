@@ -19,7 +19,7 @@ function fetchMovieDetails(movieId) {
         // API 응답에서 이미지 URL 추출
         const imageUrl = data.data.movie.background_image;
         // body 태그의 배경 이미지로 설정
-        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('${imageUrl}')`;
+        document.body.style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('${imageUrl}')`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundPosition = "center center";
@@ -49,6 +49,7 @@ function fetchMovieDetails(movieId) {
         document.querySelector("#movie-like").innerHTML =
           '<span id="like-label"><i class="fa-solid fa-heart"></i></span> &nbsp;&nbsp;' +
           data.data.movie.like_count;
+
         const descriptionFull = data.data.movie.description_full;
         let descriptionText;
 
@@ -73,6 +74,14 @@ function fetchMovieDetails(movieId) {
         document.querySelector(
           "#movie-more"
         ).innerHTML = `<a href=${data.data.movie.url}><button id="more-button">More...</button></a> `;
+
+        document
+          .querySelector("#like-label i")
+          .addEventListener("click", function () {
+            console.log(this);
+            this.classList.toggle("fa-solid");
+            this.classList.toggle("fa-regular");
+          });
       } else {
         document.querySelector("#movie-title").textContent = "Movie not found";
       }

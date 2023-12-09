@@ -4,7 +4,8 @@
 @import "./signup.css"; /* 회원가입 관련 스타일 */
 @import "./login-box.css"; /* 로그인 박스 관련 스타일 */
 @import "./movie.css";
-@import "./movies-container.css"; /* 영화 컨테이너 관련 스타일 */
+@import "./movies.css"; /* 영화 컨테이너 관련 스타일 */
+@import "./pagenation.css";
 
 /* 전체 페이지의 기본 스타일 설정 */
 body {
@@ -80,4 +81,5 @@ main {
 
 a {
   text-decoration: none;
+  color: #eee;
 }

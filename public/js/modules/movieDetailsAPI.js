@@ -1,5 +1,12 @@
 import { removeLoadingMessage } from "/js/modules/loadingMessageControl.js"; // Adjust the path as needed
 
+function truncateDescription(description, maxLength) {
+  if (description.length > maxLength) {
+    return description.substring(0, maxLength) + "...";
+  }
+  return description;
+}
+
 // 영화 상세 정보를 가져오는 함수
 function fetchMovieDetails(movieId) {
   fetch(`/movie/details/${movieId}`)
@@ -57,10 +64,12 @@ function fetchMovieDetails(movieId) {
           descriptionText = descriptionFull;
         }
 
+        const truncatedDescription = truncateDescription(descriptionText, 1000);
+
         // 결과를 HTML 요소에 적용
         document.querySelector("#movie-description").innerHTML =
           '<h2 id="description-label">Description</h2> &nbsp;&nbsp;' +
-          descriptionText;
+          truncatedDescription;
         document.querySelector(
           "#movie-more"
         ).innerHTML = `<a href=${data.data.movie.url}><button id="more-button">More...</button></a> `;

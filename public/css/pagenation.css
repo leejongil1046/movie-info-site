@@ -1,0 +1,19 @@
+#pagination-container button {
+  width: 60px;
+  height: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#pagination-container {
+  position: fixed;
+  left: 30px;
+  bottom: 16px;
+  font-size: 20px;
+}

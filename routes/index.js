@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
 router.get("/api/movies", async (req, res) => {
   try {
     const response = await fetch(
-      "https://yts.mx/api/v2/list_movies.json?sort_by=download_count"
+      "https://yts.mx/api/v2/list_movies.json?sort_by=download_count&limit=50"
     );
     const moviesData = await response.json();
     res.json(moviesData);

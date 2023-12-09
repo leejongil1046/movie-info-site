@@ -53,7 +53,7 @@
 /* Movie story section */
 .movie-story {
   display: none;
-  max-width: 60%; /* 가로 크기를 main의 60%로 설정 */
+  max-width: 70%; /* 가로 크기를 main의 60%로 설정 */
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px 30px; /* 패딩 추가 */
@@ -65,7 +65,7 @@
 /* 댓글 섹션 스타일 */
 .movie-reviews {
   display: none;
-  max-width: 60%;
+  max-width: 70%;
   padding: 20px 30px;
   background-color: rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -79,19 +79,23 @@
 }
 
 #review-form textarea {
-  width: 500px;
-  height: 100px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: block;
+  width: 600px;
+  height: 15px;
+  margin: 10px;
   padding: 10px;
   border-radius: 5px;
   border: none;
+  overflow-y: hidden;
+  resize: none;
 }
 
 #review-form button,
 #more-button {
-  width: 120px;
+  width: 100px;
+  height: 35px;
   padding: 10px;
+  margin: 10px;
   background-color: red;
   color: #fff;
   border: none;
@@ -101,6 +105,7 @@
 
 #more-button {
   width: 80px;
+  height: 40px;
 }
 
 #review-form button:hover,
@@ -117,11 +122,33 @@
   font-size: 20px;
 }
 
-textarea {
-  display: block;
+.rating_box {
+  display: flex;
 }
 
-#star-rating {
-  width: 40px;
-  height: 30px;
+.rating {
+  position: relative;
+  color: #eee;
+  font-size: 30px;
+  text-align: center;
+}
+
+.rating input {
+  position: absolute;
+  left: -12px;
+  right: 0;
+  width: 110%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rating_star {
+  width: 0;
+  color: yellow;
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

@@ -25,15 +25,6 @@
   cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
 }
 
-/* 이미지에 마우스를 올렸을 때 */
-#movies-container img:hover {
-  transform: scale(1.05); /* 이미지를 5% 더 크게 확대 */
-}
-
-#movies-container img:hover + h3 {
-  color: red; /* h3 태그의 색상 변경 */
-}
-
 /* 영화 제목 스타일 */
 #movies-container h3 {
   word-wrap: break-word; /* 긴 단어가 있을 경우 자동으로 줄바꿈 처리 */
@@ -47,4 +38,13 @@
 
 #movie-api-title {
   color: #eee;
+}
+
+/* 이미지에 마우스를 올렸을 때 */
+#movies-container a:hover img {
+  transform: scale(1.05); /* 이미지를 5% 더 크게 확대 */
+}
+
+#movies-container a:hover h3 {
+  color: red; /* h3 태그의 색상 변경 */
 }

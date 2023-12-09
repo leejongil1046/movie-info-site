@@ -17,6 +17,14 @@ function usernameDuplicationCheck() {
         resolve(false);
         return;
       }
+      // 사용자 이름의 길이가 10자를 초과하거나 모두 소문자가 아닌 경우
+      if (this.value.length > 10 || !/^[a-z]+$/.test(this.value)) {
+        usernameErrorMsgEl.style.color = "red";
+        usernameErrorMsgEl.textContent =
+          "Username cannot be more than 10 characters and must contain only lowercase letters.";
+        resolve(false);
+        return;
+      }
 
       // 서버에 사용자 이름의 중복 여부를 확인하는 POST 요청을 보냅니다.
       fetch("/signup/check-username", {

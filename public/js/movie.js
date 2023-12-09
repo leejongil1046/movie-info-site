@@ -8,13 +8,15 @@ import {
   setupRefreshButton,
 } from "/js/modules/navigationControl.js";
 
-import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js"; // Adjust the path as needed
+import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js";
 
 import {
   loginProcess,
   logoutProcess,
   loginCheck,
 } from "/js/modules/logInOutControl.js";
+
+import { starRating } from "/js/modules/starRating.js";
 
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginProcess();
   logoutProcess();
+
+  starRating();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   fetchMovieDetails(movieId);

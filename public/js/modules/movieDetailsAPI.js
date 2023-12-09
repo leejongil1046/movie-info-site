@@ -12,7 +12,7 @@ function fetchMovieDetails(movieId) {
         // API 응답에서 이미지 URL 추출
         const imageUrl = data.data.movie.background_image;
         // body 태그의 배경 이미지로 설정
-        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url('${imageUrl}')`;
+        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('${imageUrl}')`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundPosition = "center center";

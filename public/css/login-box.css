@@ -84,8 +84,8 @@
 }
 
 #loggedin-username {
-  margin-left: 5px;
   font-size: 25px;
+  margin-left: 5px;
 }
 
 #logout-button {
@@ -105,7 +105,7 @@
 #rating-icon {
   position: absolute;
   color: yellow;
-  left: 110px;
+  left: 120px;
   top: 2px;
 }
 
@@ -120,4 +120,21 @@
 #like-icon:hover {
   transform: scale(1.3);
   cursor: pointer;
+}
+
+/* CSS 키프레임 애니메이션 정의 */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0; /* 투명도를 0에서 시작 */
+  }
+  to {
+    opacity: 1; /* 투명도를 1로 끝냄 */
+  }
+}
+
+/* body의 배경 이미지에 애니메이션 적용 */
+#login-box,
+#loggedin-box {
+  animation: fadeInBackground 0.5s ease-in-out; /* 1초 동안 서서히 나타나는 애니메이션 */
+  animation-fill-mode: forwards; /* 애니메이션 종료 후 상태를 유지함 */
 }

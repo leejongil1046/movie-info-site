@@ -7,7 +7,7 @@ form[action="/register"] {
   border-radius: 5px; /* 폼 모서리의 둥근 정도 설정 */
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 폼에 그림자 효과 추가 */
   padding-left: 50px; /* 폼의 왼쪽 내부 패딩 설정 */
-  margin-top: 100px; /* 폼의 상단 외부 여백 설정 */
+  margin-top: 55px; /* 폼의 상단 외부 여백 설정 */
 }
 
 /* 입력 필드 스타일 */
@@ -48,6 +48,10 @@ form[action="/register"] button:hover {
   background-color: Crimson; /* 버튼 위에 마우스를 올렸을 때 배경색 변경 */
 }
 
+#signup-form h1 {
+  font-size: 40px;
+}
+
 /* 드롭다운 선택 상자 스타일 */
 select.box {
   width: 110px; /* 선택 상자의 너비 설정 */
@@ -85,6 +89,7 @@ select.box {
   font-size: 12px; /* 폰트 크기 설정 */
   padding-left: 5px; /* 왼쪽 패딩 설정 */
   top: 145px; /* 상단으로부터의 위치 설정 */
+  white-space: nowrap;
 }
 
 #email-error-msg {
@@ -92,6 +97,7 @@ select.box {
   font-size: 12px; /* 폰트 크기 설정 */
   padding-left: 5px; /* 왼쪽 패딩 설정 */
   top: 213px; /* 상단으로부터의 위치 설정 */
+  white-space: nowrap;
 }
 
 /* 비밀번호 메시지 스타일 */
@@ -109,6 +115,7 @@ select.box {
   font-size: 12px; /* 폰트 크기 설정 */
   padding-left: 5px; /* 왼쪽 패딩 설정 */
   top: 348px; /* 상단으로부터의 위치 설정 */
+  white-space: nowrap;
 }
 
 #birth-error-msg {

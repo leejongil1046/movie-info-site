@@ -28,6 +28,10 @@
   resize: none;
 }
 
+#review-form textarea:disabled {
+  background-color: #444;
+}
+
 .rating_box {
   display: flex;
 }

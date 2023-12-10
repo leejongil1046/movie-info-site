@@ -38,6 +38,7 @@ const indexRouter = require("./routes/index.js");
 const signupRouter = require("./routes/signup.js");
 const movieRouter = require("./routes/movie.js");
 const successRouter = require("./routes/success.js");
+const movieLikesRouter = require("./routes/movieLikes.js");
 
 // static 파일 제공 미들웨어
 app.use(express.static("public"));
@@ -65,8 +66,8 @@ app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/movie", movieRouter);
 app.use("/success", successRouter);
+app.use("/api", movieLikesRouter);
 
-// Login Route
 // Login Route
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -108,14 +109,6 @@ app.get("/api/login-status", (req, res) => {
     res.json({ loggedIn: false });
   }
 });
-
-// app.get("/api/userinfo", (req, res) => {
-//   if (req.isAuthenticated()) {
-//     res.json({ username: req.user.username });
-//   } else {
-//     res.status(401).json({ error: "Not authenticated" });
-//   }
-// });
 
 // 로그아웃 라우트
 app.get("/logout", function (req, res) {

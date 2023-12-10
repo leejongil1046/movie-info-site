@@ -43,6 +43,10 @@
   color: yellow;
 }
 
+#movie-like {
+  display: none;
+}
+
 #like-label i {
   color: red;
 }

@@ -1,4 +1,3 @@
-const express = require("express");
 const bcrypt = require("bcrypt");
 const db = require("../models/database.js"); // Assuming you have a dbConfig.js file as explained earlier
 

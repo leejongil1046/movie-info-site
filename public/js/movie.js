@@ -18,8 +18,13 @@ import {
 
 import { starRating, reviewContainer } from "/js/modules/starRatingReview.js";
 
+import {
+  updateLikeStatus,
+  displayTotalLikes,
+} from "/js/modules/movieLikesAPI.js";
+
 // DOM이 로드되었을 때 실행
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // URL에서 ID를 추출
   const movieId = new URL(window.location).pathname.split("/").pop();
 
@@ -30,18 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
   setupRefreshButton("refresh-icon");
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
-  fetchMovieDetails(movieId);
+  await fetchMovieDetails(movieId);
 
   loginProcess();
   logoutProcess();
 
-  loginCheck().then(() => {
-    const loggedInUsername = document.querySelector("#loggedin-username");
-    if (loggedInUsername && loggedInUsername.textContent) {
-      const username = loggedInUsername.textContent;
-      console.log("Logged in as:", username);
-      starRating();
-      reviewContainer(username);
-    }
-  });
+  const loginData = await loginCheck();
+  console.log(loginData);
+  if (loginData && loginData.loggedIn) {
+    const username = loginData.username;
+    console.log("Logged in as:", username);
+    updateLikeStatus(movieId, username);
+    starRating();
+    reviewContainer(username);
+    // 여기서 추가 로직을 수행할 수 있습니다.
+  } else {
+    console.log("User is not logged in.");
+    // 로그인하지 않은 상태에 대한 처리를 할 수 있습니다.
+  }
+
+  displayTotalLikes(movieId);
 });

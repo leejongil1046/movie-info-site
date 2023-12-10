@@ -48,7 +48,6 @@ function loginProcess() {
         .then((response) => {
           // 성공적인 응답을 확인하고 적절한 페이지로 리디렉션
           if (response.ok) {
-            getUsername();
             // 클라이언트 측 JavaScript를 사용하여 페이지를 리디렉션
             window.location.href = window.location.href;
           } else {
@@ -86,16 +85,16 @@ async function loginCheck() {
 
   const response = await fetch("/api/login-status");
   const data = await response.json();
-  console.log(data);
+  // console.log("loginCheck data = ", data);
 
   if (data.loggedIn) {
     loggedInUsername.innerHTML = data.username;
     loggedInBox.style.display = "block";
-    console.log("로그인한 사용자:", data.username);
-    return data.username; // 로그인된 사용자의 이름을 반환
+    // console.log("로그인한 사용자:", data.username);
+    return data; // 로그인된 사용자의 이름을 반환
   } else {
     loginBox.style.display = "block";
-    console.log("로그아웃");
+    // console.log("로그아웃");
     return null; // 로그인되지 않았을 경우 null 반환
   }
 }

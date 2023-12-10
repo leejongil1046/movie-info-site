@@ -68,9 +68,13 @@
             <p id="movie-genres"></p>
             <p id="movie-runtime"></p>
             <p id="movie-language"></p>
-            <p id="movie-rating"></p>
+            <p id="movie-rating">
+              <span id="rating-label"><i class="fa-solid fa-star"></i></span>
+              <span id="avg-rating"></span>
+            </p>
             <p id="movie-like">
               <span id="like-label"><i class="fa-regular fa-heart"></i></span>
+              <span id="total-like"></span>
             </p>
             <p id="movie-more"></p>
           </div>
@@ -94,8 +98,8 @@
             placeholder="Wirte your review."
             required
             ></textarea>
-            <button type="submit" id="review-submit-btn">Submit</button>
-            <button type="submit" id="review-modify-btn">Modify</button>
+            <button type="submit" id="submit-review">Submit</button>
+            <button type="submit" id="modify-review">Modify</button>
           </div>
         </form>
         <div id="reviews-list">

@@ -38,7 +38,7 @@ const indexRouter = require("./routes/index.js");
 const signupRouter = require("./routes/signup.js");
 const movieRouter = require("./routes/movie.js");
 const successRouter = require("./routes/success.js");
-const movieLikesRouter = require("./routes/movieLikes.js");
+const apiRouter = require("./routes/api.js");
 
 // static 파일 제공 미들웨어
 app.use(express.static("public"));
@@ -66,7 +66,7 @@ app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/movie", movieRouter);
 app.use("/success", successRouter);
-app.use("/api", movieLikesRouter);
+app.use("/api", apiRouter);
 
 // Login Route
 app.post("/login", (req, res, next) => {

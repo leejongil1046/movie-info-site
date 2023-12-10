@@ -39,6 +39,10 @@
   color: skyblue;
 }
 
+#movie-rating {
+  display: none;
+}
+
 #rating-label i {
   color: yellow;
 }
@@ -99,6 +103,6 @@
   font-size: 20px;
 }
 
-#review-modify-btn {
+#modify-review {
   display: none;
 }

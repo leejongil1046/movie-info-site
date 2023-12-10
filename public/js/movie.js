@@ -16,7 +16,11 @@ import {
   loginCheck,
 } from "/js/modules/logInOutControl.js";
 
-import { starRating, reviewContainer } from "/js/modules/starRatingReview.js";
+import {
+  fetchReviews,
+  starRating,
+  reviewContainer,
+} from "/js/modules/starRatingReview.js";
 
 import {
   updateLikeStatus,
@@ -38,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   await fetchMovieDetails(movieId);
+  await fetchReviews(movieId);
 
   loginProcess();
   logoutProcess();
@@ -49,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Logged in as:", username);
     updateLikeStatus(movieId, username);
     starRating();
-    reviewContainer(username);
+    reviewContainer(movieId, username);
     // 여기서 추가 로직을 수행할 수 있습니다.
   } else {
     restrictAccessToNotLoggedinUsers();

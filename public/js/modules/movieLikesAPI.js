@@ -48,17 +48,8 @@ async function displayTotalLikes(movieId) {
     const data = await response.json();
     const totalLikes = data.totalLikes || 0; // 만약 값이 없다면 0으로 설정
 
-    const likeElement = document.querySelector("#movie-like");
-    const likeIconSpan = document.querySelector("#like-label"); // 기존 아이콘 span 요소 찾기
-    // console.log(likeIconSpan);
-    // 좋아요 수를 표시할 새로운 span 요소 생성
-    const totalLikeElement = document.createElement("span");
+    const totalLikeElement = document.querySelector("#total-like");
     totalLikeElement.innerHTML = `&nbsp;&nbsp;&nbsp;${totalLikes}`; // 공백을 추가하여 아이콘과의 간격을 조정
-
-    // 기존 내용을 초기화하고 아이콘 span과 새로운 좋아요 수 span을 추가
-    likeElement.innerHTML = ""; // 내용 초기화
-    likeElement.appendChild(likeIconSpan); // 아이콘 span 추가
-    likeElement.appendChild(totalLikeElement); // 좋아요 수 span 추가
   } catch (error) {
     console.error("Error fetching total likes:", error);
   }

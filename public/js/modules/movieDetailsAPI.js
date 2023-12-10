@@ -9,7 +9,7 @@ function truncateDescription(description, maxLength) {
 
 // 영화 상세 정보를 가져오는 함수
 function fetchMovieDetails(movieId) {
-  fetch(`/movie/details/${movieId}`)
+  fetch(`/api/movie/details/${movieId}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -46,10 +46,11 @@ function fetchMovieDetails(movieId) {
         document.querySelector("#movie-language").innerHTML =
           '<span id="language-label"><i class="fa-solid fa-volume-high"></i></span> &nbsp;' +
           language;
-        document.querySelector("#movie-rating").innerHTML =
-          '<span id="rating-label"><i class="fa-solid fa-star"></i></span> &nbsp;&nbsp;' +
-          data.data.movie.rating +
-          "/10";
+        document.querySelector("#movie-rating").style.display = "block";
+        // document.querySelector("#movie-rating").innerHTML =
+        //   '<span id="rating-label"><i class="fa-solid fa-star"></i></span> &nbsp;&nbsp;' +
+        //   data.data.movie.rating +
+        //   "/10";
         document.querySelector("#movie-like").style.display = "block";
 
         const descriptionFull = data.data.movie.description_full;

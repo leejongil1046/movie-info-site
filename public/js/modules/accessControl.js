@@ -1,7 +1,7 @@
 function restrictAccessToNotLoggedinUsers() {
   const likeIcon = document.querySelector("#like-label i");
   const ratingStar = document.querySelector(".rating");
-  const submitButton = document.querySelector("#review-submit-btn");
+  const submitButton = document.querySelector("#submit-review");
   const reviewTextarea = document.querySelector("#review-text");
   const emailInput = document.querySelector("#email");
 

@@ -102,16 +102,20 @@ app.get("/login", (req, res) => {
 
 // 현재 로그인 상태를 반환하는 API
 app.get("/api/login-status", (req, res) => {
-  res.json({ loggedIn: req.isAuthenticated() });
-});
-
-app.get("/api/userinfo", (req, res) => {
   if (req.isAuthenticated()) {
-    res.json({ username: req.user.username });
+    res.json({ loggedIn: true, username: req.user.username });
   } else {
-    res.status(401).json({ error: "Not authenticated" });
+    res.json({ loggedIn: false });
   }
 });
+
+// app.get("/api/userinfo", (req, res) => {
+//   if (req.isAuthenticated()) {
+//     res.json({ username: req.user.username });
+//   } else {
+//     res.status(401).json({ error: "Not authenticated" });
+//   }
+// });
 
 // 로그아웃 라우트
 app.get("/logout", function (req, res) {

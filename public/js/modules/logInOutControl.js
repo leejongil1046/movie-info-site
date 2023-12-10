@@ -1,3 +1,5 @@
+let username;
+
 // 이메일 형식을 검증하는 함수
 function validateEmail(email) {
   // 이메일 형식을 정의하는 정규 표현식
@@ -77,45 +79,25 @@ function logoutProcess() {
     });
 }
 
-function loginCheck() {
-  // login-box 요소 찾기
+async function loginCheck() {
   const loginBox = document.querySelector("#login-box");
-  // loggedin-box 요소 찾기
   const loggedInBox = document.querySelector("#loggedin-box");
   const loggedInUsername = document.querySelector("#loggedin-username");
-  fetch("/api/login-status")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      if (data.loggedIn) {
-        getUsername();
-        // loggedin-box 보이기
-        loggedInBox.style.display = "block";
-        console.log("로그인");
-      } else {
-        // login-box 보이기
-        loginBox.style.display = "block";
-        console.log("로그아웃");
-      }
-    });
-}
 
-function getUsername() {
-  const loggedInUsername = document.querySelector("#loggedin-username");
-  fetch("/api/userinfo")
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Not authenticated");
-      }
-    })
-    .then((data) => {
-      loggedInUsername.innerHTML = data.username;
-      console.log("로그인한 사용자:", data.username);
-      // 여기에서 사용자 이름을 UI에 표시하거나 다른 처리를 할 수 있습니다.
-    })
-    .catch((error) => console.error(error));
+  const response = await fetch("/api/login-status");
+  const data = await response.json();
+  console.log(data);
+
+  if (data.loggedIn) {
+    loggedInUsername.innerHTML = data.username;
+    loggedInBox.style.display = "block";
+    console.log("로그인한 사용자:", data.username);
+    return data.username; // 로그인된 사용자의 이름을 반환
+  } else {
+    loginBox.style.display = "block";
+    console.log("로그아웃");
+    return null; // 로그인되지 않았을 경우 null 반환
+  }
 }
 
 export { loginProcess, logoutProcess, loginCheck };

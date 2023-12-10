@@ -1,6 +1,6 @@
 let selectedRating = 0; // 선택된 별점 점수를 저장할 전역 변수
 let allReviews = [];
-let reviewsPerPage = 5;
+let reviewsPerPage = 4;
 let currentPage = 1;
 
 function starRating() {
@@ -24,8 +24,8 @@ function createStarRatingElement(ratingValue) {
   const rating = document.createElement("div");
   rating.className = "rating";
   rating.style.position = "relative";
-  rating.style.color = "#eee";
-  rating.style.fontSize = "30px";
+  rating.style.color = "#444";
+  rating.style.fontSize = "20px";
   rating.style.textAlign = "center";
   rating.textContent = "★★★★★"; // 기본 별점
 
@@ -103,24 +103,70 @@ function updatePagination(totalReviews, reviewsPerPage) {
   });
 }
 
-function reviewContainer() {
+function reviewContainer(username) {
   document
     .getElementById("review-form")
     .addEventListener("submit", function (event) {
       event.preventDefault(); // 폼 기본 제출 동작 방지
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+
+      const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
       const text = document.getElementById("review-text").value;
+      // const username = `by username (${formattedDateTime})`;
       const starRatingElement = createStarRatingElement(selectedRating);
-      // 리뷰와 함께 별점 표시
-      const newReview = document.createElement("p");
-      newReview.appendChild(starRatingElement);
 
+      // 별점과 사용자 이름을 담을 컨테이너
+      const topContainer = document.createElement("div");
+      topContainer.style.display = "flex"; // 가로 배치
+      topContainer.style.alignItems = "center"; // 세로 중앙 정렬
+      topContainer.style.gap = "10px"; // 아이템 간 간격 설정
+
+      // 사용자 이름 요소 생성
+      const usernameSpan = document.createElement("span");
+      usernameSpan.textContent = `by ${username} (${formattedDateTime})`;
+      // usernameSpan.textContent = username;
+      usernameSpan.style.fontSize = "15px"; // 사용자 이름 크기 설정
+      usernameSpan.style.marginTop = "8px";
+
+      const deleteIcon = document.createElement("span");
+      deleteIcon.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+      deleteIcon.style.fontSize = "15px";
+      deleteIcon.style.marginTop = "11px";
+      deleteIcon.style.marginLeft = "5px";
+      deleteIcon.style.color = "red";
+
+      // 별점과 사용자 이름 컨테이너에 추가
+      topContainer.appendChild(starRatingElement);
+      topContainer.appendChild(usernameSpan);
+      topContainer.appendChild(deleteIcon);
+
+      // 리뷰 텍스트 요소 생성
+      const textDiv = document.createElement("div");
+      textDiv.textContent = text;
+      textDiv.style.fontSize = "20px"; // 텍스트 크기 설정
+      textDiv.style.marginTop = "10px"; // 위쪽 여백 추가
+      textDiv.style.marginBottom = "25px";
+
+      // 최종 리뷰 컨테이너 생성
+      const newReview = document.createElement("div");
+      newReview.appendChild(topContainer); // 별점과 사용자 이름 컨테이너 추가
+      newReview.appendChild(textDiv); // 리뷰 텍스트 추가
+
+      // 리뷰 목록에 최종 리뷰 컨테이너 추가
       document.getElementById("reviews-list").appendChild(newReview);
 
-      addReview(newReview); // 새 리뷰 추가 및 표시
+      // 새 리뷰 추가 및 표시
+      addReview(newReview);
 
       // 입력 필드 초기화
-      document.getElementById("review-score").value = ""; // 이 부분은 이제 필요 없을 수도 있음
       document.getElementById("review-text").value = "";
     });
 }

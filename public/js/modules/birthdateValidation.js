@@ -51,7 +51,6 @@ function checkBirthdateValidation() {
   [(yearInput, monthInput, dayInput)].forEach((input) =>
     input.addEventListener("input", () => {
       validateBirthdate(yearInput, monthInput, dayInput, birthErrorMsgEl);
-      console.log("isBirthdateValid = ", isBirthdateValid);
     })
   );
 }

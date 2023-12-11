@@ -18,9 +18,8 @@ import {
 
 import {
   fetchReviews,
-  starRating,
-  reviewContainer,
-} from "/js/modules/starRatingReview.js";
+  reviewsAddEventFunction,
+} from "/js/modules/movieReviewsAPI.js";
 
 import {
   updateLikeStatus,
@@ -48,17 +47,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   logoutProcess();
 
   const loginData = await loginCheck();
-  console.log(loginData);
   if (loginData && loginData.loggedIn) {
     const username = loginData.username;
     console.log("Logged in as:", username);
     updateLikeStatus(movieId, username);
-    starRating();
-    reviewContainer(movieId, username);
+    reviewsAddEventFunction(movieId, username);
     // 여기서 추가 로직을 수행할 수 있습니다.
   } else {
-    restrictAccessToNotLoggedinUsers();
     console.log("User is not logged in.");
+    restrictAccessToNotLoggedinUsers();
     // 로그인하지 않은 상태에 대한 처리를 할 수 있습니다.
   }
   displayTotalLikes(movieId);

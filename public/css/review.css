@@ -9,7 +9,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   color: #eee;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #review-form {
@@ -61,4 +61,8 @@
   right: 0;
   overflow: hidden;
   pointer-events: none;
+}
+
+#reviews-list i:hover {
+  cursor: pointer;
 }

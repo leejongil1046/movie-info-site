@@ -4,8 +4,6 @@ function signupSubmit(isSubmitValidFunc) {
   signupForm.addEventListener("submit", function (event) {
     event.preventDefault(); // 폼n의 기본 제출 동작을 항상 방지
 
-    console.log(isSubmitValidFunc());
-
     if (isSubmitValidFunc()) {
       // 폼 데이터 수집
       const signupFormData = {

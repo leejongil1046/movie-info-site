@@ -6,10 +6,9 @@ exports.fetchReviews = async (req, res) => {
   try {
     // 리뷰 목록 가져오기
     const [reviews] = await db.query(
-      "SELECT * FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL AND review IS NOT NULL",
+      "SELECT * FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL AND review IS NOT NULL ORDER BY review_created_at ASC",
       [movieId]
     );
-    console.log(reviews);
 
     // 평균 평점 가져오기
     const [averageRatingResult] = await db.query(
@@ -18,7 +17,6 @@ exports.fetchReviews = async (req, res) => {
     );
     const averageRating = averageRatingResult[0].averageRating || 0;
     // 리뷰 목록과 평균 평점을 함께 반환
-    console.log(averageRating);
     res.json({
       reviews: reviews,
       averageRating: averageRating,
@@ -40,13 +38,13 @@ exports.submitReview = async (req, res) => {
     if (rows.length > 0) {
       // 리뷰가 이미 존재하는 경우: 업데이트
       await db.query(
-        "UPDATE movie_reviews SET rating = ?, review = ? WHERE movie_id = ? AND username = ?",
+        "UPDATE movie_reviews SET rating = ?, review = ?, review_created_at = NOW() WHERE movie_id = ? AND username = ?",
         [rating, reviewText, movieId, username]
       );
     } else {
       // 새로운 리뷰 추가
       await db.query(
-        "INSERT INTO movie_reviews (movie_id, username, rating, review, `like`) VALUES (?, ?, ?, ?, 0)",
+        "INSERT INTO movie_reviews (movie_id, username, rating, review, `like`, review_created_at) VALUES (?, ?, ?, ?, 0, NOW())",
         [movieId, username, rating, reviewText]
       );
     }

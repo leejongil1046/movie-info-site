@@ -67,7 +67,6 @@ function fetchMoviesData() {
   fetch("/api/movies")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       removeLoadingMessage();
       allMovies = data.data.movies;
       displayMovies(1); // 첫 페이지의 영화 표시

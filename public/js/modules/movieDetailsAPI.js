@@ -12,7 +12,6 @@ function fetchMovieDetails(movieId) {
   fetch(`/api/movie/details/${movieId}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       // 로딩 메시지 제거
       removeLoadingMessage();
       if (data.status === "ok") {

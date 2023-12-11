@@ -7,7 +7,6 @@ async function updateLikeStatus(movieId, username) {
 
     // 좋아요 아이콘 설정
     const likeIcon = document.querySelector("#like-label i");
-    console.log(likeIcon);
     likeIcon.className = data.like
       ? "fa-solid fa-heart"
       : "fa-regular fa-heart";

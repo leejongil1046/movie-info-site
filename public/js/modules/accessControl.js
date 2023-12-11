@@ -25,6 +25,9 @@ function restrictAccessToNotLoggedinUsers() {
 
   reviewTextarea.disabled = true;
   reviewTextarea.placeholder = "Please log in to write a review.";
+
+  submitButton.style.backgroundColor = "#444";
+  submitButton.style.color = "#999";
 }
 
 export { restrictAccessToNotLoggedinUsers };

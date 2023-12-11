@@ -2,7 +2,7 @@ import { removeLoadingMessage } from "/js/modules/loadingMessageControl.js"; // 
 
 let allMovies = [];
 let currentPage = 1;
-const moviesPerPage = 20;
+const moviesPerPage = 10;
 
 function displayMovies(page) {
   const startIndex = (page - 1) * moviesPerPage;

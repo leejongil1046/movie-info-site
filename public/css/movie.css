@@ -23,7 +23,6 @@
 #movie-title {
   text-shadow: 2px 2px 2px #000;
   white-space: nowrap;
-  margin-top: -3px;
   font-size: 2rem;
   margin-bottom: 15px;
 }

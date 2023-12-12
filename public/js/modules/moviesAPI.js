@@ -133,7 +133,7 @@ function fetchAndStoreMoviesData(page) {
           allMovies = allMovies.concat(newMovies);
 
           // 다음 페이지로 이동 (선택사항)
-          const totalPages = 6;
+          const totalPages = 10;
           // const totalPages = Math.ceil(data.data.movie_count / moviesPerPage);
           if (page < totalPages) {
             fetchPage(page + 1);

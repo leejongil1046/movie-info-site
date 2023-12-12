@@ -47,8 +47,17 @@ exports.submitReview = async (req, res) => {
         "INSERT INTO movie_reviews (movie_id, username, rating, review, `like`, review_created_at) VALUES (?, ?, ?, ?, 0, NOW())",
         [movieId, username, rating, reviewText]
       );
+      // 평균 평점 가져오기
+      const [averageRatingResult] = await db.query(
+        "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
+        [movieId]
+      );
+      const averageRating = averageRatingResult[0].averageRating || 0;
     }
-    res.json({ message: "Review submitted successfully" });
+    res.json({
+      message: "Review submitted successfully",
+      averageRating: averageRating,
+    });
   } catch (error) {
     console.error("Error submitting review:", error);
     res.status(500).json({ error: "Server error" });
@@ -63,7 +72,16 @@ exports.modifyReview = async (req, res) => {
       "UPDATE movie_reviews SET rating = ?, review = ? WHERE movie_id = ? AND username = ?",
       [rating, reviewText, movieId, username]
     );
-    res.json({ message: "Review updated successfully" });
+    // 평균 평점 가져오기
+    const [averageRatingResult] = await db.query(
+      "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
+      [movieId]
+    );
+    const averageRating = averageRatingResult[0].averageRating || 0;
+    res.json({
+      message: "Review updated successfully",
+      averageRating: averageRating,
+    });
   } catch (error) {
     console.error("Error updating review:", error);
     res.status(500).json({ error: "Server error" });
@@ -78,7 +96,16 @@ exports.deleteReview = async (req, res) => {
       "UPDATE movie_reviews SET rating = NULL, review = NULL WHERE movie_id = ? AND username = ?",
       [movieId, username]
     );
-    res.json({ message: "Review deleted successfully" });
+    // 평균 평점 가져오기
+    const [averageRatingResult] = await db.query(
+      "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
+      [movieId]
+    );
+    const averageRating = averageRatingResult[0].averageRating || 0;
+    res.json({
+      message: "Review deleted successfully",
+      averageRating: averageRating,
+    });
   } catch (error) {
     console.error("Error deleting review:", error);
     res.status(500).json({ error: "Server error" });

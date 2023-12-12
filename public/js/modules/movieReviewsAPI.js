@@ -204,33 +204,6 @@ function displayReviewsOnPage(reviews) {
   displayReviews(1); // 첫 페이지의 리뷰를 표시
 }
 
-function updateAvgRating() {
-  let totalRating = 0;
-  let avgRating = 0;
-
-  // allReviews 배열을 순회하며 각 리뷰의 평점 합산
-  allReviews.forEach((reviewElement) => {
-    // ratingSpan에서 평점을 가져옴
-    const ratingSpan = reviewElement.querySelector('[id$="-rating"]'); // id가 '-rating'으로 끝나는 요소
-    const ratingValue = parseFloat(ratingSpan.textContent); // 평점 값을 숫자로 변환
-    totalRating += ratingValue;
-  });
-
-  // 평균 평점 계산
-  if (allReviews.length > 0) {
-    avgRating = totalRating / allReviews.length;
-  }
-
-  // 소수점 둘째 자리까지 반올림
-  avgRating = avgRating.toFixed(1);
-
-  // 평균 평점을 표시할 엘리먼트 찾기 및 업데이트
-  const avgRatingElement = document.querySelector("#avg-rating");
-  if (avgRatingElement) {
-    avgRatingElement.innerHTML = `&nbsp;&nbsp;${avgRating}/10`;
-  }
-}
-
 function calucAvgRating(avgRating) {
   let newAvgRating = 0;
 
@@ -279,14 +252,13 @@ async function fetchSubmitReview(movieId, username, rating, reviewText) {
       },
       body: JSON.stringify({ movieId, username, rating, reviewText }),
     });
+    const data = await response.json();
 
     if (response.ok) {
-      console.log("Before submit = ", allReviews);
+      calucAvgRating(data.averageRating);
       makeNewReveiw(movieId, username, rating, reviewText);
-      updateAvgRating();
       resetReviewForm();
       changeButton(username);
-      console.log("After submit = ", allReviews);
     } else {
       // 오류 응답 처리 및 로깅
       console.error("Failed to submit review.");
@@ -310,13 +282,12 @@ async function fetchModifyReview(movieId, username, rating, reviewText) {
         body: JSON.stringify({ movieId, username, rating, reviewText }),
       }
     );
+    const data = await response.json();
 
     if (response.ok) {
-      console.log("Before modify = ", allReviews);
+      calucAvgRating(data.averageRating);
       modifyReview(username, rating, reviewText);
-      updateAvgRating();
       resetReviewForm();
-      console.log("After modify = ", allReviews);
     } else {
       // 오류 응답 처리 및 로깅
       console.error("Network response was not ok");
@@ -337,16 +308,14 @@ async function fetchDeleteReview(movieId, username) {
         method: "DELETE",
       }
     );
+    const data = await response.json();
 
     // 서버 응답 처리
     if (response.ok) {
-      console.log("Before delete = ", allReviews);
+      calucAvgRating(data.averageRating);
       deleteUserReview(username);
       updateAvgRating();
       changeButton(username);
-      console.log("After modify = ", allReviews);
-      // 성공적으로 삭제된 경우, 페이지에서 해당 리뷰를 제거하거나 사용자에게 알림
-      // console.log(`The review has been successfully deleted.`);
     } else {
       // 서버 오류 응답 처리
       console.error(`Failed to delete the review`);
@@ -389,7 +358,7 @@ function changeButton(username) {
   }
 }
 
-function reviewsAddEventFunction(movieId, username) {
+function reviewButtonHandler(movieId, username) {
   starRatingInput();
 
   const submitButton = document.querySelector("#submit-review");
@@ -430,4 +399,4 @@ function reviewsAddEventFunction(movieId, username) {
   }
 }
 
-export { fetchReviews, reviewsAddEventFunction };
+export { fetchReviews, reviewButtonHandler };

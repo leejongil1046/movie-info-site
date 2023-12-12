@@ -15,7 +15,7 @@ import {
 
 import {
   fetchReviews,
-  reviewsAddEventFunction,
+  reviewButtonHandler,
 } from "/js/modules/movieReviewsAPI.js";
 
 import {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = loginData.username;
     console.log("Logged in as:", username);
     updateLikeStatus(movieId, username);
-    reviewsAddEventFunction(movieId, username);
+    reviewButtonHandler(movieId, username);
     // 여기서 추가 로직을 수행할 수 있습니다.
   } else {
     console.log("User is not logged in.");

@@ -35,6 +35,12 @@
               <span id="sort-year">year</span>              
             </div>
           </li>
+          <li>
+            <p id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></p>
+          </li>
+          <li>
+            <input type="text" id="search-input"/>
+          </li>
         </ul>  
       </nav>
     </header>
@@ -65,14 +71,11 @@
       <div id="loggedin-icons">
         <span id="user-icon"><i class="fa-solid fa-user"></i></span>
         <span id="loggedin-username"></span>
-        <!-- <span id="rating-icon"><i class="fa-solid fa-star"></i></span> -->
-        <!-- <span id="like-icon"><i class="fa-solid fa-heart"></i></span> -->
       </div>
       <button id="logout-button">Log out</button>
     </div>
-    <main>
+    <main id="movies-main">
       <div id="movies-container">
-        <!-- 초기 로딩 문구 -->
       </div>
       <div id="movies-pagination-container"></div>
     </main>

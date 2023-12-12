@@ -1,7 +1,7 @@
 /* 헤더 스타일 설정 */
 header {
   background-color: #000; /* 헤더 배경색 */
-  color: ddd; /* 헤더 내 텍스트 색상 */
+  color: #eee; /* 헤더 내 텍스트 색상 */
   padding: 0.5rem 1rem; /* 상하 패딩 0.5rem, 좌우 패딩 1rem 설정 */
   display: flex; /* Flexbox 레이아웃 적용 */
   justify-content: space-between; /* 내부 요소들을 양 끝에 배치 */
@@ -28,11 +28,20 @@ nav ul li {
   margin-bottom: 8px;
 }
 
+nav ul li:nth-child(5),
+nav ul li:nth-child(6) {
+  margin-right: 0px;
+}
+
 /* 네비게이션 링크 스타일 */
 #website-title,
 nav ul li a {
   color: #eee; /* 링크 텍스트 색상 */
   text-decoration: none; /* 밑줄 제거 */
+}
+
+nav i {
+  margin-left: 20px;
 }
 
 .nav-icon {
@@ -46,12 +55,6 @@ nav ul li a {
   color: red;
   font-family: "Bebas Neue", sans-serif;
   font-size: 60px;
-}
-
-#back-icon,
-#refresh-icon,
-#sort-icon {
-  margin-left: 10px;
 }
 
 nav i:hover {
@@ -68,11 +71,20 @@ nav i:hover {
   opacity: 0;
   overflow: hidden;
   transition: width 1.3s ease 0.8s, opacity 1.3s ease;
-  display: flex; /* Flexbox 적용 */
+  display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
 }
 
-/* 나타날 때 */
+#sort-icon {
+  color: #eee;
+  transition: color 1.3s ease;
+}
+
+#sort-icon.used {
+  color: red;
+  transition: color 1.3s ease 0.8s;
+}
+
 #sort-menu.open {
   opacity: 1;
   width: 170px;
@@ -91,4 +103,32 @@ nav i:hover {
   background-color: #eee;
   color: #000;
   pointer-events: none;
+}
+
+#search-icon {
+  color: #eee;
+  transition: color 1.8s ease;
+}
+
+#search-icon.used {
+  color: red;
+  transition: color 1.8s ease 0.8s;
+}
+
+#search-input {
+  height: 27px;
+  margin-bottom: 4px;
+  margin-left: 0px;
+  border-radius: 10px;
+  width: 0px;
+  opacity: 0;
+  transition: width 1.8s ease 0.8s, opacity 1.8s ease,
+    margin-left 1.8s ease 0.8s;
+}
+
+#search-input.open {
+  margin-left: 20px;
+  width: 300px;
+  opacity: 1;
+  transition: width 1.8s ease, opacity 1.8s ease 0.8s, margin-left 1.8s ease;
 }

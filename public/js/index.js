@@ -3,6 +3,7 @@ import {
   setupRefreshButton,
   sortButtonHandler,
   updateSortMenuState,
+  searchButtonHandler,
 } from "/js/modules/navigationControl.js";
 
 import { fetchAndStoreMoviesData } from "/js/modules/moviesAPI.js";
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sortButtonHandler();
   updateSortMenuState();
+  searchButtonHandler();
 
   loginProcess();
   logoutProcess();

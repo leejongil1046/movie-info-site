@@ -26,6 +26,10 @@ function fetchMovieDetails(movieId) {
 
 function updateMovieDetails(movie) {
   // 영화 상세 정보를 UI에 반영
+  document.querySelector(
+    "#movie-detail-title"
+  ).innerHTML = `FAKEFLIX - ${movie.title}`;
+
   document.body.style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), url('${movie.background_image}')`;
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundRepeat = "no-repeat";

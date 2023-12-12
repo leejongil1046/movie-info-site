@@ -42,6 +42,7 @@ function sortButtonHandler() {
   const sortIcon = document.querySelector("#sort-icon");
   const sortMenu = document.querySelector("#sort-menu");
   sortIcon.addEventListener("click", function () {
+    sortIcon.classList.toggle("used");
     sortMenu.classList.toggle("open");
   });
 
@@ -76,9 +77,19 @@ function sortButtonHandler() {
   });
 }
 
+function searchButtonHandler() {
+  const searchButton = document.querySelector("#search-icon");
+  const searchInput = document.querySelector("#search-input");
+  searchButton.addEventListener("click", function () {
+    searchButton.classList.toggle("used");
+    searchInput.classList.toggle("open");
+  });
+}
+
 export {
   setupBackButton,
   setupRefreshButton,
   sortButtonHandler,
   updateSortMenuState,
+  searchButtonHandler,
 };

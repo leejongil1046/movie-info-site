@@ -163,8 +163,6 @@ function fetchAndStoreMoviesData(page) {
             sortStoredMovies("rating");
             displayMovies(1);
             setupPagination();
-            console.log(sessionStorage.getItem("moviesData"));
-            console.log(sessionStorage.getItem("moviesIdData"));
           }
         })
         .catch((error) => console.error("Fetch error:", error));

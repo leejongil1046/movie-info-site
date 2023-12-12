@@ -30,4 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutProcess();
 
   fetchAndStoreMoviesData(1);
+
+  document.getElementById("sort-icon").addEventListener("click", function () {
+    document.getElementById("sort-menu").classList.toggle("open");
+  });
 });

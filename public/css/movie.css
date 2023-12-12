@@ -7,10 +7,10 @@
 /* Movie image */
 #movie-image {
   display: none;
-  /* max-width: 60%; 이미지의 최대 너비 설정 */
-  width: 280px;
+  width: 300px;
   border-radius: 10px; /* 둥근 모서리 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  margin-right: 10px;
 }
 
 /* Movie detail */
@@ -92,6 +92,7 @@
 #more-button {
   width: 80px;
   height: 40px;
+  margin-left: -3px;
 }
 
 #review-form button:hover,

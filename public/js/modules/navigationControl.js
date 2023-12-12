@@ -17,4 +17,16 @@ function setupRefreshButton(refreshButtonId) {
   }
 }
 
+function sortButton() {
+  const sortIcon = document.querySelector("#sort-icon");
+  const sortMenu = document.querySelector("#sort-menu");
+  sortIcon.addEventListener("click", function () {
+    sortMenu.classList.toggle("open");
+  });
+
+  const sortTitleButton = document.querySelector("#sort-title");
+  const sortRatingButton = document.querySelector("#sort-rating");
+  const sortYearButton = document.querySelector("#sort-year");
+}
+
 export { setupBackButton, setupRefreshButton };

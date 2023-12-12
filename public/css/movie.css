@@ -7,7 +7,7 @@
 /* Movie image */
 #movie-image {
   display: none;
-  width: 300px;
+  width: 280px;
   border-radius: 10px; /* 둥근 모서리 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   margin-right: 10px;
@@ -21,6 +21,9 @@
 
 /* Movie title */
 #movie-title {
+  text-shadow: 2px 2px 2px #000;
+  white-space: nowrap;
+  margin-top: -3px;
   font-size: 2rem;
   margin-bottom: 15px;
 }

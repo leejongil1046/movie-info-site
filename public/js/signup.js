@@ -1,6 +1,8 @@
 import {
   setupBackButton,
   setupRefreshButton,
+  sortButtonHandler,
+  updateSortMenuState,
 } from "/js/modules/navigationControl.js";
 
 import { generateBirthOptions } from "/js/modules/birthOptions.js";
@@ -28,6 +30,8 @@ let isEmailValid = false;
 document.addEventListener("DOMContentLoaded", async function () {
   setupBackButton("back-icon");
   setupRefreshButton("refresh-icon");
+  sortButtonHandler();
+  updateSortMenuState();
 
   generateBirthOptions();
 

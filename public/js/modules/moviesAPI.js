@@ -67,33 +67,8 @@ function setupPagination() {
   updatePaginationInfo();
 }
 
-// function fetchMoviesData() {
-//   // 세션 스토리지에서 영화 데이터를 시도하여 불러옴
-//   const storedMovies = sessionStorage.getItem("moviesData");
-
-//   if (storedMovies) {
-//     // 세션 스토리지에 데이터가 있는 경우
-//     allMovies = JSON.parse(storedMovies);
-//     displayMovies(1); // 첫 페이지의 영화 표시
-//     setupPagination(); // 페이지네이션 설정
-//   } else {
-//     createLoadingMessage();
-//     // API 호출이 필요한 경우
-//     fetch("/api/movies")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         removeLoadingMessage();
-//         allMovies = data.data.movies;
-//         allMovieIds = allMovies.map((movie) => movie.id);
-//         sessionStorage.setItem("moviesData", JSON.stringify(allMovies)); // 세션 스토리지에 저장
-//         sessionStorage.setItem("moviesIdData", JSON.stringify(allMovieIds)); // 세션 스토리지에 저장
-//         displayMovies(1); // 첫 페이지의 영화 표시
-//         setupPagination(); // 페이지네이션 설정
-//       })
-//       .catch((error) => console.error("Fetch error:", error));
-//   }
-// }
 function sortStoredMovies(sortBy) {
+  sessionStorage.setItem("currentSortCriteria", sortBy);
   const storedMovies = sessionStorage.getItem("moviesData");
 
   if (!storedMovies) {
@@ -129,6 +104,12 @@ function sortStoredMovies(sortBy) {
   allMovieIds = sortedMovieIds;
 }
 
+function newSortedMovies(sortBy) {
+  sortStoredMovies(sortBy);
+  displayMovies(1);
+  setupPagination();
+}
+
 function fetchAndStoreMoviesData(page) {
   const storedMovies = sessionStorage.getItem("moviesData");
 
@@ -152,7 +133,7 @@ function fetchAndStoreMoviesData(page) {
           allMovies = allMovies.concat(newMovies);
 
           // 다음 페이지로 이동 (선택사항)
-          const totalPages = 4;
+          const totalPages = 6;
           // const totalPages = Math.ceil(data.data.movie_count / moviesPerPage);
           if (page < totalPages) {
             fetchPage(page + 1);
@@ -160,9 +141,8 @@ function fetchAndStoreMoviesData(page) {
             // 모든 페이지의 데이터를 불러온 후에 세션 스토리지에 저장
             removeLoadingMessage();
             sessionStorage.setItem("moviesData", JSON.stringify(allMovies));
-            sortStoredMovies("rating");
-            displayMovies(1);
-            setupPagination();
+            newSortedMovies("rating");
+            document.querySelector("#sort-rating").classList.toggle("choiced");
           }
         })
         .catch((error) => console.error("Fetch error:", error));
@@ -173,4 +153,4 @@ function fetchAndStoreMoviesData(page) {
   }
 }
 
-export { fetchAndStoreMoviesData };
+export { fetchAndStoreMoviesData, newSortedMovies };

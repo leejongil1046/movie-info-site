@@ -1,6 +1,8 @@
 import {
   setupBackButton,
   setupRefreshButton,
+  sortButtonHandler,
+  updateSortMenuState,
 } from "/js/modules/navigationControl.js";
 
 // DOM이 로드되었을 때 실행

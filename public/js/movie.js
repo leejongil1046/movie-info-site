@@ -1,11 +1,8 @@
 import {
-  createLoadingMessage,
-  removeLoadingMessage,
-} from "/js/modules/loadingMessageControl.js";
-
-import {
   setupBackButton,
   setupRefreshButton,
+  sortButtonHandler,
+  updateSortMenuState,
 } from "/js/modules/navigationControl.js";
 
 import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js";
@@ -35,11 +32,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   // URL에서 ID를 추출
   const movieId = new URL(window.location).pathname.split("/").pop();
 
-  // 로딩 메시지 추가
-  createLoadingMessage();
-
   setupBackButton("back-icon");
   setupRefreshButton("refresh-icon");
+  sortButtonHandler();
+  updateSortMenuState();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   await fetchMovieDetails(movieId);

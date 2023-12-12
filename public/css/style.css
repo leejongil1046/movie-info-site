@@ -28,6 +28,7 @@ body {
 
 /* 메인 콘텐츠 영역에 대한 스타일 */
 main {
+  text-shadow: 1px 1px 1px #000;
   padding: 20px; /* 내부 여백 설정 */
   margin-top: 85px; /* 헤더 아래 공간 확보를 위한 상단 마진 */
   margin-left: 220px; /* 로그인 박스와 겹치지 않도록 왼쪽 여백 설정 */

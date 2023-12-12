@@ -38,6 +38,7 @@ nav ul li a {
 .nav-icon {
   font-size: 25px;
   margin-top: 8px;
+  margin-right: 30px;
 }
 
 #back-icon,
@@ -74,6 +75,6 @@ nav i:hover {
 
 /* body의 배경 이미지에 애니메이션 적용 */
 nav i {
-  animation: fadeInBackground 0.5s ease-in-out; /* 1초 동안 서서히 나타나는 애니메이션 */
+  animation: fadeInBackground 0.3s ease-in-out; /* 1초 동안 서서히 나타나는 애니메이션 */
   animation-fill-mode: forwards; /* 애니메이션 종료 후 상태를 유지함 */
 }

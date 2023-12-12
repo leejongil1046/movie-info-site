@@ -7,7 +7,8 @@
 /* Movie image */
 #movie-image {
   display: none;
-  max-width: 40%; /* 이미지의 최대 너비 설정 */
+  /* max-width: 60%; 이미지의 최대 너비 설정 */
+  width: 280px;
   border-radius: 10px; /* 둥근 모서리 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
@@ -62,13 +63,17 @@
 /* Movie story section */
 .movie-story {
   display: none;
-  max-width: 70%; /* 가로 크기를 main의 60%로 설정 */
+  max-width: 78%; /* 가로 크기를 main의 60%로 설정 */
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px 30px; /* 패딩 추가 */
   background-color: rgba(0, 0, 0, 0.4); /* 배경색 설정 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
   border-radius: 10px; /* 둥근 모서리 */
+}
+
+#movie-description {
+  padding: 0px 20px;
 }
 
 #review-form button,
@@ -105,4 +110,44 @@
 
 #modify-review {
   display: none;
+}
+
+#left-movie,
+#right-movie {
+  font-size: 70px;
+  position: fixed;
+  top: 52%; /* 상하 중앙 */
+  transform: translateY(-50%); /* Y축 기준 중앙 정렬 */
+  opacity: 0;
+  transition: opacity 0.3s; /* 투명도 변화 효과 */
+  color: #fff;
+}
+
+#left-movie:hover,
+#right-movie:hover {
+  opacity: 0.5; /* 호버 상태일 때 투명도 */
+}
+
+#left-movie i:hover,
+#right-movie i:hover {
+  cursor: pointer;
+}
+
+#left-movie {
+  left: 5%; /* 왼쪽에서 50px 떨어진 위치 */
+}
+#right-movie {
+  right: 5%; /* 왼쪽에서 50px 떨어진 위치 */
+}
+
+#imdb-rating {
+  display: flex; /* 가로 정렬을 위해 Flexbox 레이아웃 사용 */
+  align-items: center; /* 아이콘과 텍스트를 수직 정렬 */
+  margin-left: -2px;
+}
+
+#imdb-rating img {
+  width: 30px;
+  height: 25px;
+  border-radius: 5px;
 }

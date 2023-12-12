@@ -82,6 +82,7 @@ function makeNewReveiw(movieId, username, rating, reviewText) {
   usernameSpan.textContent = `by ${username}`;
   usernameSpan.style.fontSize = "15px"; // 사용자 이름 크기 설정
   usernameSpan.style.marginTop = "8px";
+  usernameSpan.style.color = "#999";
 
   const deleteIcon = document.createElement("span");
   deleteIcon.id = `${username}-delete`;

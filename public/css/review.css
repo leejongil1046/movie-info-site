@@ -2,23 +2,28 @@
 .movie-reviews {
   position: relative;
   display: none;
-  max-width: 70%;
+  max-width: 78%;
   height: 530px;
   padding: 20px 30px;
   background-color: rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   color: #eee;
-  margin-bottom: 30px;
+  margin-bottom: 29px;
+}
+
+.movie-reviews h2 {
+  padding: 0px 20px;
 }
 
 #review-form {
   margin-bottom: 20px;
+  padding: 0px 15px;
 }
 
 #review-form textarea {
   display: block;
-  width: 600px;
+  width: 700px;
   height: 15px;
   margin: 10px;
   padding: 10px;
@@ -34,6 +39,7 @@
 
 .rating_box {
   display: flex;
+  /* padding: 0px 20px; */
 }
 
 .rating {
@@ -65,4 +71,8 @@
 
 #reviews-list i:hover {
   cursor: pointer;
+}
+
+#reviews-list {
+  padding: 0px 20px;
 }

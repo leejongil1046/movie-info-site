@@ -45,11 +45,12 @@ function fetchMovieDetails(movieId) {
         document.querySelector("#movie-language").innerHTML =
           '<span id="language-label"><i class="fa-solid fa-volume-high"></i></span> &nbsp;' +
           language;
+        const imdbIconUrl = "../images/imdb-icon.png";
+        document.querySelector("#imdb-rating").innerHTML =
+          `<img src="${imdbIconUrl}" alt="아이콘"> &nbsp;&nbsp;` +
+          data.data.movie.rating +
+          "/10";
         document.querySelector("#movie-rating").style.display = "block";
-        // document.querySelector("#movie-rating").innerHTML =
-        //   '<span id="rating-label"><i class="fa-solid fa-star"></i></span> &nbsp;&nbsp;' +
-        //   data.data.movie.rating +
-        //   "/10";
         document.querySelector("#movie-like").style.display = "block";
 
         const descriptionFull = data.data.movie.description_full;

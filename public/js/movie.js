@@ -28,6 +28,8 @@ import {
 
 import { restrictAccessToNotLoggedinUsers } from "/js/modules/accessControl.js";
 
+import { setupNavigationArrows } from "/js/modules/navigationArrowsHandler.js";
+
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", async () => {
   // URL에서 ID를 추출
@@ -59,4 +61,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 로그인하지 않은 상태에 대한 처리를 할 수 있습니다.
   }
   displayTotalLikes(movieId);
+
+  setupNavigationArrows(movieId);
 });

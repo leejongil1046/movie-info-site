@@ -1,6 +1,10 @@
-import { removeLoadingMessage } from "/js/modules/loadingMessageControl.js"; // Adjust the path as needed
+import {
+  createLoadingMessage,
+  removeLoadingMessage,
+} from "/js/modules/loadingMessageControl.js"; // Adjust the path as needed
 
 let allMovies = [];
+let allMovieIds = [];
 let currentPage = 1;
 const moviesPerPage = 10;
 
@@ -63,16 +67,112 @@ function setupPagination() {
   updatePaginationInfo();
 }
 
-function fetchMoviesData() {
-  fetch("/api/movies")
-    .then((response) => response.json())
-    .then((data) => {
-      removeLoadingMessage();
-      allMovies = data.data.movies;
-      displayMovies(1); // 첫 페이지의 영화 표시
-      setupPagination(allMovies.length); // 페이지네이션 설정
-    })
-    .catch((error) => console.error("Fetch error:", error));
+// function fetchMoviesData() {
+//   // 세션 스토리지에서 영화 데이터를 시도하여 불러옴
+//   const storedMovies = sessionStorage.getItem("moviesData");
+
+//   if (storedMovies) {
+//     // 세션 스토리지에 데이터가 있는 경우
+//     allMovies = JSON.parse(storedMovies);
+//     displayMovies(1); // 첫 페이지의 영화 표시
+//     setupPagination(); // 페이지네이션 설정
+//   } else {
+//     createLoadingMessage();
+//     // API 호출이 필요한 경우
+//     fetch("/api/movies")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         removeLoadingMessage();
+//         allMovies = data.data.movies;
+//         allMovieIds = allMovies.map((movie) => movie.id);
+//         sessionStorage.setItem("moviesData", JSON.stringify(allMovies)); // 세션 스토리지에 저장
+//         sessionStorage.setItem("moviesIdData", JSON.stringify(allMovieIds)); // 세션 스토리지에 저장
+//         displayMovies(1); // 첫 페이지의 영화 표시
+//         setupPagination(); // 페이지네이션 설정
+//       })
+//       .catch((error) => console.error("Fetch error:", error));
+//   }
+// }
+function sortStoredMovies(sortBy) {
+  const storedMovies = sessionStorage.getItem("moviesData");
+
+  if (!storedMovies) {
+    console.error("No movies data in sessionStorage.");
+    return [];
+  }
+
+  let movies = JSON.parse(storedMovies);
+
+  switch (sortBy) {
+    case "title":
+      movies.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "year":
+      movies.sort((a, b) => b.year - a.year); // 내림차순 정렬
+      break;
+    case "rating":
+      movies.sort((a, b) => b.rating - a.rating); // 내림차순 정렬
+      break;
+    // 다른 정렬 기준 추가 가능
+    default:
+      console.error("Invalid sort criteria");
+      break;
+  }
+
+  // 정렬된 영화 데이터를 세션 스토리지에 저장
+  sessionStorage.setItem("moviesData", JSON.stringify(movies));
+
+  // 영화 ID만 추출하여 저장
+  const sortedMovieIds = movies.map((movie) => movie.id);
+  sessionStorage.setItem("moviesIdData", JSON.stringify(sortedMovieIds));
+  allMovies = movies;
+  allMovieIds = sortedMovieIds;
 }
 
-export { fetchMoviesData };
+function fetchAndStoreMoviesData(page) {
+  const storedMovies = sessionStorage.getItem("moviesData");
+
+  if (storedMovies) {
+    // 세션 스토리지에서 이전 데이터를 불러옴
+    allMovies = JSON.parse(storedMovies);
+    displayMovies(page); // 현재 페이지의 영화 표시
+    setupPagination(); // 페이지네이션 설정
+  } else {
+    allMovies = [];
+
+    function fetchPage(page) {
+      fetch(
+        `https://yts.mx/api/v2/list_movies.json?sort_by=download_count&limit=50&page=${page}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const newMovies = data.data.movies;
+
+          // 이전 데이터와 현재 데이터 결합
+          allMovies = allMovies.concat(newMovies);
+
+          // 다음 페이지로 이동 (선택사항)
+          const totalPages = 5;
+          // const totalPages = Math.ceil(data.data.movie_count / moviesPerPage);
+          if (page < totalPages) {
+            fetchPage(page + 1);
+          } else {
+            // 모든 페이지의 데이터를 불러온 후에 세션 스토리지에 저장
+            removeLoadingMessage();
+            sessionStorage.setItem("moviesData", JSON.stringify(allMovies));
+            sortStoredMovies("rating");
+            displayMovies(1);
+            setupPagination();
+            console.log(sessionStorage.getItem("moviesData"));
+            console.log(sessionStorage.getItem("moviesIdData"));
+          }
+        })
+        .catch((error) => console.error("Fetch error:", error));
+    }
+
+    createLoadingMessage();
+    fetchPage(page);
+  }
+}
+
+export { fetchAndStoreMoviesData };

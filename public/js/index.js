@@ -8,7 +8,7 @@ import {
   setupRefreshButton,
 } from "/js/modules/navigationControl.js";
 
-import { fetchMoviesData } from "/js/modules/moviesAPI.js";
+import { fetchAndStoreMoviesData } from "/js/modules/moviesAPI.js";
 
 import {
   loginProcess,
@@ -19,7 +19,7 @@ import {
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
   // 로딩 메시지 추가
-  createLoadingMessage();
+  // createLoadingMessage();
 
   loginCheck();
 
@@ -29,5 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loginProcess();
   logoutProcess();
 
-  fetchMoviesData();
+  fetchAndStoreMoviesData(1);
 });

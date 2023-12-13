@@ -43,13 +43,13 @@ function updatePagination(totalReviews, reviewsPerPage) {
 
   // 좌우 화살표 및 페이지 정보 추가
   paginationContainer.innerHTML = `
-    <button id="prev-page"><i class="fa-solid fa-angle-left"></i></button>
+    <button id="prev-review"><i class="fa-solid fa-angle-left"></i></button>
     <span>${currentPage} / ${totalPages}</span>
-    <button id="next-page"><i class="fa-solid fa-angle-right"></i></button>
+    <button id="next-review"><i class="fa-solid fa-angle-right"></i></button>
   `;
 
   // 이전 페이지 버튼 이벤트 리스너
-  document.getElementById("prev-page").addEventListener("click", () => {
+  document.getElementById("prev-review").addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
       displayReviews(currentPage);
@@ -57,7 +57,7 @@ function updatePagination(totalReviews, reviewsPerPage) {
   });
 
   // 다음 페이지 버튼 이벤트 리스너
-  document.getElementById("next-page").addEventListener("click", () => {
+  document.getElementById("next-review").addEventListener("click", () => {
     if (currentPage < totalPages) {
       currentPage++;
       displayReviews(currentPage);
@@ -314,7 +314,6 @@ async function fetchDeleteReview(movieId, username) {
     if (response.ok) {
       calucAvgRating(data.averageRating);
       deleteUserReview(username);
-      updateAvgRating();
       changeButton(username);
     } else {
       // 서버 오류 응답 처리

@@ -48,7 +48,7 @@ async function displayTotalLikes(movieId) {
     const totalLikes = data.totalLikes || 0; // 만약 값이 없다면 0으로 설정
 
     const totalLikeElement = document.querySelector("#total-like");
-    totalLikeElement.innerHTML = `&nbsp;&nbsp;&nbsp;${totalLikes}`; // 공백을 추가하여 아이콘과의 간격을 조정
+    totalLikeElement.innerHTML = `&nbsp;&nbsp;${totalLikes}`; // 공백을 추가하여 아이콘과의 간격을 조정
   } catch (error) {
     console.error("Error fetching total likes:", error);
   }

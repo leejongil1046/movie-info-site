@@ -62,6 +62,16 @@ nav i:hover {
   cursor: pointer;
 }
 
+#sort-icon {
+  color: #eee;
+  transition: color 0.9s ease;
+}
+
+#sort-icon.used {
+  color: red;
+  transition: color 0.9s ease 0.5s;
+}
+
 #sort-menu {
   background-color: #222;
   text-align: center;
@@ -70,26 +80,16 @@ nav i:hover {
   width: 0px;
   opacity: 0;
   overflow: hidden;
-  transition: width 1.3s ease 0.8s, opacity 1.3s ease;
+  transition: width 0.9s ease 0.5s, opacity 0.9s ease;
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
-}
-
-#sort-icon {
-  color: #eee;
-  transition: color 1.3s ease;
-}
-
-#sort-icon.used {
-  color: red;
-  transition: color 1.3s ease 0.8s;
 }
 
 #sort-menu.open {
   opacity: 1;
   width: 170px;
   height: 42px;
-  transition: width 1.3s ease, opacity 1.3s ease 0.8s; /* opacity 먼저, width는 지연 */
+  transition: width 0.9s ease, opacity 0.9s ease 0.5s; /* opacity 먼저, width는 지연 */
 }
 
 #sort-menu span {
@@ -107,28 +107,90 @@ nav i:hover {
 
 #search-icon {
   color: #eee;
-  transition: color 1.8s ease;
+  transition: color 1.2s ease;
 }
 
 #search-icon.used {
   color: red;
-  transition: color 1.8s ease 0.8s;
+  transition: color 1.2s ease 0.6s;
 }
 
 #search-input {
+  padding: 0px 10px;
   height: 27px;
   margin-bottom: 4px;
   margin-left: 0px;
   border-radius: 10px;
   width: 0px;
   opacity: 0;
-  transition: width 1.8s ease 0.8s, opacity 1.8s ease,
-    margin-left 1.8s ease 0.8s;
+  transition: width 1.2s ease 0.6s, opacity 1.2s ease,
+    margin-left 1.2s ease 0.6s;
 }
 
 #search-input.open {
   margin-left: 20px;
   width: 300px;
   opacity: 1;
-  transition: width 1.8s ease, opacity 1.8s ease 0.8s, margin-left 1.8s ease;
+  transition: width 1.2s ease, opacity 1.2s ease 0.6s, margin-left 1.2s ease;
+}
+
+#search-results {
+  /* 스크롤 가능 박스 스타일링 */
+  margin-left: 14px;
+  width: 365px;
+  position: fixed;
+  top: 75px;
+  max-height: 450px;
+  overflow-y: auto;
+  background-color: #000;
+  z-index: 1000;
+  align-items: flex;
+  transition: max-height 0.6s ease-in-out;
+  /* margin-top: 100px; */
+}
+
+#search-results.hidden {
+  max-height: 0;
+  transition: max-height 0.6s ease-in-out;
+}
+
+.searched-movie {
+  background-color: #000;
+  display: flex;
+  border-bottom: 1px solid #333;
+}
+
+.searched-movie:hover {
+  background-color: #222;
+  cursor: pointer;
+}
+
+.searched-movie img {
+  width: 70px;
+  height: 105px;
+  padding: 20px;
+}
+
+.searched-movie h4 {
+  font-size: 20px;
+}
+
+.searched-movie h6 {
+  margin-top: 10px;
+}
+
+#no-found {
+  height: 105px;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+#no-found i {
+  text-align: center;
+  font-size: 40px;
+}
+
+#no-found div {
+  margin-top: 20px;
 }

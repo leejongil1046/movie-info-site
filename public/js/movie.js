@@ -3,6 +3,7 @@ import {
   setupRefreshButton,
   sortButtonHandler,
   updateSortMenuState,
+  searchButtonHandler,
 } from "/js/modules/navigationControl.js";
 
 import { fetchMovieDetails } from "/js/modules/movieDetailsAPI.js";
@@ -27,6 +28,10 @@ import { restrictAccessToNotLoggedinUsers } from "/js/modules/accessControl.js";
 
 import { setupNavigationArrows } from "/js/modules/navigationArrowsHandler.js";
 
+import { updateNavigationButtons } from "/js/modules/prevNextMovies.js";
+
+import { quickSearchInput } from "/js/modules/quickSearchHandler.js";
+
 // DOM이 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", async () => {
   // URL에서 ID를 추출
@@ -36,10 +41,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupRefreshButton("refresh-icon");
   sortButtonHandler();
   updateSortMenuState();
+  searchButtonHandler();
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   await fetchMovieDetails(movieId);
   await fetchReviews(movieId);
+  updateNavigationButtons(movieId);
 
   loginProcess();
   logoutProcess();
@@ -59,4 +66,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   displayTotalLikes(movieId);
 
   setupNavigationArrows(movieId);
+
+  quickSearchInput();
 });

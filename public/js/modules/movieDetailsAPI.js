@@ -1,3 +1,46 @@
+const languageMap = {
+  "ar-XA": "Arabic",
+  bg: "Bulgarian",
+  hr: "Croatian",
+  cs: "Czech",
+  da: "Danish",
+  de: "German",
+  el: "Greek",
+  en: "English",
+  et: "Estonian",
+  es: "Spanish",
+  fi: "Finnish",
+  fr: "French",
+  ga: "Irish",
+  hi: "Hindi",
+  hu: "Hungarian",
+  he: "Hebrew",
+  it: "Italian",
+  ja: "Japanese",
+  ko: "Korean",
+  lv: "Latvian",
+  lt: "Lithuanian",
+  nl: "Dutch",
+  no: "Norwegian",
+  pl: "Polish",
+  pt: "Portuguese",
+  sv: "Swedish",
+  ro: "Romanian",
+  ru: "Russian",
+  "sr-CS": "Serbian",
+  sk: "Slovak",
+  sl: "Slovenian",
+  th: "Thai",
+  tr: "Turkish",
+  "uk-UA": "Ukrainian",
+  "zh-chs": "Chinese (Simplified)",
+  "zh-cht": "Chinese (Traditional)",
+};
+
+function getFullLanguageName(code) {
+  return languageMap[code] || code;
+}
+
 function truncateDescription(description, maxLength) {
   if (description.length > maxLength) {
     return description.substring(0, maxLength) + "...";
@@ -43,13 +86,19 @@ function updateMovieDetails(movie) {
   document.querySelector("#movie-image").src = movie.medium_cover_image;
   document.querySelector("#movie-image").alt = movie.title;
   document.querySelector("#movie-genres").innerHTML = movie.genres.join(" / ");
+  // movie.genres.forEach((genre) => {
+  //   const span = document.createElement("span");
+  //   span.className = "genre-span";
+  //   span.textContent = genre;
+  //   document.querySelector("#movie-genres").appendChild(span);
+  // });
 
   document.querySelector("#movie-runtime").innerHTML =
-    '<span id="runtime-label"><i class="fa-regular fa-clock"></i></span> &nbsp;&nbsp;' +
+    '<span id="runtime-label"><i class="fa-regular fa-clock"></i></span> &nbsp;' +
     movie.runtime +
     " min";
 
-  let language = movie.language === "en" ? "English" : movie.language;
+  let language = getFullLanguageName(movie.language);
   document.querySelector("#movie-language").innerHTML =
     '<span id="language-label"><i class="fa-solid fa-volume-high"></i></span> &nbsp;' +
     language;

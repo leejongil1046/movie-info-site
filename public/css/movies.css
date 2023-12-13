@@ -12,6 +12,7 @@
 #movies-container div {
   margin-bottom: 20px; /* 각 영화 컨테이너 하단에 여백 추가 */
   width: 218px; /* 각 영화 컨테이너의 너비 고정 */
+  height: 430px;
   box-sizing: border-box; /* 패딩과 테두리를 너비 계산에 포함 */
   text-align: center; /* 텍스트를 중앙 정렬 */
   margin: 0px 15px;
@@ -24,6 +25,9 @@
   margin-bottom: 15px; /* 이미지 아래 여백 설정 */
   border-radius: 10px; /* 이미지 모서리 둥글게 처리 */
   cursor: pointer; /* 마우스 커서를 포인터 모양으로 변경 */
+  position: relative;
+  z-index: 0;
+  transition: transform 0.3s ease;
 }
 
 /* 영화 제목 스타일 */
@@ -43,7 +47,9 @@
 
 /* 이미지에 마우스를 올렸을 때 */
 #movies-container a:hover img {
-  transform: scale(1.05); /* 이미지를 5% 더 크게 확대 */
+  transform: scale(1.09); /* 이미지를 5% 더 크게 확대 */
+  border: 3px solid #eee;
+  z-index: 1;
 }
 
 #movies-container a:hover h3 {

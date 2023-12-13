@@ -100,11 +100,12 @@ function sortStoredMovies(sortBy) {
   // 영화 ID만 추출하여 저장
   const sortedMovieIds = movies.map((movie) => movie.id);
   sessionStorage.setItem("moviesIdData", JSON.stringify(sortedMovieIds));
+
   allMovies = movies;
   allMovieIds = sortedMovieIds;
 }
 
-function newSortedMovies(sortBy) {
+function showNewSortedMovies(sortBy) {
   sortStoredMovies(sortBy);
   displayMovies(1);
   setupPagination();
@@ -123,17 +124,17 @@ function fetchAndStoreMoviesData(page) {
 
     function fetchPage(page) {
       fetch(
-        `https://yts.mx/api/v2/list_movies.json?sort_by=download_count&limit=50&page=${page}`
+        `https://yts.mx/api/v2/list_movies.json?sort_by=like_count&limit=50&page=${page}`
       )
         .then((response) => response.json())
         .then((data) => {
           const newMovies = data.data.movies;
-
+          console.log(data);
           // 이전 데이터와 현재 데이터 결합
           allMovies = allMovies.concat(newMovies);
 
           // 다음 페이지로 이동 (선택사항)
-          const totalPages = 10;
+          const totalPages = 12;
           // const totalPages = Math.ceil(data.data.movie_count / moviesPerPage);
           if (page < totalPages) {
             fetchPage(page + 1);
@@ -141,7 +142,7 @@ function fetchAndStoreMoviesData(page) {
             // 모든 페이지의 데이터를 불러온 후에 세션 스토리지에 저장
             removeLoadingMessage();
             sessionStorage.setItem("moviesData", JSON.stringify(allMovies));
-            newSortedMovies("rating");
+            showNewSortedMovies("rating");
             document.querySelector("#sort-rating").classList.toggle("choiced");
           }
         })
@@ -153,4 +154,4 @@ function fetchAndStoreMoviesData(page) {
   }
 }
 
-export { fetchAndStoreMoviesData, newSortedMovies };
+export { fetchAndStoreMoviesData, showNewSortedMovies };

@@ -28,7 +28,9 @@ body {
 
 /* 메인 콘텐츠 영역에 대한 스타일 */
 main {
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: -1px -1px 0 #000, /* 상단 왼쪽 그림자 */ 1px -1px 0 #000,
+    /* 상단 오른쪽 그림자 */ -1px 1px 0 #000,
+    /* 하단 왼쪽 그림자 */ 1px 1px 0 #000; /* 하단 오른쪽 그림자 */
   padding: 20px; /* 내부 여백 설정 */
   margin-top: 85px; /* 헤더 아래 공간 확보를 위한 상단 마진 */
   margin-left: 220px; /* 로그인 박스와 겹치지 않도록 왼쪽 여백 설정 */
@@ -86,4 +88,17 @@ main {
 a {
   text-decoration: none;
   color: #eee;
+}
+
+/* 전체 스크롤바의 너비와 배경색을 설정합니다. */
+::-webkit-scrollbar {
+  width: 15px; /* 스크롤바의 너비 */
+  height: 15px; /* 수평 스크롤바의 높이 */
+  background-color: #000; /* 스크롤바의 배경색 */
+}
+
+/* 스크롤바 핸들(움직이는 부분)의 스타일을 설정합니다. */
+::-webkit-scrollbar-thumb {
+  background-color: #111; /* 핸들의 배경색 */
+  border-radius: 10px; /* 핸들의 둥근 모서리 */
 }

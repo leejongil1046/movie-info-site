@@ -2,10 +2,10 @@ const bcrypt = require("bcrypt");
 const db = require("../models/database.js"); // Assuming you have a dbConfig.js file as explained earlier
 
 exports.checkUsername = async (req, res) => {
-  const username = req.body.username;
+  const username = req.body.username.toLowerCase(); // 사용자 입력을 소문자로 변환
   try {
     const [rows] = await db.execute(
-      "SELECT COUNT(*) as count FROM users WHERE username = ?",
+      "SELECT COUNT(*) as count FROM users WHERE LOWER(username) = ?", // DB의 username도 소문자로 변환하여 비교
       [username]
     );
 

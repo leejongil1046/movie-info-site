@@ -47,13 +47,13 @@ exports.submitReview = async (req, res) => {
         "INSERT INTO movie_reviews (movie_id, username, rating, review, `like`, review_created_at) VALUES (?, ?, ?, ?, 0, NOW())",
         [movieId, username, rating, reviewText]
       );
-      // 평균 평점 가져오기
-      const [averageRatingResult] = await db.query(
-        "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
-        [movieId]
-      );
-      const averageRating = averageRatingResult[0].averageRating || 0;
     }
+    // 평균 평점 가져오기
+    const [averageRatingResult] = await db.query(
+      "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
+      [movieId]
+    );
+    const averageRating = averageRatingResult[0].averageRating || 0;
     res.json({
       message: "Review submitted successfully",
       averageRating: averageRating,

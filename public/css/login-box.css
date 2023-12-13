@@ -71,6 +71,9 @@
 }
 
 #loggedin-box {
+  text-shadow: -1px -1px 0 #000, /* 상단 왼쪽 그림자 */ 1px -1px 0 #000,
+    /* 상단 오른쪽 그림자 */ -1px 1px 0 #000,
+    /* 하단 왼쪽 그림자 */ 1px 1px 0 #000; /* 하단 오른쪽 그림자 */
   display: none;
   background-color: rgba(0, 0, 0, 0.4); /* 배경색 설정 */
   padding: 1rem; /* 내부 여백 설정 */

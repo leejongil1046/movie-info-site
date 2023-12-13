@@ -17,8 +17,9 @@ function usernameDuplicationCheck() {
         resolve(false);
         return;
       }
-      // 사용자 이름의 길이가 10자를 초과하거나 모두 소문자가 아닌 경우
-      if (this.value.length > 10 || !/^[a-z]+$/.test(this.value)) {
+
+      // 사용자 이름의 길이가 10자를 초과하거나 소문자, 대문자 알파벳, 숫자가 아닌 경우
+      if (this.value.length > 10 || !/^[a-zA-Z0-9]+$/.test(this.value)) {
         usernameErrorMsgEl.style.color = "red";
         usernameErrorMsgEl.textContent =
           "Username cannot be more than 10 characters and must contain only lowercase letters.";

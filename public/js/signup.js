@@ -3,6 +3,7 @@ import {
   setupRefreshButton,
   sortButtonHandler,
   updateSortMenuState,
+  searchButtonHandler,
 } from "/js/modules/navigationControl.js";
 
 import { generateBirthOptions } from "/js/modules/birthOptions.js";
@@ -24,6 +25,8 @@ import {
 
 import { signupSubmit } from "/js/modules/signupControl.js";
 
+import { quickSearchInput } from "/js/modules/quickSearchHandler.js";
+
 let isUsernameValid = false;
 let isEmailValid = false;
 
@@ -32,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   setupRefreshButton("refresh-icon");
   sortButtonHandler();
   updateSortMenuState();
+  searchButtonHandler();
 
   generateBirthOptions();
 
@@ -44,6 +48,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
   checkPasswordValidation();
   checkBirthdateValidation();
+
+  quickSearchInput();
 
   signupSubmit(
     () =>

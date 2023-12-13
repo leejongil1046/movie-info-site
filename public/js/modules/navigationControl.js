@@ -1,4 +1,4 @@
-import { newSortedMovies } from "/js/modules/moviesAPI.js";
+import { showNewSortedMovies } from "/js/modules/moviesAPI.js";
 
 function setupBackButton(backButtonId) {
   const backButton = document.getElementById(backButtonId);
@@ -72,7 +72,7 @@ function sortButtonHandler() {
       });
 
       // newSortedMovies 함수 호출
-      newSortedMovies(criteria);
+      showNewSortedMovies(criteria);
     });
   });
 }
@@ -80,9 +80,18 @@ function sortButtonHandler() {
 function searchButtonHandler() {
   const searchButton = document.querySelector("#search-icon");
   const searchInput = document.querySelector("#search-input");
+  const resultsContainer = document.querySelector("#search-results");
   searchButton.addEventListener("click", function () {
     searchButton.classList.toggle("used");
     searchInput.classList.toggle("open");
+    if (searchInput.classList.contains("open")) searchInput.focus();
+    else {
+      searchInput.blur();
+      searchInput.value = "";
+      setTimeout(() => {
+        resultsContainer.innerHTML = "";
+      }, 1000);
+    }
   });
 }
 

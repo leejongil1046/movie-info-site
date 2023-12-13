@@ -76,3 +76,8 @@
 #reviews-list {
   padding: 0px 20px;
 }
+
+#prev-review i:hover,
+#next-review i:hover {
+  color: red;
+}

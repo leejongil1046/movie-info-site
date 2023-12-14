@@ -90,7 +90,7 @@ function searchButtonHandler() {
       searchInput.value = "";
       setTimeout(() => {
         resultsContainer.innerHTML = "";
-      }, 1000);
+      }, 800);
     }
   });
 }

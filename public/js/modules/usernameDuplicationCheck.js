@@ -22,7 +22,7 @@ function usernameDuplicationCheck() {
       if (this.value.length > 10 || !/^[a-zA-Z0-9]+$/.test(this.value)) {
         usernameErrorMsgEl.style.color = "red";
         usernameErrorMsgEl.textContent =
-          "Username cannot be more than 10 characters and must contain only lowercase letters.";
+          "Username must be under 10 characters and can only contain letters and numbers.";
         resolve(false);
         return;
       }
@@ -39,7 +39,7 @@ function usernameDuplicationCheck() {
           const isUsernameValid = !data.isTaken;
           if (isUsernameValid) {
             usernameErrorMsgEl.style.color = "limegreen";
-            usernameErrorMsgEl.textContent = "The username is available.";
+            usernameErrorMsgEl.textContent = "Username is available.";
           } else {
             usernameErrorMsgEl.style.color = "red";
             usernameErrorMsgEl.textContent = "The username already exists.";
@@ -48,7 +48,7 @@ function usernameDuplicationCheck() {
         })
         .catch((error) => {
           // 오류 발생 시, 오류를 콘솔에 출력하고 Promise를 reject합니다.
-          console.error("Error:", error);
+          console.error("오류:", error);
           reject(error);
         });
     });

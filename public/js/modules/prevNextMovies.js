@@ -1,17 +1,17 @@
 function updateNavigationButtons(movieId) {
-  const allMovies = JSON.parse(sessionStorage.getItem("moviesData"));
-  const allMovieIds = JSON.parse(sessionStorage.getItem("moviesIdData"));
+  const allMovies = JSON.parse(sessionStorage.getItem("moviesData")); // 세션 스토리지에서 영화 데이터 로드
+  const allMovieIds = JSON.parse(sessionStorage.getItem("moviesIdData")); // 세션 스토리지에서 영화 ID 데이터 로드
   if (!allMovieIds) {
-    console.error("No movie IDs in sessionStorage.");
+    console.error("No movie IDs in sessionStorage."); // 세션 스토리지에 영화 ID가 없을 경우 오류 출력
     return;
   }
 
-  const currentIndex = allMovieIds.indexOf(parseInt(movieId));
-  const prevMovieId = allMovieIds[currentIndex - 1];
-  const nextMovieId = allMovieIds[currentIndex + 1];
+  const currentIndex = allMovieIds.indexOf(parseInt(movieId)); // 현재 영화의 인덱스 찾기
+  const prevMovieId = allMovieIds[currentIndex - 1]; // 이전 영화의 ID
+  const nextMovieId = allMovieIds[currentIndex + 1]; // 다음 영화의 ID
 
-  const prevMovieContainer = document.querySelector("#prev-movie");
-  const nextMovieContainer = document.querySelector("#next-movie");
+  const prevMovieContainer = document.querySelector("#prev-movie"); // 이전 영화 컨테이너
+  const nextMovieContainer = document.querySelector("#next-movie"); // 다음 영화 컨테이너
 
   if (currentIndex > 0) {
     // 이전 영화가 존재할 경우
@@ -42,4 +42,4 @@ function updateNavigationButtons(movieId) {
   }
 }
 
-export { updateNavigationButtons };
+export { updateNavigationButtons }; // 함수를 다른

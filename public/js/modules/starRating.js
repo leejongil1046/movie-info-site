@@ -1,10 +1,11 @@
 function starRatingInput() {
-  const rating_input = document.querySelector(".rating input");
-  const rating_star = document.querySelector(".rating_star");
+  const rating_input = document.querySelector(".rating input"); // 별점 입력 필드 선택
+  const rating_star = document.querySelector(".rating_star"); // 별점 표시를 위한 요소 선택
 
+  // 별점 입력 이벤트 리스너
   rating_input.addEventListener("input", () => {
-    const ratingValue = rating_input.value;
-    rating_star.style.width = `${ratingValue * 10}%`;
+    const ratingValue = rating_input.value; // 별점 값 가져오기
+    rating_star.style.width = `${ratingValue * 10}%`; // 별점 표시 업데이트
   });
 }
 
@@ -42,4 +43,4 @@ function createStarRatingElement(ratingValue) {
   return ratingBox;
 }
 
-export { starRatingInput, createStarRatingElement };
+export { starRatingInput, createStarRatingElement }; // 함수들을 다른 모듈에서 사용할 수 있도록 export

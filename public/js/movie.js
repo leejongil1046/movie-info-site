@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   await fetchMovieDetails(movieId);
-  await fetchReviews(movieId);
   updateNavigationButtons(movieId);
 
   loginProcess();
@@ -54,11 +53,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const loginData = await loginCheck();
   if (loginData && loginData.loggedIn) {
     const username = loginData.username;
+    await fetchReviews(movieId, username);
     console.log("Logged in as:", username);
     updateLikeStatus(movieId, username);
     reviewButtonHandler(movieId, username);
     // 여기서 추가 로직을 수행할 수 있습니다.
   } else {
+    await fetchReviews(movieId, null);
     console.log("User is not logged in.");
     restrictAccessToNotLoggedinUsers();
     // 로그인하지 않은 상태에 대한 처리를 할 수 있습니다.

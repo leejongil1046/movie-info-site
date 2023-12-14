@@ -8,36 +8,38 @@ function validateEmail(email) {
   return emailRegex.test(email);
 }
 
+// 로그인 처리를 위한 함수
 function loginProcess() {
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+      event.preventDefault(); // 폼의 기본 제출 동작 방지
 
-      // 폼 데이터 수집
+      // 폼 입력 필드에서 데이터 수집
       const emailField = document.querySelector("#login-form #email");
       const passwordField = document.querySelector("#login-form #password");
       const email = emailField.value;
       const password = passwordField.value;
 
+      // 이메일 형식 검증
       if (!validateEmail(email)) {
-        alert("Please enter a valid email address.");
+        alert("Please enter a correct email address.");
         emailField.value = "";
         passwordField.value = "";
         emailField.focus();
         return;
       }
 
-      // 입력 값 검증
+      // 이메일과 비밀번호가 모두 입력되었는지 확인
       if (!email || !password) {
-        alert("Please enter both your email and password.");
+        alert("Please enter both email and password.");
         emailField.value = "";
         passwordField.value = "";
         emailField.focus();
         return;
       }
 
-      // 서버에 로그인 요청 보내기
+      // 서버로 로그인 요청 보내기
       fetch("/login", {
         method: "POST",
         headers: {
@@ -46,10 +48,9 @@ function loginProcess() {
         body: JSON.stringify({ email, password }),
       })
         .then((response) => {
-          // 성공적인 응답을 확인하고 적절한 페이지로 리디렉션
+          // 응답이 성공적이면 페이지 리디렉션
           if (response.ok) {
-            // 클라이언트 측 JavaScript를 사용하여 페이지를 리디렉션
-            window.location.href = window.location.href;
+            window.location.href = window.location.href; // 페이지 리디렉션
           } else {
             response.json().then((data) => {
               alert(data.message || "The email or password is incorrect.");
@@ -57,13 +58,17 @@ function loginProcess() {
           }
         })
         .catch((error) => {
-          console.error("에러 발생:", error);
-          // 여기에서 사용자에게 로그인 실패를 알리는 UI 처리를 할 수 있습니다.
+          console.error(
+            "Login error: Failed to communicate with server. Please check your network connection and try again.",
+            error
+          );
+          // 로그인 실패 시 사용자에게 알리는 UI 처리
         });
     });
   }
 }
 
+// 로그아웃 처리를 위한 함수
 function logoutProcess() {
   document
     .querySelector("#logout-button")
@@ -71,13 +76,19 @@ function logoutProcess() {
       fetch("/logout", { method: "GET" })
         .then((response) => {
           if (response.redirected) {
-            window.location.href = window.location.href;
+            window.location.href = window.location.href; // 페이지 리디렉션
           }
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) =>
+          console.error(
+            "Logout error: Unable to log out. Please try again later.",
+            error
+          )
+        );
     });
 }
 
+// 로그인 상태 확인을 위한 함수
 async function loginCheck() {
   const loginBox = document.querySelector("#login-box");
   const loggedInBox = document.querySelector("#loggedin-box");
@@ -85,18 +96,15 @@ async function loginCheck() {
 
   const response = await fetch("/api/login-status");
   const data = await response.json();
-  // console.log("loginCheck data = ", data);
 
   if (data.loggedIn) {
     loggedInUsername.innerHTML = data.username;
     loggedInBox.style.display = "block";
-    // console.log("로그인한 사용자:", data.username);
-    return data; // 로그인된 사용자의 이름을 반환
+    return data; // 로그인된 사용자의 이름 반환
   } else {
     loginBox.style.display = "block";
-    // console.log("로그아웃");
     return null; // 로그인되지 않았을 경우 null 반환
   }
 }
 
-export { loginProcess, logoutProcess, loginCheck };
+export { loginProcess, logoutProcess, loginCheck }; // 함수들을 다른 모듈에서 사용할 수 있도록 export

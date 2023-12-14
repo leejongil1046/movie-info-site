@@ -2,7 +2,7 @@
 .movie-reviews {
   position: relative;
   display: none;
-  max-width: 78%;
+  max-width: 80%;
   height: 520px;
   padding: 20px 30px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -79,5 +79,9 @@
 
 #prev-review i:hover,
 #next-review i:hover {
+  color: red;
+}
+
+.fa-trash-can:hover {
   color: red;
 }

@@ -14,9 +14,11 @@
 
 #movies-pagination-container {
   position: fixed;
-  left: 30px;
-  bottom: 16px;
+  left: 10px;
+  bottom: 25px;
   font-size: 20px;
+  width: 200px;
+  text-align: right;
 }
 
 #reviews-pagination-container {

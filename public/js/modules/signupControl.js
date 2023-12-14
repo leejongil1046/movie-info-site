@@ -2,15 +2,15 @@ function signupSubmit(isSubmitValidFunc) {
   const signupForm = document.querySelector("#signup-form");
   // 폼 제출 핸들러 추가
   signupForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // 폼n의 기본 제출 동작을 항상 방지
+    event.preventDefault(); // 폼의 기본 제출 동작을 항상 방지
 
     if (isSubmitValidFunc()) {
       // 폼 데이터 수집
       const signupFormData = {
         username: document.querySelector("#username").value,
         email: document.querySelector("#email").value,
-        password: document.querySelector("#info__pw").value, // 패스워드 입력 필드의 id를 확인하고 맞춰주세요.
-        confirmPassword: document.querySelector("#info__pwRe").value, // 확인 패스워드 입력 필드의 id를 확인하고 맞춰주세요.
+        password: document.querySelector("#info__pw").value, // 비밀번호 입력 필드의 id를 확인하고 맞춰주세요.
+        confirmPassword: document.querySelector("#info__pwRe").value, // 비밀번호 확인 필드의 id를 확인하고 맞춰주세요.
         year: document.querySelector("#birth-year").value,
         month: document.querySelector("#birth-month").value,
         day: document.querySelector("#birth-day").value,
@@ -26,7 +26,6 @@ function signupSubmit(isSubmitValidFunc) {
         alert("Please ensure all fields are valid before submitting."); // 또는 원하는 오류 처리 방법을 선택하세요.
       } else {
         // 모든 필드가 채워져 있을 때 다음 동작 수행
-        // 여기에 원하는 로직을 추가하세요.
         // 서버로 데이터 전송
         fetch("/signup/register", {
           method: "POST",
@@ -54,4 +53,4 @@ function signupSubmit(isSubmitValidFunc) {
   });
 }
 
-export { signupSubmit };
+export { signupSubmit }; // 함수를 다른 모듈에서 사용할 수 있도록 export

@@ -1,13 +1,14 @@
 import {
   createLoadingMessage,
   removeLoadingMessage,
-} from "/js/modules/loadingMessageControl.js"; // Adjust the path as needed
+} from "/js/modules/loadingMessageControl.js"; // 필요에 따라 경로 조정
 
 let allMovies = [];
 let allMovieIds = [];
 let currentPage = 1;
 const moviesPerPage = 10;
 
+// 주어진 페이지에 영화를 표시하는 함수
 function displayMovies(page) {
   const startIndex = (page - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
@@ -28,12 +29,14 @@ function displayMovies(page) {
   });
 }
 
+// 페이지네이션 정보 업데이트 함수
 function updatePaginationInfo() {
   const pageInfo = document.querySelector("#page-info");
   const totalPages = Math.ceil(allMovies.length / moviesPerPage);
   pageInfo.textContent = `${currentPage} / ${totalPages}`;
 }
 
+// 페이지네이션 설정 함수
 function setupPagination() {
   const paginationContainer = document.querySelector(
     "#movies-pagination-container"
@@ -67,6 +70,7 @@ function setupPagination() {
   updatePaginationInfo();
 }
 
+// 세션 스토리지의 데이터를 수정하는 함수
 function modifyStoredData() {
   // 세션 스토리지에서 영화 데이터를 가져옵니다.
   const storedMovies = sessionStorage.getItem("moviesData");
@@ -87,6 +91,7 @@ function modifyStoredData() {
   }
 }
 
+// 세션 스토리지에 저장된 영화를 정렬하는 함수
 function sortStoredMovies(sortBy) {
   sessionStorage.setItem("currentSortCriteria", sortBy);
   const storedMovies = sessionStorage.getItem("moviesData");
@@ -103,10 +108,12 @@ function sortStoredMovies(sortBy) {
       movies.sort((a, b) => a.title.localeCompare(b.title));
       break;
     case "year":
-      movies.sort((a, b) => b.year - a.year); // 내림차순 정렬
+      movies.sort((a, b) => b.year - a.year || a.title.localeCompare(b.title)); // 연도가 같을 경우 타이틀로 정렬
       break;
     case "rating":
-      movies.sort((a, b) => b.rating - a.rating); // 내림차순 정렬
+      movies.sort(
+        (a, b) => b.rating - a.rating || a.title.localeCompare(b.title)
+      ); // 평점이 같을 경우 타이틀로 정렬
       break;
     // 다른 정렬 기준 추가 가능
     default:
@@ -125,12 +132,14 @@ function sortStoredMovies(sortBy) {
   allMovieIds = sortedMovieIds;
 }
 
+// 새로운 정렬 기준에 따라 영화를 표시하는 함수
 function showNewSortedMovies(sortBy) {
   sortStoredMovies(sortBy);
   displayMovies(1);
   setupPagination();
 }
 
+// 영화 데이터를 가져오고 저장하는 함수
 function fetchAndStoreMoviesData(page) {
   const storedMovies = sessionStorage.getItem("moviesData");
 

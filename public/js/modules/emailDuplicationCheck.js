@@ -20,7 +20,7 @@ function emailDuplicationCheck() {
       // 사용자가 아무것도 입력하지 않은 경우
       if (this.value === "") {
         emailErrorMsgEl.style.color = "red";
-        emailErrorMsgEl.textContent = "Please enter an email address.";
+        emailErrorMsgEl.textContent = "Please enter your email address.";
         resolve(false);
         return;
       }
@@ -48,13 +48,13 @@ function emailDuplicationCheck() {
             emailErrorMsgEl.textContent = "The email is available.";
           } else {
             emailErrorMsgEl.style.color = "red";
-            emailErrorMsgEl.textContent = "The email already exists.";
+            emailErrorMsgEl.textContent = "This email already exists.";
           }
           resolve(isEmailValid);
         })
         .catch((error) => {
           // 오류 발생 시, 오류를 콘솔에 출력하고 Promise를 reject
-          console.error("Error:", error);
+          console.error("Error occurred during email validation:", error);
           reject(error);
         });
     });

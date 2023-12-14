@@ -3,7 +3,11 @@ import {
   createStarRatingElement,
 } from "/js/modules/starRating.js";
 
-import { loginCheck } from "/js/modules/logInOutControl.js";
+import {
+  calucAvgRating,
+  resetReviewForm,
+  changeButton,
+} from "/js/modules/reviewUtilities.js";
 
 let allReviews = [];
 let reviewsPerPage = 4;
@@ -84,18 +88,25 @@ function makeNewReveiw(movieId, username, rating, reviewText) {
   usernameSpan.style.marginTop = "8px";
   usernameSpan.style.color = "#999";
 
+  // 새로운 deleteIcon 생성 및 이벤트 핸들러 추가
   const deleteIcon = document.createElement("span");
   deleteIcon.id = `${username}-delete`;
-  deleteIcon.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+  deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
   deleteIcon.style.fontSize = "15px";
-  deleteIcon.style.marginTop = "11px";
+  deleteIcon.style.marginTop = "9px";
   deleteIcon.style.marginLeft = "5px";
-  deleteIcon.style.color = "red";
+  deleteIcon.style.color = "#eee";
+  deleteIcon.style.cursor = "pointer";
   deleteIcon.style.display = "none";
-  deleteIcon.addEventListener("click", async function (event) {
-    event.preventDefault(); // 폼 기본 제출 동작 방지
 
-    await fetchDeleteReview(movieId, username);
+  deleteIcon.addEventListener("click", function (event) {
+    event.preventDefault();
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this review?"
+    );
+    if (confirmDelete) {
+      fetchDeleteReview(movieId, username);
+    }
   });
 
   const starRatingElement = createStarRatingElement(rating);
@@ -190,46 +201,45 @@ function deleteUserReview(username) {
   updatePagination(allReviews.length, reviewsPerPage);
 }
 
-// 가져온 리뷰 데이터로 페이지에 리뷰 목록을 표시하는 함수
-function displayReviewsOnPage(reviews) {
+function displayReviewsOnPage(reviews, loggedInUsername) {
   allReviews = []; // 전역 리뷰 목록 초기화
+
   reviews.forEach((review) => {
     makeNewReveiw(
-      review.movieId,
+      review.movie_id,
       review.username,
       review.rating,
       review.review
     );
+
+    const numberOfReviews = document.querySelector("#review-title");
+    numberOfReviews.textContent = `Reviews (${allReviews.length})`;
+
+    // Check if the review belongs to the logged-in user
+    if (loggedInUsername !== null && review.username === loggedInUsername) {
+      const submitButton = document.querySelector("#submit-review");
+      const modifyButton = document.querySelector("#modify-review");
+      const deleteIcon = document.querySelector(`#${review.username}-delete`);
+      if (deleteIcon) {
+        submitButton.style.display = "none";
+        modifyButton.style.display = "block";
+        deleteIcon.style.display = "block";
+      }
+    }
   });
+
   displayReviews(1); // 첫 페이지의 리뷰를 표시
 }
 
-function calucAvgRating(avgRating) {
-  let newAvgRating = 0;
-
-  // avgRating이 숫자 타입인지 확인하고, 숫자가 아닌 경우 숫자로 변환
-  const parsedAvgRating =
-    typeof avgRating === "number" ? avgRating : parseFloat(avgRating);
-
-  if (parsedAvgRating === 0) {
-    newAvgRating = 0; // 정확히 0인 경우
-  } else {
-    newAvgRating = parseFloat(parsedAvgRating.toFixed(1)); // 소수점 첫 번째 자리까지 반올림
-  }
-
-  const avgRatingElement = document.querySelector("#avg-rating");
-  avgRatingElement.innerHTML = `&nbsp;&nbsp;${newAvgRating}/10`;
-}
-
 // 페이지 로드 시 서버에서 리뷰 데이터 가져오는 함수
-async function fetchReviews(movieId) {
+async function fetchReviews(movieId, username) {
   try {
     const response = await fetch(`/api/movie/${movieId}/reviews`);
     const data = await response.json();
     if (response.ok) {
       // 리뷰 데이터를 페이지에 표시
       calucAvgRating(data.averageRating);
-      if (data.reviews) displayReviewsOnPage(data.reviews);
+      if (data.reviews) displayReviewsOnPage(data.reviews, username);
       currentPage = 1;
       displayReviews(currentPage);
     } else {
@@ -259,6 +269,8 @@ async function fetchSubmitReview(movieId, username, rating, reviewText) {
       makeNewReveiw(movieId, username, rating, reviewText);
       resetReviewForm();
       changeButton(username);
+      const numberOfReviews = document.querySelector("#review-title");
+      numberOfReviews.textContent = `Reviews (${allReviews.length})`;
     } else {
       // 오류 응답 처리 및 로깅
       console.error("Failed to submit review.");
@@ -315,6 +327,8 @@ async function fetchDeleteReview(movieId, username) {
       calucAvgRating(data.averageRating);
       deleteUserReview(username);
       changeButton(username);
+      const numberOfReviews = document.querySelector("#review-title");
+      numberOfReviews.textContent = `Reviews (${allReviews.length})`;
     } else {
       // 서버 오류 응답 처리
       console.error(`Failed to delete the review`);
@@ -325,77 +339,38 @@ async function fetchDeleteReview(movieId, username) {
   }
 }
 
-function resetReviewForm() {
-  // 별점 입력창 초기화 (예시로 '.rating input' 선택자 사용)
-  const ratingInput = document.querySelector(".rating input");
-  if (ratingInput) {
-    ratingInput.value = 0;
-    const ratingStar = document.querySelector(".rating_star");
-    if (ratingStar) {
-      ratingStar.style.width = `0%`;
-    }
-  }
-
-  // 텍스트 입력창 초기화 (예시로 '#review-text' ID 사용)
-  const reviewTextInput = document.querySelector("#review-text");
-  if (reviewTextInput) {
-    reviewTextInput.value = "";
-  }
-}
-
-function changeButton(username) {
-  const submitButton = document.querySelector("#submit-review");
-  const modifyButton = document.querySelector("#modify-review");
-  const deleteIcon = document.querySelector(`#${username}-delete`);
-  if (deleteIcon) {
-    submitButton.style.display = "none";
-    modifyButton.style.display = "block";
-    deleteIcon.style.display = "block";
-  } else {
-    submitButton.style.display = "block";
-    modifyButton.style.display = "none";
-  }
-}
-
 function reviewButtonHandler(movieId, username) {
   starRatingInput();
 
   const submitButton = document.querySelector("#submit-review");
   submitButton.addEventListener("click", async function (event) {
     event.preventDefault(); // 폼 기본 제출 동작 방지
+    const confirmModify = confirm(
+      "Are you sure you want to submit this review?"
+    );
+    if (confirmModify) {
+      const rating = document.querySelector(".rating input").value;
+      const reviewText = document.querySelector("#review-text").value;
 
-    const rating = document.querySelector(".rating input").value;
-    const reviewText = document.querySelector("#review-text").value;
-
-    await fetchSubmitReview(movieId, username, rating, reviewText);
+      await fetchSubmitReview(movieId, username, rating, reviewText);
+    }
   });
 
   const modifyButton = document.querySelector("#modify-review");
   modifyButton.addEventListener("click", async function (event) {
     event.preventDefault(); // 폼 기본 제출 동작 방지
 
-    const rating = document.querySelector(".rating input").value;
-    const reviewText = document.querySelector("#review-text").value;
+    // Ask the user for confirmation to modify the review
+    const confirmModify = confirm(
+      "Are you sure you want to modify this review?"
+    );
+    if (confirmModify) {
+      const rating = document.querySelector(".rating input").value;
+      const reviewText = document.querySelector("#review-text").value;
 
-    await fetchModifyReview(movieId, username, rating, reviewText);
-  });
-
-  const userReview = allReviews.find(
-    (review) => review.id === `${username}-review`
-  );
-
-  if (userReview) {
-    const deleteIcon = userReview.querySelector(`#${username}-delete`);
-    if (deleteIcon) {
-      submitButton.style.display = "none";
-      modifyButton.style.display = "block";
-      deleteIcon.style.display = "block";
-      deleteIcon.addEventListener("click", async function (event) {
-        event.preventDefault(); // 폼 기본 제출 동작 방지
-        await fetchDeleteReview(movieId, username);
-      });
+      await fetchModifyReview(movieId, username, rating, reviewText);
     }
-  }
+  });
 }
 
 export { fetchReviews, reviewButtonHandler };

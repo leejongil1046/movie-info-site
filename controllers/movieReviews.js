@@ -68,19 +68,31 @@ exports.submitReview = async (req, res) => {
 exports.modifyReview = async (req, res) => {
   const { movieId, username, rating, reviewText } = req.body;
   try {
+    // 리뷰 업데이트
     await db.query(
       "UPDATE movie_reviews SET rating = ?, review = ? WHERE movie_id = ? AND username = ?",
       [rating, reviewText, movieId, username]
     );
+
+    // 업데이트된 리뷰 정보 가져오기
+    const [updatedReviewResult] = await db.query(
+      "SELECT rating, review FROM movie_reviews WHERE movie_id = ? AND username = ?",
+      [movieId, username]
+    );
+    const updatedReview = updatedReviewResult[0] || {};
+
     // 평균 평점 가져오기
     const [averageRatingResult] = await db.query(
       "SELECT AVG(rating) AS averageRating FROM movie_reviews WHERE movie_id = ? AND rating IS NOT NULL",
       [movieId]
     );
     const averageRating = averageRatingResult[0].averageRating || 0;
+
+    // 응답 데이터에 업데이트된 리뷰 정보 포함
     res.json({
       message: "Review updated successfully",
       averageRating: averageRating,
+      updatedReview: updatedReview,
     });
   } catch (error) {
     console.error("Error updating review:", error);
@@ -91,6 +103,7 @@ exports.modifyReview = async (req, res) => {
 // 4. 리뷰 삭제 (rating과 review를 null로 설정)
 exports.deleteReview = async (req, res) => {
   const { movieId, username } = req.params;
+
   try {
     await db.query(
       "UPDATE movie_reviews SET rating = NULL, review = NULL WHERE movie_id = ? AND username = ?",

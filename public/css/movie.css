@@ -73,7 +73,7 @@
 /* Movie story section */
 .movie-story {
   display: none;
-  max-width: 78%;
+  max-width: 80%;
   /* width: 78%; */
   margin-top: 20px;
   margin-bottom: 20px;
@@ -220,4 +220,17 @@
   position: absolute;
   top: 190px;
   right: 230px;
+}
+
+#movie-main {
+  padding-left: 24px;
+}
+
+#index-movie {
+  font-size: 20px;
+  position: fixed;
+  bottom: 42px;
+  left: 56px;
+  width: 100px;
+  text-align: right;
 }

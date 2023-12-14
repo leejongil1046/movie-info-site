@@ -67,6 +67,26 @@ function setupPagination() {
   updatePaginationInfo();
 }
 
+function modifyStoredData() {
+  // 세션 스토리지에서 영화 데이터를 가져옵니다.
+  const storedMovies = sessionStorage.getItem("moviesData");
+
+  // 데이터가 존재하면 JSON 형식으로 파싱합니다.
+  if (storedMovies) {
+    let movies = JSON.parse(storedMovies);
+
+    // 원하는 영화를 찾아 설명을 업데이트합니다.
+    const movieIndex = movies.findIndex((movie) => movie.id === 3611);
+    if (movieIndex !== -1) {
+      movies[movieIndex].description_full =
+        "Socially awkward teen Charlie (Logan Lerman) is a wallflower, always watching life from the sidelines, until two charismatic students become his mentors. Free-spirited Sam (Emma Watson) and her stepbrother Patrick (Ezra Miller) help Charlie discover the joys of friendship, first love, music and more, while a teacher sparks Charlie's dreams of becoming a writer. However, as his new friends prepare to leave for college, Charlie's inner sadness threatens to shatter his newfound confidence.";
+
+      // 수정된 데이터를 다시 세션 스토리지에 저장합니다.
+      sessionStorage.setItem("moviesData", JSON.stringify(movies));
+    }
+  }
+}
+
 function sortStoredMovies(sortBy) {
   sessionStorage.setItem("currentSortCriteria", sortBy);
   const storedMovies = sessionStorage.getItem("moviesData");
@@ -140,8 +160,9 @@ function fetchAndStoreMoviesData(page) {
             fetchPage(page + 1);
           } else {
             // 모든 페이지의 데이터를 불러온 후에 세션 스토리지에 저장
-            removeLoadingMessage();
             sessionStorage.setItem("moviesData", JSON.stringify(allMovies));
+            modifyStoredData();
+            removeLoadingMessage();
             showNewSortedMovies("rating");
             document.querySelector("#sort-rating").classList.toggle("choiced");
           }

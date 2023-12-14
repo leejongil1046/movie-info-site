@@ -50,8 +50,10 @@ nav i {
 }
 
 #web-title {
-  margin-top: 32px;
-  margin-left: 10px;
+  margin: 0px;
+  position: fixed;
+  top: -6px;
+  left: 25px;
   color: red;
   font-family: "Bebas Neue", sans-serif;
   font-size: 60px;
@@ -80,7 +82,7 @@ nav i:hover {
   width: 0px;
   opacity: 0;
   overflow: hidden;
-  transition: width 0.9s ease 0.5s, opacity 0.9s ease;
+  transition: width 0.8s ease 0.4s, opacity 0.8s ease;
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
 }
@@ -89,7 +91,7 @@ nav i:hover {
   opacity: 1;
   width: 170px;
   height: 42px;
-  transition: width 0.9s ease, opacity 0.9s ease 0.5s; /* opacity 먼저, width는 지연 */
+  transition: width 0.8s ease, opacity 0.8s ease 0.4s; /* opacity 먼저, width는 지연 */
 }
 
 #sort-menu span {
@@ -116,6 +118,7 @@ nav i:hover {
 }
 
 #search-input {
+  position: relative;
   padding: 0px 10px;
   height: 27px;
   margin-bottom: 4px;
@@ -123,22 +126,21 @@ nav i:hover {
   border-radius: 10px;
   width: 0px;
   opacity: 0;
-  transition: width 1.2s ease 0.6s, opacity 1.2s ease,
-    margin-left 1.2s ease 0.6s;
+  transition: width 1s ease 0.5s, opacity 1s ease, margin-left 1s ease 0.5s;
 }
 
 #search-input.open {
   margin-left: 20px;
   width: 300px;
   opacity: 1;
-  transition: width 1.2s ease, opacity 1.2s ease 0.6s, margin-left 1.2s ease;
+  transition: width 1s ease, opacity 1s ease 0.5s, margin-left 1s ease;
 }
 
 #search-results {
   /* 스크롤 가능 박스 스타일링 */
-  margin-left: 14px;
-  width: 365px;
+  width: 413px;
   position: fixed;
+  right: 0px;
   top: 75px;
   max-height: 450px;
   overflow-y: auto;
@@ -157,6 +159,10 @@ nav i:hover {
 .searched-movie {
   background-color: #000;
   display: flex;
+  border-top: 1px solid #333;
+}
+
+#search-results:last-child {
   border-bottom: 1px solid #333;
 }
 
@@ -193,4 +199,38 @@ nav i:hover {
 
 #no-found div {
   margin-top: 20px;
+}
+
+#search-loading-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  top: 21px;
+  right: 48px;
+  visibility: hidden;
+}
+
+#search-loading-icon i {
+  font-size: 16px;
+  color: #000;
+  padding: 0px;
+  margin: 0px;
+  transform-origin: center; /* 아이콘의 중심을 회전축으로 설정 */
+}
+
+/* 간단한 회전 애니메이션 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#search-loading-icon.visible i {
+  visibility: visible;
+  animation: spin 1s linear infinite;
 }

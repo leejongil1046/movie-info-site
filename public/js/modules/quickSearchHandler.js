@@ -3,10 +3,13 @@ let searchTimeout;
 function quickSearchInput() {
   const searchInputButton = document.querySelector("#search-input");
   const resultsContainer = document.querySelector("#search-results");
+  const loadingIcon = document.querySelector("#search-loading-icon");
 
   searchInputButton.addEventListener("input", (event) => {
     clearTimeout(searchTimeout);
+    loadingIcon.classList.add("visible"); // 로딩 아이콘 표시
     searchTimeout = setTimeout(() => {
+      loadingIcon.classList.remove("visible"); // 로딩 아이콘 숨김
       resultsContainer.classList.add("hidden");
       if (event.target.value.length >= 1) performSearch(event.target.value);
     }, 1000);

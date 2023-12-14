@@ -27,7 +27,7 @@
     /* 상단 오른쪽 그림자 */ -1px 1px 5px #000,
     /* 하단 왼쪽 그림자 */ 1px 1px 5px #000; /* 하단 오른쪽 그림자 */
   white-space: nowrap;
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-bottom: 15px;
 }
 
@@ -73,7 +73,8 @@
 /* Movie story section */
 .movie-story {
   display: none;
-  max-width: 78%; /* 가로 크기를 main의 60%로 설정 */
+  max-width: 78%;
+  /* width: 78%; */
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px 30px; /* 패딩 추가 */
@@ -97,6 +98,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  border: 1px solid #000;
 }
 
 #more-button {

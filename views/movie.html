@@ -41,6 +41,7 @@
           <li>
             <input type="text" id="search-input" placeholder="Quick search"/>
             <div id="search-results" class="hidden"></div>
+            <div id="search-loading-icon" class="hidden"><i class="fa-solid fa-spinner"></i></div>
           </li>
         </ul>
       </nav>
@@ -116,7 +117,7 @@
             </div>
             <textarea
             id="review-text"
-            maxlength="40"
+            maxlength="100"
             placeholder="Wirte your review."
             required
             ></textarea>

@@ -115,7 +115,7 @@ function updateMovieDetails(movie) {
   let descriptionText = descriptionFull.includes("—")
     ? descriptionFull.substring(0, descriptionFull.indexOf("—"))
     : descriptionFull;
-  const truncatedDescription = truncateDescription(descriptionText, 1000);
+  const truncatedDescription = truncateDescription(descriptionText, 1500);
 
   document.querySelector("#movie-description").innerHTML =
     '<h2 id="description-label">Description</h2> &nbsp;&nbsp;' +

@@ -90,10 +90,14 @@ function updateMovieDetails(movie) {
   ).innerHTML = `FAKEFLIX - ${movie.title}`;
 
   // 영화 배경 이미지 설정
-  document.body.style.backgroundImage = `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0)), url('${movie.background_image}')`;
-  // document.body.style.backgroundImage = `linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)), linear-gradient(to right top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)), linear-gradient(to left top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)), url('${movie.background_image}')`;
-  document.body.style.backgroundPosition = "center 78px";
-  document.body.style.backgroundSize = "cover";
+  // document.body.style.backgroundImage = ` linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 10%),
+  //   linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 10%),
+  //   linear-gradient(to top, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 0) 70%),url('${movie.background_image}')`;
+  document.body.style.backgroundImage = `linear-gradient(to bottom, rgba(255, 255, 255, 0) 300px, rgba(0, 0, , 1) 600px), radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 1) 85%), url('${movie.background_image}')`;
+  // document.body.style.backgroundImage = ` linear-gradient(to top, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0.1)), url('${movie.background_image}')`;
+  // document.body.style.backgroundImage = `url('${movie.background_image}')`;
+  document.body.style.backgroundPosition = "center 50px";
+  document.body.style.backgroundSize = "100% auto";
   document.body.style.backgroundRepeat = "no-repeat";
 
   // 각종 영화 정보를 화면에 표시

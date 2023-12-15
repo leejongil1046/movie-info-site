@@ -45,6 +45,7 @@ main {
 /* 로딩 메시지 스타일 */
 #loading-message {
   position: fixed;
+  left: 46%;
   top: 40%;
   font-size: 35px; /* 폰트 크기 설정 */
   content: "Loading";

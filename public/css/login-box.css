@@ -82,7 +82,7 @@
     /* 상단 오른쪽 그림자 */ -1px 1px 0 #000,
     /* 하단 왼쪽 그림자 */ 1px 1px 0 #000; /* 하단 오른쪽 그림자 */
   display: none;
-  background-color: rgba(0, 0, 0, 0.4); /* 배경색 설정 */
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 1rem; /* 내부 여백 설정 */
   margin: 0; /* 외부 여백 제거 */
   width: 180px; /* 로그인 박스의 너비 설정 */

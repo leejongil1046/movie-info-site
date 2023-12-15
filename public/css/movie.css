@@ -17,6 +17,7 @@
 
 /* Movie detail */
 .movie-detail {
+  padding-left: 10px;
   max-width: 50%; /* 상세 정보의 최대 너비 설정 */
   font-size: 20px;
 }
@@ -29,6 +30,7 @@
   white-space: nowrap;
   font-size: 2rem;
   margin-bottom: 15px;
+  margin-left: -4.8px;
 }
 
 /* Movie description */
@@ -78,8 +80,8 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px 30px; /* 패딩 추가 */
-  background-color: rgba(0, 0, 0, 0.4); /* 배경색 설정 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+  background-color: rgba(0, 0, 0, 0); /* 배경색 설정 */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
   border-radius: 10px; /* 둥근 모서리 */
 }
 
@@ -174,9 +176,6 @@
   margin-right: 10px;
   padding: 2px 10px;
   border: 1px solid #fff;
-  box-shadow: -1px -1px 0 #000, /* 상단 왼쪽 그림자 */ 1px -1px 0 #000,
-    /* 상단 오른쪽 그림자 */ -1px 1px 0 #000,
-    /* 하단 왼쪽 그림자 */ 1px 1px 0 #000; /* 하단 오른쪽 그림자 */
   border-radius: 30%;
   white-space: nowrap;
 }

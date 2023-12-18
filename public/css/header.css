@@ -50,7 +50,7 @@ nav i {
 }
 
 #web-title {
-  text-shadow: 1px 1px 1px #fff; /* 하단 오른쪽 그림자 */
+  text-shadow: 2px 2px 2px #fff; /* 하단 오른쪽 그림자 */
   margin: 0px;
   position: fixed;
   top: -6px;

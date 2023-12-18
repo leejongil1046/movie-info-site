@@ -26,7 +26,7 @@
             <p id="refresh-icon"><i class="fa-solid fa-rotate-right"></i></p>
           </li>
           <li>
-            <p id="sort-icon"><i class="fa-solid fa-bars"></i></p>
+            <p id="sort-icon"><i class="fa-solid fa-arrow-up-wide-short"></i></p>
           </li>
           <li>
             <div id="sort-menu">
@@ -77,12 +77,18 @@
       </div>
       <button id="logout-button">Log out</button>
     </div>
-    <main id="movie-main">
+    <div id="sidebar-movies">
+    </div>
+    <main id="movie-main">  
       <div id="movie-container">
         <div class="movie-info">
-          <img id="movie-image" src="" alt="Movie poster" />
+          <a href="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID" id="trailer-link" target="_blank">
+            <img id="movie-image" src="" alt="Movie poster" />
+            <!-- <i class="fa-solid fa-circle-play"></i> -->
+            <i class="fa-brands fa-youtube"></i>
+          </a>
           <div class="movie-detail">
-            <h1 id="movie-title"></h1>
+            <h1 id="movie-title"></h1>              
             <p id="movie-genres"></p>
             <p id="movie-runtime"></p>
             <p id="movie-language"></p>
@@ -97,10 +103,10 @@
             </p>
             <p id="movie-more"></p>
           </div>
-          <div id="nav-movies">            
+          <!-- <div id="nav-movies">            
             <div id="prev-movie"></div>
             <div id="next-movie"></div>
-          </div>
+          </div> -->
         </div>
         <div class="movie-story">
           <p id="movie-description"></p>

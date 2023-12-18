@@ -1,0 +1,73 @@
+#sidebar-movies {
+  position: fixed;
+  top: 76px;
+  left: -230px; /* 초기에는 화면 밖에 위치 */
+  width: 230px; /* 사이드바 너비 */
+  height: calc(100% - 112px); /* 전체 높이에서 헤더와 푸터 높이를 뺀 값 */
+  background-color: #000;
+  z-index: 1000;
+  transition: left 0.5s; /* 왼쪽으로 0.5초 동안 이동하는 애니메이션 */
+  overflow-y: auto; /* 스크롤바가 필요할 때 자동으로 나타남 */
+}
+
+.sidebar-movie:hover {
+  background-color: #222;
+  cursor: pointer;
+}
+
+/* .sidebar-movie img {
+  width: 70px;
+  height: 105px;
+  padding: 20px;
+}
+
+.sidebar-movie h4 {
+  font-size: 20px;
+}
+
+.sidebar-movie h6 {
+  margin-top: 10px;
+} */
+
+.sidebar-movie {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  margin: 5px;
+  margin-right: 10px;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.sidebar-movie img {
+  width: 50px; /* 이미지 너비 */
+  height: auto;
+  margin-right: 10px; /* 이미지와 정보 사이의 간격 */
+  border-radius: 3px;
+}
+
+.sidebar-movie div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-movie h4 {
+  font-size: 14px;
+  margin: 0px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.sidebar-movie-index {
+  position: absolute;
+  right: 10px; /* 오른쪽 가장자리에서 10px 떨어진 위치 */
+  bottom: 10px; /* 하단 가장자리에서 10px 떨어진 위치 */
+  font-size: 0.8em; /* 인덱스 폰트 크기 */
+  color: #fff; /* 인덱스 색상 */
+}
+
+.sidebar-movie.current-movie {
+  background-color: #333; /* 현재 영화에 대한 배경색 변경 */
+}

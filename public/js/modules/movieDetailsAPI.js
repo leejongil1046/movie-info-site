@@ -101,6 +101,12 @@ function updateMovieDetails(movie) {
   document.body.style.backgroundRepeat = "no-repeat";
 
   // 각종 영화 정보를 화면에 표시
+  document
+    .querySelector("#trailer-link")
+    .setAttribute(
+      "href",
+      `https://www.youtube.com/embed/${movie.yt_trailer_code}?rel=0&amp;wmode=transparent&amp;border=0&amp;autoplay=1&amp;iv_load_policy=3`
+    );
   document.querySelector("#movie-image").style.display = "block";
   document.querySelector(".movie-story").style.display = "block";
   document.querySelector(".movie-reviews").style.display = "block";

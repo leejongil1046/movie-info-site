@@ -6,6 +6,7 @@
 @import "./movie.css";
 @import "./movies.css"; /* 영화 컨테이너 관련 스타일 */
 @import "./review.css";
+@import "./sidebar.css";
 @import "./pagenation.css";
 
 /* 전체 페이지의 기본 스타일 설정 */

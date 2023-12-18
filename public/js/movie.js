@@ -28,7 +28,9 @@ import { restrictAccessToNotLoggedinUsers } from "/js/modules/accessControl.js";
 
 import { setupNavigationArrows } from "/js/modules/navigationArrowsHandler.js";
 
-import { updateNavigationButtons } from "/js/modules/prevNextMovies.js";
+import { addMoviesToSidebar } from "/js/modules/sidebarHandler.js";
+
+// import { updateNavigationButtons } from "/js/modules/prevNextMovies.js";
 
 import { quickSearchInput } from "/js/modules/quickSearchHandler.js";
 
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 페이지 로드 시 영화 상세 정보를 가져옴
   await fetchMovieDetails(movieId);
-  updateNavigationButtons(movieId);
+  // updateNavigationButtons(movieId);
 
   loginProcess();
   logoutProcess();
@@ -69,4 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupNavigationArrows(movieId);
 
   quickSearchInput();
+
+  addMoviesToSidebar(movieId);
 });

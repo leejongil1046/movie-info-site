@@ -33,4 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutProcess();
 
   quickSearchInput();
+
+  const storedMovies = sessionStorage.getItem("moviesData");
+  console.log(JSON.parse(storedMovies));
 });
